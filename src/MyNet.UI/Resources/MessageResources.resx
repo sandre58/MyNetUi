@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ItemModificationCancellingQuestion" xml:space="preserve">
+    <value>Des éléments ont été modifiés. Il seront définitivement perdus. Vous-vous continuer ?</value>
+  </data>
+  <data name="CopyInClipBoardError" xml:space="preserve">
+    <value>L'élément n'a pas pu être copié dans le presse papier.
+Consulter les logs pour plus d'informations.</value>
+  </data>
+  <data name="CopyInClipBoardSuccess" xml:space="preserve">
+    <value>L'élément à bien été copié dans le presse papier.
+Utiliser Ctrl+V, ou Clic droit puis Coller pour récupérer l'élément.</value>
+  </data>
+  <data name="ItemSavingQuestion" xml:space="preserve">
+    <value>Des éléments ont été modifiés. Voulez vous les sauvegarder ?</value>
+  </data>
+  <data name="XItemsRemovingQuestion" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement un élément. Voulez-vous continuer ?</value>
+  </data>
+  <data name="XItemsRemovingQuestionPlural" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement {0} éléments. Voulez-vous continuer ?</value>
+  </data>
+  <data name="FieldsInvalidError" xml:space="preserve">
+    <value>Les champs renseignés ne sont pas corrects.</value>
+  </data>
+  <data name="UnexpectedXError" xml:space="preserve">
+    <value>Une erreur inattendue est survenue : {0}</value>
+  </data>
+  <data name="FileXOpenError" xml:space="preserve">
+    <value>Le fichier "{0}" n'a pas pu être ouvert.
+Consulter les logs pour plus d'informations.</value>
+  </data>
+  <data name="FileXNotFoundError" xml:space="preserve">
+    <value>Impossible de trouver le fichier "{0}".</value>
+  </data>
+  <data name="FileRemovingQuestion" xml:space="preserve">
+    <value>Le fichier va être supprimer. Voulez-vous continuer ?</value>
+  </data>
+  <data name="FieldXMustBeValidEmailAddressError" xml:space="preserve">
+    <value>Le champ "{0}" ne correspond pas à une adresse de messagerie valide.</value>
+  </data>
+  <data name="FieldXMustBeValidPhoneNumberError" xml:space="preserve">
+    <value>Le champ "{0}" ne correspond pas à un numéro de téléphone valide.</value>
+  </data>
+  <data name="FieldXMustHaveMaxLengthYError" xml:space="preserve">
+    <value>Le champ "{0}" ne doit pas dépasser {1} caractères.</value>
+  </data>
+  <data name="FieldXIsRequiredError" xml:space="preserve">
+    <value>Le champ "{0}" est obligatoire.</value>
+  </data>
+  <data name="FieldXMustHaveUniqueItemsError" xml:space="preserve">
+    <value>La collection "{0}" ne doit pas avoir d'élément identique.</value>
+  </data>
+  <data name="FieldXMustBeContainOneItemAtLeastError" xml:space="preserve">
+    <value>La collection "{0}" doit contenir au moins 1 élément.</value>
+  </data>
+  <data name="FieldXMustBeLowerThanYError" xml:space="preserve">
+    <value>Le champ "{0}" doit être inférieur à {1}.</value>
+  </data>
+  <data name="FieldXMustBeUpperThanYError" xml:space="preserve">
+    <value>Le champ "{0}" doit être supérieur à {1}.</value>
+  </data>
+  <data name="FieldXMustBeBetweenYAndZError" xml:space="preserve">
+    <value>Le champ "{0}" doit être compris entre {1} et {2}.</value>
+  </data>
+  <data name="FieldXMustBeAnValidFilePathError" xml:space="preserve">
+    <value>Le champ "{0}" ne correspond pas à un chemin de fichier valide.</value>
+  </data>
+  <data name="FieldXMustContainExistingFolderError" xml:space="preserve">
+    <value>Impossible de trouver une partie du chemin "{0}".</value>
+  </data>
+  <data name="FieldXMustContainsExistingFileError" xml:space="preserve">
+    <value>Le fichier spécifié dans le champ "{0}" n'a pas été trouvé.</value>
+  </data>
+  <data name="FileXAlreadyUsedError" xml:space="preserve">
+    <value>Le fichier "{0}" est utilisé par un autre processus</value>
+  </data>
+  <data name="FieldXMustBeInPastError" xml:space="preserve">
+    <value>Le champ "{0}" doit être dans le passé.</value>
+  </data>
+  <data name="NotEnoughSpaceDisk" xml:space="preserve">
+    <value>L'espace disque est insuffisant pour effectuer l'oppération.</value>
+  </data>
+  <data name="ItemXNotFoundException" xml:space="preserve">
+    <value>L'élément "{0}" n'a pas été trouvé".</value>
+  </data>
+  <data name="FieldStartDateMustBeLowerOrEqualsThanEndDateError" xml:space="preserve">
+    <value>La date de début doit être inférieur ou égal à la date de fin.</value>
+  </data>
+  <data name="FieldEndDateMustBeUpperOrEqualsThanStartDateError" xml:space="preserve">
+    <value>La date de fin doit être supérieur ou égal à la date de début.</value>
+  </data>
+  <data name="FieldXMustBeLowerOrEqualsThanYError" xml:space="preserve">
+    <value>Le champ "{0}" doit être inférieur ou égal à {1}.</value>
+  </data>
+  <data name="FieldXMustBeUpperOrEqualsThanYError" xml:space="preserve">
+    <value>Le champ "{0}" doit être supérieur ou égal à {1}.</value>
+  </data>
+  <data name="DirectoryXNotFoundError" xml:space="preserve">
+    <value>Impossible de trouver le dossier "{0}".</value>
+  </data>
+  <data name="FieldEndTimeMustBeUpperThanStartTimeError" xml:space="preserve">
+    <value>L'heure de fin doit être supérieur à l'heure de début.</value>
+  </data>
+  <data name="FieldEndTimeMustBeLowerThanStartTimeError" xml:space="preserve">
+    <value>L'heure de fin doit être inférieur à l'heure de début.</value>
+  </data>
+  <data name="FileXRemovedSuccess" xml:space="preserve">
+    <value>Le fichier "{0}" a été supprimé avec succès.</value>
+  </data>
+  <data name="FieldXMustBeDifferentOfFieldYError" xml:space="preserve">
+    <value>Le champ "{0}" doit être différent du champ "{1}".</value>
+  </data>
+  <data name="XItemsHasBeenModifiedSuccess" xml:space="preserve">
+    <value># élément a été modifié.</value>
+  </data>
+  <data name="XItemsHasBeenModifiedSuccessPlural" xml:space="preserve">
+    <value># éléments ont été modifiés.</value>
+  </data>
+  <data name="FileHasInvalidExtensionError" xml:space="preserve">
+    <value>L'extension du fichier spécifié n'est pas valide.</value>
+  </data>
+  <data name="XItemsAddedSuccess" xml:space="preserve">
+    <value>1 élément a été ajoutée.</value>
+  </data>
+  <data name="XItemsAddedSuccessPlural" xml:space="preserve">
+    <value>{0} éléments ont été ajoutées.</value>
+  </data>
+</root>

@@ -1,0 +1,48 @@
+﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
+// See the LICENSE file in the project root for more information.
+
+using System;
+using System.ComponentModel;
+using MyNet.UI.Commands;
+
+namespace MyNet.UI.ViewModels.Paging
+{
+    public interface IPagingViewModel : INotifyPropertyChanged
+    {
+        event EventHandler<PagingChangedEventArgs>? PagingChanged;
+
+        int PageSize { get; }
+
+        int CurrentPage { get; }
+
+        int TotalPages { get; }
+
+        int TotalItems { get; }
+
+        ICommand MoveToFirstPageCommand { get; }
+
+        ICommand MoveToLastPageCommand { get; }
+
+        ICommand MoveToPreviousPageCommand { get; }
+
+        ICommand MoveToNextPageCommand { get; }
+
+        ICommand MoveToPageCommand { get; }
+
+        ICommand SetPageSizeCommand { get; }
+
+        void SetPageSize(int value);
+
+        void MoveToPage(int value);
+
+        void MoveToNextPage();
+
+        void MoveToPreviousPage();
+
+        void MoveToFirstPage();
+
+        void MoveToLastPage();
+
+        void Update(PagingResponse response);
+    }
+}

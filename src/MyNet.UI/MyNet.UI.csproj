@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>This library is a comprehensive class library designed to simplify the implementation of common GUI functionalities in .NET applications.</Description>
+    <PackageTags>My;UI;Notifications;Theming;Dialog;ViewModels;Toasting;Presentation;Navigation;Locators</PackageTags>
+    <Version>$(GitVersion)</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MyNet.DynamicData.Extensions" Version="1.0.0" />
+    <PackageReference Include="MyNet.Observable" Version="1.0.1" />
+    <PackageReference Include="MyNet.Observable.Collections" Version="1.0.1" />
+    <PackageReference Include="MyNet.Observable.Translatables" Version="1.0.1" />
+    <PackageReference Include="MyNet.Utilities" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\FormatResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FormatResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\InternalResources.Designer.cs">
+      <DependentUpon>InternalResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\MessageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MessageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\UiResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UiResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\FormatResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormatResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\InternalResources.resx">
+      <LastGenOutput>InternalResources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MessageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\UiResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UiResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

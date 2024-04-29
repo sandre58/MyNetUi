@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllFemale" xml:space="preserve">
+    <value>Toute</value>
+  </data>
+  <data name="AllFemales" xml:space="preserve">
+    <value>Toutes</value>
+  </data>
+  <data name="AllMale" xml:space="preserve">
+    <value>Tout</value>
+  </data>
+  <data name="AllMales" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>Et</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="From1" xml:space="preserve">
+    <value>Du</value>
+  </data>
+  <data name="Is" xml:space="preserve">
+    <value>Est</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Aucun(e)</value>
+  </data>
+  <data name="NoneFemale" xml:space="preserve">
+    <value>Aucune</value>
+  </data>
+  <data name="NoneMale" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="To1" xml:space="preserve">
+    <value>Au</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Aujourd'hui</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Non défini(e)</value>
+  </data>
+  <data name="UndefinedFemale" xml:space="preserve">
+    <value>Non définie</value>
+  </data>
+  <data name="UndefinedMale" xml:space="preserve">
+    <value>Non défini</value>
+  </data>
+  <data name="UndefinedPluralFemale" xml:space="preserve">
+    <value>Non définies</value>
+  </data>
+  <data name="UndefiniedPlural" xml:space="preserve">
+    <value>Non défini(e)s</value>
+  </data>
+  <data name="UndefiniedPluralMale" xml:space="preserve">
+    <value>Non définis</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Inconnu(e)</value>
+  </data>
+  <data name="UnknownFemale" xml:space="preserve">
+    <value>Inconnue</value>
+  </data>
+  <data name="UnknownMale" xml:space="preserve">
+    <value>Inconnu</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>A Propos</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddSort" xml:space="preserve">
+    <value>Ajouter le tri</value>
+  </data>
+  <data name="AdvancedFilters" xml:space="preserve">
+    <value>Filtres avancés</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Appliquer</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatique</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
+  <data name="ByX" xml:space="preserve">
+    <value>Par {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CaseSensitive" xml:space="preserve">
+    <value>Sensible à la casse</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="ClearFilters" xml:space="preserve">
+    <value>Effacer les filtres</value>
+  </data>
+  <data name="ClearSelection" xml:space="preserve">
+    <value>Effacer la sélection</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="CloseAll" xml:space="preserve">
+    <value>Fermer tout</value>
+  </data>
+  <data name="CloseAllButThis" xml:space="preserve">
+    <value>Fermer les autres éléments</value>
+  </data>
+  <data name="CopyInClipBoard" xml:space="preserve">
+    <value>Copier dans le presse-papier</value>
+  </data>
+  <data name="XItems" xml:space="preserve">
+    <value># élément</value>
+  </data>
+  <data name="XItemsPlural" xml:space="preserve">
+    <value># éléments</value>
+  </data>
+  <data name="XItemsZero" xml:space="preserve">
+    <value>0 élément</value>
+  </data>
+  <data name="XSelectedItems" xml:space="preserve">
+    <value># élément sélectionné</value>
+  </data>
+  <data name="XSelectedItemsPlural" xml:space="preserve">
+    <value># éléments sélectionnés</value>
+  </data>
+  <data name="XSelectedItemsZero" xml:space="preserve">
+    <value>Aucun élément sélectionné</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="CreatedAt" xml:space="preserve">
+    <value>Créé le</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Créé par</value>
+  </data>
+  <data name="Creation" xml:space="preserve">
+    <value>Création</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Affichage</value>
+  </data>
+  <data name="DisplayList" xml:space="preserve">
+    <value>Affichage Liste</value>
+  </data>
+  <data name="DisplayScheduler" xml:space="preserve">
+    <value>Affichage Calendrier</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Edition" xml:space="preserve">
+    <value>Edition</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Errors" xml:space="preserve">
+    <value>Erreur(s)</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtrer</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="HideFilters" xml:space="preserve">
+    <value>Cacher les filtres</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignorer</value>
+  </data>
+  <data name="IgnoreAll" xml:space="preserve">
+    <value>Tout ignorer</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Elément</value>
+  </data>
+  <data name="ItemPlural" xml:space="preserve">
+    <value>Eléments</value>
+  </data>
+  <data name="ItemZero" xml:space="preserve">
+    <value>Elément</value>
+  </data>
+  <data name="LastAccessAt" xml:space="preserve">
+    <value>Dernier accès le</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Clair</value>
+  </data>
+  <data name="LoadingData" xml:space="preserve">
+    <value>Chargement des données...</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuel</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>Agrandir</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="ModifiedAt" xml:space="preserve">
+    <value>Modifié le</value>
+  </data>
+  <data name="ModifiedBy" xml:space="preserve">
+    <value>Modifié par</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Déplacer vers le bas</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Déplacer vers le haut</value>
+  </data>
+  <data name="MovingTo" xml:space="preserve">
+    <value>Déplacer vers</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nouveau</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Page suivante</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>Il n'y a aucune donnée pour le moment</value>
+  </data>
+  <data name="NoModifications" xml:space="preserve">
+    <value>Aucune modification</value>
+  </data>
+  <data name="NoResults" xml:space="preserve">
+    <value>Aucun résultat</value>
+  </data>
+  <data name="NoSpellSuggestions" xml:space="preserve">
+    <value>(Pas de suggestions)</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="OpenMailClient" xml:space="preserve">
+    <value>Ouvrir le client de messagerie</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="PinnedPlural" xml:space="preserve">
+    <value>Epinglé(s)</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Page précédente</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Propriétés</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Récent(s)</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Rafraîchir</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Recharger</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="RemoveSort" xml:space="preserve">
+    <value>Supprimer le tri</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restaurer</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="SaveAll" xml:space="preserve">
+    <value>Tout sauvegarder</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Sauvegarder sous</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="SeeItem" xml:space="preserve">
+    <value>Voir l'élément</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Tout sélectionner</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Sélectionné</value>
+  </data>
+  <data name="SelectedPlural" xml:space="preserve">
+    <value>Sélectionnés</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="SendMail" xml:space="preserve">
+    <value>Envoyer un mail</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ShowColumns" xml:space="preserve">
+    <value>Afficher les colonnes</value>
+  </data>
+  <data name="ShowFilters" xml:space="preserve">
+    <value>Afficher les filtres</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Trier</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Trier par</value>
+  </data>
+  <data name="SpellChecking" xml:space="preserve">
+    <value>Correction</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="SwitchSort" xml:space="preserve">
+    <value>Inverser le tri</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Tester</value>
+  </data>
+  <data name="UnselectAll" xml:space="preserve">
+    <value>Tout désélectionner</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Vues</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="Write" xml:space="preserve">
+    <value>Ecrire</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Générer</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icône</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Couleur de fond</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Couleur du texte</value>
+  </data>
+  <data name="FileTif" xml:space="preserve">
+    <value>Image TIF</value>
+  </data>
+  <data name="FilePng" xml:space="preserve">
+    <value>Image PNG</value>
+  </data>
+  <data name="FileJpg" xml:space="preserve">
+    <value>Image JPG</value>
+  </data>
+  <data name="FileJpeg" xml:space="preserve">
+    <value>Image JPEG</value>
+  </data>
+  <data name="FileIco" xml:space="preserve">
+    <value>Icône</value>
+  </data>
+  <data name="FileGif" xml:space="preserve">
+    <value>Image GIF</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Tous les fichiers</value>
+  </data>
+  <data name="AllImages" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="FileExcel" xml:space="preserve">
+    <value>Classeur Excel</value>
+  </data>
+  <data name="FileCsv" xml:space="preserve">
+    <value>CSV (délimiteur : point-virgule)</value>
+  </data>
+  <data name="FileBmp" xml:space="preserve">
+    <value>Image BMP</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choisir</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Prêt</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Système</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="VersionAbbrX" xml:space="preserve">
+    <value>v.{0}</value>
+  </data>
+  <data name="AboutX" xml:space="preserve">
+    <value>A Propos de {0}</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Couper</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Coller</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Rétablir</value>
+  </data>
+  <data name="RevealPassword" xml:space="preserve">
+    <value>Révéler le mot de passe</value>
+  </data>
+  <data name="HidePassword" xml:space="preserve">
+    <value>Cacher le mot de passe</value>
+  </data>
+  <data name="Removing" xml:space="preserve">
+    <value>Suppression</value>
+  </data>
+  <data name="AddFilter" xml:space="preserve">
+    <value>Ajouter un filtre</value>
+  </data>
+  <data name="SpeedFilters" xml:space="preserve">
+    <value>Filtres rapides</value>
+  </data>
+  <data name="XSelected" xml:space="preserve">
+    <value># sélectionné</value>
+  </data>
+  <data name="XSelectedPlural" xml:space="preserve">
+    <value># sélectionnés</value>
+  </data>
+  <data name="XSelectedZero" xml:space="preserve">
+    <value>Aucun sélectionné</value>
+  </data>
+  <data name="InputDelete" xml:space="preserve">
+    <value>Suppr</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activé(e)</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Désactivé(e)</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langage</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Préférences</value>
+  </data>
+  <data name="DownloadFile" xml:space="preserve">
+    <value>Téléchargement</value>
+  </data>
+  <data name="DownloadFileSuccess" xml:space="preserve">
+    <value>Le fichier a été téléchargé avec succès.</value>
+  </data>
+  <data name="SelectItems" xml:space="preserve">
+    <value>Sélectionner des éléments</value>
+  </data>
+  <data name="SelectItem" xml:space="preserve">
+    <value>Sélectionner un élément</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="Unselect" xml:space="preserve">
+    <value>Désélectionner</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Effacer tout</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Télécharger</value>
+  </data>
+  <data name="MultiplePlaceHolder" xml:space="preserve">
+    <value>(Valeurs multiples)</value>
+  </data>
+  <data name="EditionOfXItemsPlural" xml:space="preserve">
+    <value>Edition de # éléments</value>
+  </data>
+  <data name="EditionOfXItems" xml:space="preserve">
+    <value>Edition de # élément</value>
+  </data>
+  <data name="AddGroup" xml:space="preserve">
+    <value>Ajouter le groupe</value>
+  </data>
+  <data name="RemoveGroup" xml:space="preserve">
+    <value>Supprimer le groupe</value>
+  </data>
+  <data name="AddMultiple" xml:space="preserve">
+    <value>Ajout multiple</value>
+  </data>
+  <data name="ItemsByPage" xml:space="preserve">
+    <value>éléments par page</value>
+  </data>
+  <data name="DisplayAll" xml:space="preserve">
+    <value>Tout afficher</value>
+  </data>
+  <data name="GroupBy" xml:space="preserve">
+    <value>Grouper par</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grouper</value>
+  </data>
+</root>

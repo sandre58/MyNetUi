@@ -1,0 +1,62 @@
+# Copyright (c) Stéphane ANDRE.
+# Licensed under the MIT license.
+
+# This continuous integration pipeline is triggered anytime a user pushes code to main branch.
+# This pipeline builds the solution and runs unit tests
+
+name: Build
+
+on:
+  push:
+      branches:
+        - main
+      paths:
+        - .github/workflows/ci.yml
+        - .github/GitVersion.yml
+        - 'src/**'
+  workflow_dispatch:
+
+jobs:
+
+  # GitVersion
+  gitversion:
+    runs-on: windows-latest
+    outputs:
+      SemVer: ${{ steps.gitversion.outputs.SemVer }}
+
+    steps:
+
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
+      # Install Git version
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1.1.1
+        with:
+          versionSpec: '5.x'
+
+      # Check Git version
+      - name: Check Git Semantic Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v1.1.1 # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
+        with:
+          useConfigFile: true
+          configFilePath: .\.github\GitVersion.yml
+          disableNormalization: true
+
+  # Build and test
+  build-and-tests:
+    uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
+    needs: [ gitversion ]
+    with:
+      name: Build all projects
+      build-args: '/p:Version=${{ needs.gitversion.outputs.SemVer }}'
+      dotnet-test-logger: GitHubActions --no-build --no-restore
+      solution-path: .\src\MyNetUi.sln
+      nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+    secrets:
+      nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
+      nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
