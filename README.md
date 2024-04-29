@@ -94,4 +94,4 @@ My .NET UI is provided as-is under the MIT license. For more information see [LI
 [framework-shield]: https://img.shields.io/badge/.NET-8.0-purple
 [framework-url]: https://github.com/sandre58/MyNetUi/tree/main/src/MyNet.UI
 [version-shield]: https://img.shields.io/nuget/v/MyNet.UI
-[version-url]: https://github.com/sandre58/MyNetUi/pkgs/nuget/MyNet.UI
+[version-url]: https://www.nuget.org/packages/MyNet.UI
