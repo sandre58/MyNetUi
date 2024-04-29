@@ -4,7 +4,7 @@
 using System;
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting
 {
     public interface ISortingPropertyViewModel : INotifyPropertyChanged, ICloneable
     {

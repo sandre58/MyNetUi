@@ -64,7 +64,6 @@ namespace MyNet.UI.Dialogs
         /// <summary>
         /// Displays a modal dialog.
         /// </summary>
-        /// <param name="typeViewModel">The view to include in workspace dialog.</param>
         public static async Task ShowAsync(Type typeViewModel, Action<IDialogViewModel>? closeAction = null)
         {
             var vm = GetViewModel<IDialogViewModel>(typeViewModel);
@@ -78,7 +77,6 @@ namespace MyNet.UI.Dialogs
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="viewModel">The view to include in workspace dialog.</param>
         public static async Task ShowAsync<T>(T viewModel, Action<T>? closeAction = null) where T : IDialogViewModel
         {
             if (_dialogService is null) return;
@@ -136,37 +134,29 @@ namespace MyNet.UI.Dialogs
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="message">Message.</param>
-        /// <param name="buttons">Buttons of window.</param>
         public static async Task<MessageBoxResult> ShowInformationAsync(string message, string? title = null,
             MessageBoxResultOption buttons = MessageBoxResultOption.Ok) => await ShowMessageAsync(message, title ?? UiResources.Information, buttons, MessageSeverity.Information, MessageBoxResult.OK).ConfigureAwait(false);
 
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="message">Message.</param>
-        /// <param name="buttons">Buttons of window.</param>
         public static async Task<MessageBoxResult> ShowErrorAsync(string message, string? title = null,
             MessageBoxResultOption buttons = MessageBoxResultOption.Ok) => await ShowMessageAsync(message, title ?? UiResources.Error, buttons, MessageSeverity.Error, MessageBoxResult.OK).ConfigureAwait(false);
 
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="message">Message.</param>
-        /// <param name="buttons">Buttons of window.</param>
         public static async Task<MessageBoxResult> ShowWarningAsync(string message, string? title = null,
             MessageBoxResultOption buttons = MessageBoxResultOption.Ok) => await ShowMessageAsync(message, title ?? UiResources.Warning, buttons, MessageSeverity.Warning, MessageBoxResult.OK).ConfigureAwait(false);
 
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="message">Message.</param>
         public static async Task<MessageBoxResult> ShowQuestionAsync(string message, string? title = null) => await ShowMessageAsync(message, title ?? UiResources.Question, MessageBoxResultOption.YesNo, MessageSeverity.Question, MessageBoxResult.Yes).ConfigureAwait(false);
 
         /// <summary>
         /// Displays a message dialog.
         /// </summary>
-        /// <param name="message">Message.</param>
         public static async Task<MessageBoxResult> ShowQuestionWithCancelAsync(string message, string? title = null) => await ShowMessageAsync(message, title ?? UiResources.Question, MessageBoxResultOption.YesNoCancel, MessageSeverity.Question, MessageBoxResult.Yes).ConfigureAwait(false);
 
         /// <summary>
@@ -211,7 +201,6 @@ namespace MyNet.UI.Dialogs
         /// Displays a message box that has a message, title bar caption, button, and icon; and
         /// that accepts a default message box result and returns a result.
         /// </summary>
-        /// <param name="settings">The settings for the message box dialog.</param>
         /// <returns>
         /// A <see cref="MessageBoxResult"/> value that specifies which message box button is
         /// clicked by the user.
@@ -232,7 +221,6 @@ namespace MyNet.UI.Dialogs
         /// <summary>
         /// Displays the <see cref="OpenFileDialog"/>.
         /// </summary>
-        /// <param name="settings">The settings for the open file dialog.</param>
         /// <returns>
         /// If the user clicks the OK button of the dialog that is displayed, true is returned;
         /// otherwise false.

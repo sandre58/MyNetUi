@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyNet.UI.ViewModels.Grouping
+namespace MyNet.UI.ViewModels.List.Grouping
 {
     public class GroupingChangedEventArgs(IEnumerable<IGroupingPropertyViewModel> groupProperties) : EventArgs
     {

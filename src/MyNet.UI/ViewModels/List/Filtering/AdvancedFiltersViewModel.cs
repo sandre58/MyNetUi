@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MyNet.UI.Commands;
-using MyNet.UI.ViewModels.Filters;
 using MyNet.Utilities;
 
 namespace MyNet.UI.ViewModels.List.Filtering

@@ -4,7 +4,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MyNet.Observable;
-using MyNet.UI.ViewModels.Filters;
 using MyNet.Utilities.Comparaison;
 using PropertyChanged;
 

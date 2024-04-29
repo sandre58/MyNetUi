@@ -4,7 +4,7 @@
 using System;
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels.Grouping
+namespace MyNet.UI.ViewModels.List.Grouping
 {
     public interface IGroupingPropertyViewModel : INotifyPropertyChanged, ICloneable
     {

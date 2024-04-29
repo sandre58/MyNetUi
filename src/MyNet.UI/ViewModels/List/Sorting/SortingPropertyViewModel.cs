@@ -4,7 +4,6 @@
 using System.ComponentModel;
 using MyNet.Observable;
 using MyNet.Observable.Translatables;
-using MyNet.UI.ViewModels.Sorting;
 
 namespace MyNet.UI.ViewModels.List.Sorting
 {

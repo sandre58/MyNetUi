@@ -4,7 +4,7 @@
 using System;
 using MyNet.UI.Commands;
 
-namespace MyNet.UI.ViewModels.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting
 {
     public interface ISortingViewModel
     {

@@ -12,7 +12,6 @@ using My.DynamicData.Extensions;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;
-using MyNet.UI.ViewModels.Filters;
 using MyNet.Utilities;
 using MyNet.Utilities.Comparaison;
 using MyNet.Utilities.Deferring;

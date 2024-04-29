@@ -6,7 +6,7 @@ using System.ComponentModel;
 using MyNet.Utilities;
 using MyNet.Utilities.Comparaison;
 
-namespace MyNet.UI.ViewModels.Filters
+namespace MyNet.UI.ViewModels.List.Filtering
 {
     public interface ICompositeFilterViewModel : IWrapper<IFilterViewModel>, INotifyPropertyChanged, ICloneable
     {

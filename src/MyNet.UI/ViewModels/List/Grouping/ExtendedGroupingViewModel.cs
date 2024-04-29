@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DynamicData;
 using MyNet.Observable.Attributes;
-using MyNet.UI.ViewModels.Grouping;
 
 namespace MyNet.UI.ViewModels.List.Grouping
 {

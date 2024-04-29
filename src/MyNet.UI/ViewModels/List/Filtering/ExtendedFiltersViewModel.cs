@@ -8,7 +8,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using DynamicData;
 using MyNet.Observable.Translatables;
-using MyNet.UI.ViewModels.Filters;
 using MyNet.Utilities;
 using PropertyChanged;
 

@@ -35,7 +35,6 @@ namespace MyNet.UI.Dialogs
         /// Displays a message box that has a message, title bar caption, button, and icon; and
         /// that accepts a default message box result and returns a result.
         /// </summary>
-        /// <param name="settings">The settings for the message box dialog.</param>
         /// <returns>
         /// A <see cref="MessageBoxResult"/> value that specifies which message box button is
         /// clicked by the user.

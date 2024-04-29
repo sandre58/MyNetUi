@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using MyNet.Observable.Collections;
-using MyNet.UI.ViewModels.Sorting;
 
 namespace MyNet.UI.ViewModels.List.Sorting
 {

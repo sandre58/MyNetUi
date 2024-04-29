@@ -79,7 +79,6 @@ namespace MyNet.UI.Toasting
         /// <summary>
         ///  Hide a toast.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="toast"></param>
         public static void Hide(INotification toast) => _toasterService?.Hide(toast);
 

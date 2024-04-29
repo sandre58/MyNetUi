@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyNet.UI.ViewModels.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting
 {
     public class SortingChangedEventArgs(IEnumerable<ISortingPropertyViewModel> properties) : EventArgs
     {

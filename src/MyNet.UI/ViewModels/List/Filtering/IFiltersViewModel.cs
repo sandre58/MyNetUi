@@ -3,7 +3,7 @@
 
 using System;
 
-namespace MyNet.UI.ViewModels.Filters
+namespace MyNet.UI.ViewModels.List.Filtering
 {
     public interface IFiltersViewModel
     {

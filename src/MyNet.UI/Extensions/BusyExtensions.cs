@@ -13,22 +13,16 @@ namespace MyNet.UI.Extensions
         /// <summary>
         /// Show busy control during action.
         /// </summary>
-        /// <typeparam name="TBusy"></typeparam>
-        /// <param name="action"></param>
         public static async Task WaitIndeterminateAsync(this IBusyService busyService, Action<IndeterminateBusy> action) => await busyService.WaitAsync(action);
 
         /// <summary>
         /// Show busy control during action.
         /// </summary>
-        /// <typeparam name="TBusy"></typeparam>
-        /// <param name="action"></param>
         public static async Task WaitIndeterminateAsync(this IBusyService busyService, Action action) => await busyService.WaitAsync<IndeterminateBusy>(_ => action());
 
         /// <summary>
         /// Show busy control during action.
         /// </summary>
-        /// <typeparam name="TBusy"></typeparam>
-        /// <param name="action"></param>
         public static async Task WaitDeterminateAsync(this IBusyService busyService, Action<DeterminateBusy> action) => await busyService.WaitAsync(action);
     }
 }

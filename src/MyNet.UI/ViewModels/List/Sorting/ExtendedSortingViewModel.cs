@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Linq;
 using DynamicData;
 using MyNet.Observable.Attributes;
-using MyNet.UI.ViewModels.Sorting;
 
 namespace MyNet.UI.ViewModels.List.Sorting
 {

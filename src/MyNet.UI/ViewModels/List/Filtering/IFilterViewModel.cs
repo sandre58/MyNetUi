@@ -6,7 +6,7 @@ using System.ComponentModel;
 using MyNet.Observable.Collections.Filters;
 using MyNet.Utilities;
 
-namespace MyNet.UI.ViewModels.Filters
+namespace MyNet.UI.ViewModels.List.Filtering
 {
     public interface IFilterViewModel : IFilter, INotifyPropertyChanged, ICloneable, ISettable, ISimilar<IFilterViewModel>
     {

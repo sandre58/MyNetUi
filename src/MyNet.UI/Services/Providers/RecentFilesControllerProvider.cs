@@ -6,12 +6,10 @@ using System.ComponentModel;
 using MyNet.Observable;
 using MyNet.UI.Commands;
 using MyNet.UI.ViewModels.FileHistory;
-using MyNet.UI.ViewModels.Filters;
 using MyNet.UI.ViewModels.List;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Filtering.Filters;
 using MyNet.UI.ViewModels.List.Sorting;
-using MyNet.UI.ViewModels.Sorting;
 using MyNet.Utilities.Comparaison;
 
 namespace MyNet.UI.Services.Providers

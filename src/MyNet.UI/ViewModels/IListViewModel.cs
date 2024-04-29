@@ -3,10 +3,10 @@
 
 using System;
 using System.Collections;
-using MyNet.UI.ViewModels.Filters;
-using MyNet.UI.ViewModels.Grouping;
-using MyNet.UI.ViewModels.Paging;
-using MyNet.UI.ViewModels.Sorting;
+using MyNet.UI.ViewModels.List;
+using MyNet.UI.ViewModels.List.Filtering;
+using MyNet.UI.ViewModels.List.Grouping;
+using MyNet.UI.ViewModels.List.Sorting;
 
 namespace MyNet.UI.ViewModels
 {

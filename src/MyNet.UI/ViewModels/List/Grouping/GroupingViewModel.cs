@@ -13,7 +13,6 @@ using My.DynamicData.Extensions;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;
-using MyNet.UI.ViewModels.Grouping;
 using MyNet.Utilities;
 using MyNet.Utilities.Deferring;
 using PropertyChanged;

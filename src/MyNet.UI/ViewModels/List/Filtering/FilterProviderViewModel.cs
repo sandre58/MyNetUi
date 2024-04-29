@@ -3,7 +3,6 @@
 
 using System;
 using MyNet.Observable.Translatables;
-using MyNet.UI.ViewModels.Filters;
 
 namespace MyNet.UI.ViewModels.List.Filtering
 {

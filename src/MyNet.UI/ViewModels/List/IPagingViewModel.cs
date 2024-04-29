@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using MyNet.UI.Commands;
 
-namespace MyNet.UI.ViewModels.Paging
+namespace MyNet.UI.ViewModels.List
 {
     public interface IPagingViewModel : INotifyPropertyChanged
     {

@@ -7,7 +7,6 @@ using System.Linq;
 using MyNet.Observable;
 using MyNet.Observable.Collections;
 using MyNet.UI.Commands;
-using MyNet.UI.ViewModels.Paging;
 using MyNet.Utilities;
 
 namespace MyNet.UI.ViewModels.List.Paging

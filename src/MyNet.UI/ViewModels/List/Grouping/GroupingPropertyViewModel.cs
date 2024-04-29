@@ -3,7 +3,6 @@
 
 using MyNet.Observable;
 using MyNet.Observable.Translatables;
-using MyNet.UI.ViewModels.Grouping;
 
 namespace MyNet.UI.ViewModels.List.Grouping
 {

@@ -3,7 +3,7 @@
 
 using System;
 
-namespace MyNet.UI.ViewModels.Paging
+namespace MyNet.UI.ViewModels.List
 {
     public class PagingChangedEventArgs(int page, int pageSize) : EventArgs
     {

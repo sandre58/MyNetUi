@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MyNet.UI.ViewModels.Filters;
 
 namespace MyNet.UI.ViewModels.List.Filtering
 {
