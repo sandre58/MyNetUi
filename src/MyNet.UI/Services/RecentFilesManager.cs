@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-using MyNet.UI.ViewModels.FileHistory.Messages;
-using My.Utilities.FileHistory;
-using My.Utilities.Logging;
-using My.Utilities.Messaging;
+using MyNet.UI.Messages;
+using MyNet.Utilities.IO.FileHistory;
+using MyNet.Utilities.Logging;
+using MyNet.Utilities.Messaging;
 
-namespace MyNet.UI.ViewModels.FileHistory.Services
+namespace MyNet.UI.Services
 {
     public sealed class RecentFilesManager(RecentFilesService recentFilesService)
     {

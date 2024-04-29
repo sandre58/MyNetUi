@@ -3,18 +3,18 @@
 
 using System;
 using System.ComponentModel;
+using MyNet.Observable;
 using MyNet.UI.Commands;
-using MyNet.UI.ViewModels.Contracts.Filters;
-using MyNet.UI.ViewModels.Contracts.Sorting;
-using MyNet.UI.ViewModels.FileHistory.ViewModels;
+using MyNet.UI.ViewModels.FileHistory;
+using MyNet.UI.ViewModels.Filters;
 using MyNet.UI.ViewModels.List;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Filtering.Filters;
 using MyNet.UI.ViewModels.List.Sorting;
-using My.Utilities.Comparaison;
-using My.Utilities.Observable.Models;
+using MyNet.UI.ViewModels.Sorting;
+using MyNet.Utilities.Comparaison;
 
-namespace MyNet.UI.ViewModels.FileHistory.Providers
+namespace MyNet.UI.Services.Providers
 {
     public class RecentFilesControllerProvider : ListParametersProvider
     {

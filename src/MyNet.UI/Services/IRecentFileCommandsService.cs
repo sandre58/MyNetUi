@@ -3,7 +3,7 @@
 
 using System.Threading.Tasks;
 
-namespace MyNet.UI.ViewModels.FileHistory.Interfaces
+namespace MyNet.UI.Services
 {
     public interface IRecentFileCommandsService
     {

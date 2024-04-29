@@ -3,19 +3,16 @@
 
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reactive.Disposables;
 using DynamicData;
 using DynamicData.Binding;
-using MyNet.UI.ViewModels.FileHistory.Interfaces;
-using MyNet.UI.ViewModels.FileHistory.Messages;
-using MyNet.UI.ViewModels.FileHistory.Services;
-using MyNet.UI.ViewModels.FileHistory.ViewModels;
-using My.Utilities;
-using My.Utilities.FileHistory;
-using My.Utilities.Messaging;
+using MyNet.UI.Messages;
+using MyNet.UI.ViewModels.FileHistory;
+using MyNet.Utilities;
+using MyNet.Utilities.IO.FileHistory;
+using MyNet.Utilities.Messaging;
 
-namespace MyNet.UI.ViewModels.FileHistory.Providers
+namespace MyNet.UI.Services.Providers
 {
     public sealed class RecentFilesProvider : IDisposable
     {

@@ -4,21 +4,20 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using MyNet.Observable;
 using MyNet.UI.Busy;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs;
+using MyNet.UI.Extensions;
+using MyNet.UI.Helpers;
+using MyNet.UI.Resources;
+using MyNet.UI.Services;
 using MyNet.UI.Toasting;
-using MyNet.UI.ViewModels.FileHistory.Interfaces;
-using MyNet.UI.ViewModels.FileHistory.Services;
-using MyNet.UI.ViewModels.Helpers;
-using My.Utilities;
-using My.Utilities.FileHistory;
-using My.Utilities.Helpers;
-using My.Utilities.Interfaces;
-using My.Utilities.Observable.Models;
-using My.Utilities.Resources;
+using MyNet.Utilities;
+using MyNet.Utilities.Helpers;
+using MyNet.Utilities.IO.FileHistory;
 
-namespace MyNet.UI.ViewModels.FileHistory.ViewModels
+namespace MyNet.UI.ViewModels.FileHistory
 {
     public class RecentFileViewModel : ObservableObject, IIdentifiable<Guid>
     {
@@ -100,11 +99,11 @@ namespace MyNet.UI.ViewModels.FileHistory.ViewModels
 
         public async Task RemoveFileAsync()
         {
-            if (await DialogManager.ShowQuestionAsync(MyMessageResources.FileRemovingQuestion, MyResources.Removing).ConfigureAwait(false) == MessageBoxResult.Yes)
+            if (await DialogManager.ShowQuestionAsync(MessageResources.FileRemovingQuestion, UiResources.Removing).ConfigureAwait(false) == MessageBoxResult.Yes)
             {
                 FileHelper.RemoveFile(Path);
                 _recentFilesManager.Remove(Path);
-                ToasterManager.ShowSuccess(MyMessageResources.FileXRemovedSuccess.FormatWith(Path));
+                ToasterManager.ShowSuccess(MessageResources.FileXRemovedSuccess.FormatWith(Path));
             }
         }
 

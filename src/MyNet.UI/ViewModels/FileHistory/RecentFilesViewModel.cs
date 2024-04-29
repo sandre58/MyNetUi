@@ -4,10 +4,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyNet.UI.ViewModels.FileHistory.Providers;
+using MyNet.UI.Services.Providers;
 using MyNet.UI.ViewModels.List;
 
-namespace MyNet.UI.ViewModels.FileHistory.ViewModels
+namespace MyNet.UI.ViewModels.FileHistory
 {
     public class RecentFilesViewModel(RecentFilesProvider recentFilesProvider) : ListViewModel<RecentFileViewModel>(recentFilesProvider.Connect(),
               parametersProvider: new RecentFilesControllerProvider())
