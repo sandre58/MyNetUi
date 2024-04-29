@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using MyNet.UI.ViewModels;
 using MyNet.UI.ViewModels.Display;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Grouping;
@@ -21,7 +20,7 @@ namespace MyNet.UI.ViewModels.List
 
         public ListParametersProvider() : this([]) { }
 
-        public ListParametersProvider(string defaultSortingProperty) : this(new[] { defaultSortingProperty }) { }
+        public ListParametersProvider(string defaultSortingProperty, ListSortDirection direction = ListSortDirection.Ascending) : this(new Dictionary<string, ListSortDirection> { { defaultSortingProperty, direction } }) { }
 
         public ListParametersProvider(IEnumerable<string> defaultSortingProperties) : this(defaultSortingProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
 

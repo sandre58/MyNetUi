@@ -47,8 +47,6 @@ namespace MyNet.UI.ViewModels.List.Grouping
 
         public GroupingViewModel() : this([]) { }
 
-        public GroupingViewModel(string defaultProperty) : this(new[] { defaultProperty }) { }
-
         public GroupingViewModel(IEnumerable<string> defaultProperties)
         {
             _groupingChangedDeferrer = new Deferrer(OnSortChanged);
