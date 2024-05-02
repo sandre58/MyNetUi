@@ -89,23 +89,23 @@ namespace MyNet.UI.Toasting
             switch (severity)
             {
                 case NotificationSeverity.Error:
-                    settings.Style.Add("Background", "My.Brushes.Negative");
-                    settings.Style.Add("BorderBrush", "My.Brushes.Negative");
+                    settings.Style.Add("Background", "MyNet.Brushes.Negative");
+                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Negative");
                     break;
 
                 case NotificationSeverity.Success:
-                    settings.Style.Add("Background", "My.Brushes.Positive");
-                    settings.Style.Add("BorderBrush", "My.Brushes.Positive");
+                    settings.Style.Add("Background", "MyNet.Brushes.Positive");
+                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Positive");
                     break;
 
                 case NotificationSeverity.Warning:
-                    settings.Style.Add("Background", "My.Brushes.Warning");
-                    settings.Style.Add("BorderBrush", "My.Brushes.Warning");
+                    settings.Style.Add("Background", "MyNet.Brushes.Warning");
+                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Warning");
                     break;
 
                 case NotificationSeverity.Information:
-                    settings.Style.Add("Background", "My.Brushes.Information");
-                    settings.Style.Add("BorderBrush", "My.Brushes.Information");
+                    settings.Style.Add("Background", "MyNet.Brushes.Information");
+                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Information");
                     break;
                 default:
                     break;
