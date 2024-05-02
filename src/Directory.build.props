@@ -28,15 +28,15 @@
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTests'))</IsTestProject>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <IncludeSymbols>true</IncludeSymbols>
-    <IncludeSource>True</IncludeSource>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DeterministicSourcePaths Condition="'$(EnableSourceLink)' == ''">false</DeterministicSourcePaths>
   </PropertyGroup>
 
 <!-- Package -->
   <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>True</IncludeSource>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild Condition=" '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/sandre58/MyNetUi</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -50,7 +50,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb;.xml</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.xml</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(IsTestProject)">
