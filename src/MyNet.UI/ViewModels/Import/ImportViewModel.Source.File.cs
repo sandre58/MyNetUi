@@ -121,7 +121,7 @@ namespace MyNet.UI.ViewModels.Import
             var settings = new SaveFileDialogSettings()
             {
                 FileName = _sampleFile.Value.FileName,
-                Filters = _sampleFile.Value.ExtensionInfo.GetFileFilters(x => x.Translate()),
+                Filters = _sampleFile.Value.ExtensionInfo.GetFileFilters(),
                 DefaultExtension = _sampleFile.Value.ExtensionInfo.GetDefaultExtension()
             };
             var result = await DialogManager.ShowSaveFileDialogAsync(settings).ConfigureAwait(false);

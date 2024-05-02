@@ -11,7 +11,7 @@
     <PackageReference Include="MyNet.Observable" Version="1.1.0" />
     <PackageReference Include="MyNet.Observable.Collections" Version="1.1.0" />
     <PackageReference Include="MyNet.Observable.Translatables" Version="1.1.0" />
-    <PackageReference Include="MyNet.Utilities" Version="1.0.1" />
+    <PackageReference Include="MyNet.Utilities" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

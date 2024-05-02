@@ -41,7 +41,7 @@ namespace MyNet.UI.Dialogs.Settings
         /// Gets or sets the current file name filter string, which determines the choices that
         /// appear in the "Save as file type" or "Files of type" box in the dialog box.
         /// </summary>
-        public IDictionary<string, string>? Filters { get; set; }
+        public string? Filters { get; set; }
 
         /// <summary>
         /// Gets or sets the initial directory displayed by the file dialog box.
