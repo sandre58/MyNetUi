@@ -9,7 +9,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using DynamicData;
 using DynamicData.Binding;
-using My.DynamicData.Extensions;
+using MyNet.DynamicData.Extensions;
 using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Providers;
 using MyNet.UI.Selection.Models;

@@ -4,7 +4,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using DynamicData.Binding;
-using My.DynamicData.Extensions;
+using MyNet.DynamicData.Extensions;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;
