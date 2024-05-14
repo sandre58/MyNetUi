@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.1.0] - 2024-05-14
+### :bug: Bug Fixes
+- [`c51ff02`](https://github.com/sandre58/MyNetUi/commit/c51ff02e73ab8fbc6affea5b01dceb81e57d6ea8) - add Fody dependencies *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.0.0] - 2024-05-02
 ### :boom: BREAKING CHANGES
 - due to [`90de2dd`](https://github.com/sandre58/MyNetUi/commit/90de2dd42fffb455ca8413cb187544e0aee9fcce) - Change type of Filters in file settings *(commit by [@sandre58](https://github.com/sandre58))*:
@@ -23,3 +28,4 @@
 - Initialize repository
 [v1.1.0]: https://github.com/sandre58/MyNetUi/compare/v1.0.1...v1.1.0
 [v2.0.0]: https://github.com/sandre58/MyNetUi/compare/v1.1.0...v2.0.0
+[v2.1.0]: https://github.com/sandre58/MyNetUi/compare/v2.0.0...v2.1.0
