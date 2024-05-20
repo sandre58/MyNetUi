@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.0.0] - 2024-05-20
+### :sparkles: New Features
+- [`05bafc0`](https://github.com/sandre58/MyNetUi/commit/05bafc0d39bf57ff0e9df75496ee9ba8c73c0082) - search view by type name without assembly *(commit by [@sandre58](https://github.com/sandre58))*
+- [`67a54ef`](https://github.com/sandre58/MyNetUi/commit/67a54efb9a00eb1aab5202da4815d7baaea551d0) - Add new string resources *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.1.0] - 2024-05-14
 ### :bug: Bug Fixes
 - [`c51ff02`](https://github.com/sandre58/MyNetUi/commit/c51ff02e73ab8fbc6affea5b01dceb81e57d6ea8) - add Fody dependencies *(commit by [@sandre58](https://github.com/sandre58))*
@@ -29,3 +35,4 @@
 [v1.1.0]: https://github.com/sandre58/MyNetUi/compare/v1.0.1...v1.1.0
 [v2.0.0]: https://github.com/sandre58/MyNetUi/compare/v1.1.0...v2.0.0
 [v2.1.0]: https://github.com/sandre58/MyNetUi/compare/v2.0.0...v2.1.0
+[v3.0.0]: https://github.com/sandre58/MyNetUi/compare/v2.1.0...v3.0.0
