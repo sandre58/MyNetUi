@@ -17,7 +17,7 @@ namespace MyNet.UI.Services.Handlers
         public ICommand OpenFileCommand { get; }
 
         public FileNotification(string filePath, Action<string> openAction, string? message = null, string? title = null, NotificationSeverity severity = NotificationSeverity.Success)
-            : base(message ?? UiResources.DownloadFileSuccess, title ?? UiResources.DownloadFile, severity, FileCategory, true)
+            : base(message ?? MessageResources.DownloadFileSuccess, title ?? UiResources.DownloadFile, severity, FileCategory, true)
         {
             FilePath = filePath;
             OpenFileCommand = CommandsManager.Create(() => openAction(FilePath));
