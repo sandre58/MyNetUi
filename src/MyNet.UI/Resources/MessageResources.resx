@@ -243,4 +243,13 @@ Consulter les logs pour plus d'informations.</value>
   <data name="XItemsAddedSuccessPlural" xml:space="preserve">
     <value>{0} éléments ont été ajoutées.</value>
   </data>
+  <data name="DownloadFileSuccess" xml:space="preserve">
+    <value>Le fichier a été téléchargé avec succès.</value>
+  </data>
+  <data name="AnyRulesError" xml:space="preserve">
+    <value>Au moins une règle doit être définie.</value>
+  </data>
+  <data name="AboutWarning" xml:space="preserve">
+    <value>Avertissement : Ce programme est protégè par la loi relative au droit d'auteur et par les conventions internationales. Toute reproduction ou distribution partielle ou totale du logiciel, par quelque moyen que ce soit, est strictement interdite. Toute personne ne respectant pas ces dispostions se rendra coupable du délit de contrefaçon et sera passible des sanctions pénales prévues par la loi.</value>
+  </data>
 </root>
