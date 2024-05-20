@@ -669,9 +669,6 @@
   <data name="DownloadFile" xml:space="preserve">
     <value>Téléchargement</value>
   </data>
-  <data name="DownloadFileSuccess" xml:space="preserve">
-    <value>The file has been successful downloaded.</value>
-  </data>
   <data name="SelectItems" xml:space="preserve">
     <value>Select items</value>
   </data>
@@ -719,5 +716,60 @@
   </data>
   <data name="Group" xml:space="preserve">
     <value>Group</value>
+  </data>
+  <data name="RemoveFileFromList" xml:space="preserve">
+    <value>Remove from list</value>
+  </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>Remove file</value>
+  </data>
+  <data name="CopyFilePath" xml:space="preserve">
+    <value>Copy file path in clipboard</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="PinOff" xml:space="preserve">
+    <value>Pin off</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="OpenCopy" xml:space="preserve">
+    <value>Open a copy</value>
+  </data>
+  <data name="AscendingSort" xml:space="preserve">
+    <value>Ascending sort</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="DescendingSort" xml:space="preserve">
+    <value>Descending sort</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Secondary color</value>
+  </data>
+  <data name="PrimaryColor" xml:space="preserve">
+    <value>Primary color</value>
+  </data>
+  <data name="ClearNotifications" xml:space="preserve">
+    <value>Clear notifications</value>
+  </data>
+  <data name="OpenFolderLocation" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>System Language</value>
+  </data>
+  <data name="AutoSaved" xml:space="preserve">
+    <value>Automatically saved</value>
+  </data>
+  <data name="PleaseSelectOneItem" xml:space="preserve">
+    <value>Several items are selected.
+Please select only one item.</value>
   </data>
 </root>

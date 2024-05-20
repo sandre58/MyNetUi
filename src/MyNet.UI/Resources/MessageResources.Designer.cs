@@ -61,6 +61,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copier le chemin d&apos;accès du fichier.
+        /// </summary>
+        public static string CopyFilePath {
+            get {
+                return ResourceManager.GetString("CopyFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L&apos;élément n&apos;a pas pu être copié dans le presse papier.
         ///Consulter les logs pour plus d&apos;informations..
         /// </summary>
@@ -86,6 +95,15 @@ namespace MyNet.UI.Resources {
         public static string DirectoryXNotFoundError {
             get {
                 return ResourceManager.GetString("DirectoryXNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le fichier a été téléchargé avec succès..
+        /// </summary>
+        public static string DownloadFileSuccess {
+            get {
+                return ResourceManager.GetString("DownloadFileSuccess", resourceCulture);
             }
         }
         

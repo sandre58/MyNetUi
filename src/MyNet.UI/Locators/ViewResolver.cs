@@ -61,7 +61,9 @@ namespace MyNet.UI.Locators
             var viewModelTypeName = TypeHelper.GetTypeNameWithAssembly(viewModelType.AssemblyQualifiedName ?? string.Empty);
 
             var resolvedType = Resolve(viewModelTypeName);
-            return !string.IsNullOrWhiteSpace(resolvedType) ? TypeHelper.GetTypeFrom(resolvedType!) : null;
+
+            var viewTypeName = TypeHelper.GetTypeName(resolvedType ?? string.Empty);
+            return !string.IsNullOrWhiteSpace(resolvedType) ? TypeHelper.GetTypeFrom(viewTypeName) : null;
         }
 
         /// <summary>

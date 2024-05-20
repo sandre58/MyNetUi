@@ -79,6 +79,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Couleur secondaire.
+        /// </summary>
+        public static string AccentColor {
+            get {
+                return ResourceManager.GetString("AccentColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter.
         /// </summary>
         public static string Add {
@@ -205,6 +214,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tri ascendant.
+        /// </summary>
+        public static string AscendingSort {
+            get {
+                return ResourceManager.GetString("AscendingSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto.
         /// </summary>
         public static string Auto {
@@ -219,6 +237,15 @@ namespace MyNet.UI.Resources {
         public static string Automatic {
             get {
                 return ResourceManager.GetString("Automatic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enregistré automatiquement.
+        /// </summary>
+        public static string AutoSaved {
+            get {
+                return ResourceManager.GetString("AutoSaved", resourceCulture);
             }
         }
         
@@ -304,6 +331,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Effacer les notifications.
+        /// </summary>
+        public static string ClearNotifications {
+            get {
+                return ResourceManager.GetString("ClearNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Effacer la sélection.
         /// </summary>
         public static string ClearSelection {
@@ -340,6 +376,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entreprise.
+        /// </summary>
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copier.
         /// </summary>
         public static string Copy {
@@ -349,11 +394,29 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copier le chemin d&apos;accès du fichier.
+        /// </summary>
+        public static string CopyFilePath {
+            get {
+                return ResourceManager.GetString("CopyFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copier dans le presse-papier.
         /// </summary>
         public static string CopyInClipBoard {
             get {
                 return ResourceManager.GetString("CopyInClipBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright.
+        /// </summary>
+        public static string Copyright {
+            get {
+                return ResourceManager.GetString("Copyright", resourceCulture);
             }
         }
         
@@ -421,6 +484,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tri descendant.
+        /// </summary>
+        public static string DescendingSort {
+            get {
+                return ResourceManager.GetString("DescendingSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Désactivé(e).
         /// </summary>
         public static string Disabled {
@@ -480,15 +552,6 @@ namespace MyNet.UI.Resources {
         public static string DownloadFile {
             get {
                 return ResourceManager.GetString("DownloadFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Le fichier a été téléchargé avec succès..
-        /// </summary>
-        public static string DownloadFileSuccess {
-            get {
-                return ResourceManager.GetString("DownloadFileSuccess", resourceCulture);
             }
         }
         
@@ -1123,6 +1186,24 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ouvrir une copie.
+        /// </summary>
+        public static string OpenCopy {
+            get {
+                return ResourceManager.GetString("OpenCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ouvrir l&apos;emplacement du fichier.
+        /// </summary>
+        public static string OpenFolderLocation {
+            get {
+                return ResourceManager.GetString("OpenFolderLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ouvrir le client de messagerie.
         /// </summary>
         public static string OpenMailClient {
@@ -1159,11 +1240,39 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Epingler.
+        /// </summary>
+        public static string Pin {
+            get {
+                return ResourceManager.GetString("Pin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Epinglé(s).
         /// </summary>
         public static string PinnedPlural {
             get {
                 return ResourceManager.GetString("PinnedPlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Détacher.
+        /// </summary>
+        public static string PinOff {
+            get {
+                return ResourceManager.GetString("PinOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plusieurs éléments sont actuellement sélectionnés.
+        ///Veuillez sélectionner un seul élément..
+        /// </summary>
+        public static string PleaseSelectOneItem {
+            get {
+                return ResourceManager.GetString("PleaseSelectOneItem", resourceCulture);
             }
         }
         
@@ -1200,6 +1309,24 @@ namespace MyNet.UI.Resources {
         public static string PreviousPage {
             get {
                 return ResourceManager.GetString("PreviousPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couleur principale.
+        /// </summary>
+        public static string PrimaryColor {
+            get {
+                return ResourceManager.GetString("PrimaryColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Produit.
+        /// </summary>
+        public static string Product {
+            get {
+                return ResourceManager.GetString("Product", resourceCulture);
             }
         }
         
@@ -1272,6 +1399,24 @@ namespace MyNet.UI.Resources {
         public static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer le fichier.
+        /// </summary>
+        public static string RemoveFile {
+            get {
+                return ResourceManager.GetString("RemoveFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer de la liste.
+        /// </summary>
+        public static string RemoveFileFromList {
+            get {
+                return ResourceManager.GetString("RemoveFileFromList", resourceCulture);
             }
         }
         
@@ -1551,6 +1696,15 @@ namespace MyNet.UI.Resources {
         public static string System {
             get {
                 return ResourceManager.GetString("System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Langage Système.
+        /// </summary>
+        public static string SystemLanguage {
+            get {
+                return ResourceManager.GetString("SystemLanguage", resourceCulture);
             }
         }
         

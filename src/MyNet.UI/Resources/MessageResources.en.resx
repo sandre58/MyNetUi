@@ -241,4 +241,13 @@ Use Ctrl + V, or Right click then Paste to recover the element.</value>
   <data name="XItemsAddedSuccessPlural" xml:space="preserve">
     <value>{0} items have been added.</value>
   </data>
+  <data name="DownloadFileSuccess" xml:space="preserve">
+    <value>The file has been successful downloaded.</value>
+  </data>
+  <data name="AnyRulesError" xml:space="preserve">
+    <value>At least one rule must be defined.</value>
+  </data>
+  <data name="AboutWarning" xml:space="preserve">
+    <value>Warning: This computer program is protected by copyright law and international treaties.Unauthorized reproduction or distribution of this program, or any portion of it, may result insevere civil and criminal penalties, and will be prosecuted to the maximum extent possible under thelaw.</value>
+  </data>
 </root>
