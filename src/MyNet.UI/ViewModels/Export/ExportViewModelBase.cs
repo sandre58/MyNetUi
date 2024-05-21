@@ -57,7 +57,9 @@ namespace MyNet.UI.ViewModels.Export
             }
         }
 
-        protected abstract void SaveConfiguration();
+        protected virtual void SaveConfiguration() { }
+
+        protected virtual void LoadConfiguration() { }
 
         protected abstract Task<bool> ExportItemsAsync(IEnumerable<T> items);
     }
