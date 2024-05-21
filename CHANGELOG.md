@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.1.1] - 2024-05-21
+### :bug: Bug Fixes
+- [`09a795a`](https://github.com/sandre58/MyNetUi/commit/09a795a8ecafa4e62437830965d8f6b171b2fb3a) - add missing resources *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v3.1.0] - 2024-05-21
 ### :sparkles: New Features
 - [`4408162`](https://github.com/sandre58/MyNetUi/commit/440816203929c0fc3aa551c1abc254c5dc545f4c) - add export view models *(PR [#1](https://github.com/sandre58/MyNetUi/pull/1) by [@sandre58](https://github.com/sandre58))*
@@ -42,3 +47,4 @@
 [v2.1.0]: https://github.com/sandre58/MyNetUi/compare/v2.0.0...v2.1.0
 [v3.0.0]: https://github.com/sandre58/MyNetUi/compare/v2.1.0...v3.0.0
 [v3.1.0]: https://github.com/sandre58/MyNetUi/compare/v3.0.0...v3.1.0
+[v3.1.1]: https://github.com/sandre58/MyNetUi/compare/v3.1.0...v3.1.1
