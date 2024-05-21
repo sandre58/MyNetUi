@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.1.3] - 2024-05-21
+### :bug: Bug Fixes
+- [`8ebf718`](https://github.com/sandre58/MyNetUi/commit/8ebf7189e92ce92a1fa36d70777120ebfc077492) - fix translations *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v3.1.2] - 2024-05-21
 ### :bug: Bug Fixes
 - [`2824dee`](https://github.com/sandre58/MyNetUi/commit/2824deee99079f9de25abe33298544a6c7a4ab40) - fix translation of number of items *(commit by [@sandre58](https://github.com/sandre58))*
@@ -54,3 +59,4 @@
 [v3.1.0]: https://github.com/sandre58/MyNetUi/compare/v3.0.0...v3.1.0
 [v3.1.1]: https://github.com/sandre58/MyNetUi/compare/v3.1.0...v3.1.1
 [v3.1.2]: https://github.com/sandre58/MyNetUi/compare/v3.1.1...v3.1.2
+[v3.1.3]: https://github.com/sandre58/MyNetUi/compare/v3.1.2...v3.1.3
