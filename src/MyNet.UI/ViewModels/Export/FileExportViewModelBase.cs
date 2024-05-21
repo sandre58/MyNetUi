@@ -16,7 +16,7 @@ using MyNet.Utilities.IO.FileExtensions;
 
 namespace MyNet.UI.ViewModels.Export
 {
-    internal abstract class FileExportViewModelBase<T> : ExportViewModelBase<T>
+    public abstract class FileExportViewModelBase<T> : ExportViewModelBase<T>
     {
         private readonly string _defaultFolder;
         private readonly Func<string> _defaultExportName;

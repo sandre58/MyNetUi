@@ -20,7 +20,7 @@ using MyNet.Utilities.IO.FileExtensions;
 
 namespace MyNet.UI.ViewModels.Export
 {
-    internal abstract class FileExportByColumnsViewModelBase<T, TColumnMapping> : FileExportViewModelBase<T>
+    public abstract class FileExportByColumnsViewModelBase<T, TColumnMapping> : FileExportViewModelBase<T>
         where TColumnMapping : TranslatableString
     {
         private readonly IDictionary<TColumnMapping, bool> _defaultColumns;

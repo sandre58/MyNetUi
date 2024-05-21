@@ -15,7 +15,7 @@ using MyNet.Utilities.Exceptions;
 
 namespace MyNet.UI.ViewModels.Export
 {
-    internal abstract class ExportViewModelBase<T> : WorkspaceDialogViewModel
+    public abstract class ExportViewModelBase<T> : WorkspaceDialogViewModel
     {
         private IEnumerable<T>? _items;
 
