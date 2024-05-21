@@ -376,6 +376,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entête de la colonne.
+        /// </summary>
+        public static string ColumnHeader {
+            get {
+                return ResourceManager.GetString("ColumnHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entreprise.
         /// </summary>
         public static string Company {
@@ -970,6 +979,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clé.
+        /// </summary>
+        public static string Key {
+            get {
+                return ResourceManager.GetString("Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Langage.
         /// </summary>
         public static string Language {
@@ -1529,6 +1547,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sauvegarder la configuration.
+        /// </summary>
+        public static string SaveConfiguration {
+            get {
+                return ResourceManager.GetString("SaveConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rechercher.
         /// </summary>
         public static string Search {
@@ -1786,6 +1813,15 @@ namespace MyNet.UI.Resources {
         public static string Today {
             get {
                 return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Traduction.
+        /// </summary>
+        public static string Traduction {
+            get {
+                return ResourceManager.GetString("Traduction", resourceCulture);
             }
         }
         
