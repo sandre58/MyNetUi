@@ -776,7 +776,7 @@ Veuillez sélectionner un seul élément.</value>
     <value>Sélectionnez les colonnes à exporter :</value>
   </data>
   <data name="ExportXItems" xml:space="preserve">
-    <value>Export : # élément(s)</value>
+    <value>Export : # éléments</value>
   </data>
   <data name="ExportNoColumnsError" xml:space="preserve">
     <value>Aucunne colonne n'a été sélectionnée.</value>
@@ -795,5 +795,11 @@ Veuillez sélectionner un seul élément.</value>
   </data>
   <data name="Key" xml:space="preserve">
     <value>Clé</value>
+  </data>
+  <data name="ExportXItemsPlural" xml:space="preserve">
+    <value>Export : 1 élément</value>
+  </data>
+  <data name="ExportXItemsZero" xml:space="preserve">
+    <value>Export : No élément(s)</value>
   </data>
 </root>

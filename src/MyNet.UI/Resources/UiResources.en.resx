@@ -776,7 +776,7 @@ Please select only one item.</value>
     <value>Select columns to export:</value>
   </data>
   <data name="ExportXItems" xml:space="preserve">
-    <value>Export : # item(s)</value>
+    <value>Export : # items</value>
   </data>
   <data name="ExportNoColumnsError" xml:space="preserve">
     <value>No column has been selected.</value>
@@ -795,5 +795,11 @@ Please select only one item.</value>
   </data>
   <data name="Key" xml:space="preserve">
     <value>Key</value>
+  </data>
+  <data name="ExportXItemsPlural" xml:space="preserve">
+    <value>Export : 1 item</value>
+  </data>
+  <data name="ExportXItemsZero" xml:space="preserve">
+    <value>Export : No item(s)</value>
   </data>
 </root>
