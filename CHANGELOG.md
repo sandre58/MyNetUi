@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.1.0] - 2024-05-21
+### :sparkles: New Features
+- [`4408162`](https://github.com/sandre58/MyNetUi/commit/440816203929c0fc3aa551c1abc254c5dc545f4c) - add export view models *(PR [#1](https://github.com/sandre58/MyNetUi/pull/1) by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v3.0.0] - 2024-05-20
 ### :sparkles: New Features
 - [`05bafc0`](https://github.com/sandre58/MyNetUi/commit/05bafc0d39bf57ff0e9df75496ee9ba8c73c0082) - search view by type name without assembly *(commit by [@sandre58](https://github.com/sandre58))*
@@ -36,3 +41,4 @@
 [v2.0.0]: https://github.com/sandre58/MyNetUi/compare/v1.1.0...v2.0.0
 [v2.1.0]: https://github.com/sandre58/MyNetUi/compare/v2.0.0...v2.1.0
 [v3.0.0]: https://github.com/sandre58/MyNetUi/compare/v2.1.0...v3.0.0
+[v3.1.0]: https://github.com/sandre58/MyNetUi/compare/v3.0.0...v3.1.0
