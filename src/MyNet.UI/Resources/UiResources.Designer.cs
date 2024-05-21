@@ -637,6 +637,33 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aucunne colonne n&apos;a été sélectionnée..
+        /// </summary>
+        public static string ExportNoColumnsError {
+            get {
+                return ResourceManager.GetString("ExportNoColumnsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La liste des joueurs à exporter est vide..
+        /// </summary>
+        public static string ExportNoItemsError {
+            get {
+                return ResourceManager.GetString("ExportNoItemsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export : # élément(s).
+        /// </summary>
+        public static string ExportXItems {
+            get {
+                return ResourceManager.GetString("ExportXItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fichier.
         /// </summary>
         public static string File {
@@ -1534,6 +1561,15 @@ namespace MyNet.UI.Resources {
         public static string SelectAll {
             get {
                 return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sélectionnez les colonnes à exporter :.
+        /// </summary>
+        public static string SelectColumnsToExport {
+            get {
+                return ResourceManager.GetString("SelectColumnsToExport", resourceCulture);
             }
         }
         

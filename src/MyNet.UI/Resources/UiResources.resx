@@ -772,4 +772,16 @@
     <value>Plusieurs éléments sont actuellement sélectionnés.
 Veuillez sélectionner un seul élément.</value>
   </data>
+  <data name="SelectColumnsToExport" xml:space="preserve">
+    <value>Sélectionnez les colonnes à exporter :</value>
+  </data>
+  <data name="ExportXItems" xml:space="preserve">
+    <value>Export : # élément(s)</value>
+  </data>
+  <data name="ExportNoColumnsError" xml:space="preserve">
+    <value>Aucunne colonne n'a été sélectionnée.</value>
+  </data>
+  <data name="ExportNoItemsError" xml:space="preserve">
+    <value>La liste des joueurs à exporter est vide.</value>
+  </data>
 </root>
