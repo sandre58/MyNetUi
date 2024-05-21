@@ -664,7 +664,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export : # éléments.
+        ///   Looks up a localized string similar to Export : # élément.
         /// </summary>
         public static string ExportXItems {
             get {
@@ -673,7 +673,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export : 1 élément.
+        ///   Looks up a localized string similar to Export : # éléments.
         /// </summary>
         public static string ExportXItemsPlural {
             get {
@@ -682,7 +682,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export : No élément(s).
+        ///   Looks up a localized string similar to Export : Aucun élément.
         /// </summary>
         public static string ExportXItemsZero {
             get {
