@@ -12,29 +12,29 @@ using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Providers;
 using MyNet.Observable.Threading;
 using MyNet.Utilities;
+using MyNet.Utilities.Providers;
 
 namespace MyNet.UI.ViewModels.List
 {
 
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
     [CanBeValidatedForDeclaredClassOnly(false)]
-    public abstract class WrapperListViewModel<T, TWrapper, TCollection> : ListViewModelBase<T, TCollection>, IWrapperListViewModel
+    public abstract class WrapperListViewModel<T, TWrapper, TCollection> : ListViewModelBase<T, TCollection>
         where TCollection : ExtendedWrapperCollection<T, TWrapper>
         where TWrapper : IWrapper<T>
         where T : notnull
     {
         private readonly ThreadSafeObservableCollection<TWrapper> _pagedWrappers = [];
 
+        protected WrapperListViewModel(TCollection collection,
+                                       IListParametersProvider? parametersProvider = null)
+            : base(collection, parametersProvider) => PagedWrappers = new(_pagedWrappers);
+
         public ReadOnlyObservableCollection<TWrapper> Wrappers => Collection.Wrappers;
 
         public ReadOnlyObservableCollection<TWrapper> WrappersSource => Collection.WrappersSource;
 
         public ReadOnlyObservableCollection<TWrapper> PagedWrappers { get; }
-
-        protected WrapperListViewModel(
-            TCollection collection,
-            IListParametersProvider? parametersProvider = null)
-        : base(collection, parametersProvider) => PagedWrappers = new(_pagedWrappers);
 
         protected override IDisposable SubscribePager(IObservable<PageRequest> pager)
         {
@@ -52,6 +52,9 @@ namespace MyNet.UI.ViewModels.List
     where T : notnull
     {
         public WrapperListViewModel(ICollection<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)
+            : base(new ExtendedWrapperCollection<T, TWrapper>(source, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }
+
+        public WrapperListViewModel(IItemsProvider<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)
             : base(new ExtendedWrapperCollection<T, TWrapper>(source, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }
 
         public WrapperListViewModel(ISourceProvider<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)

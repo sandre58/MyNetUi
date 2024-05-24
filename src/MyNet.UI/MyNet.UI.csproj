@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fody" Version="6.8.0">
+    <Compile Remove="ViewModels\Import\ImportSource.cs" />
+    <Compile Remove="ViewModels\Import\ImportViewModel.SelectSource.cs" />
+    <Compile Remove="ViewModels\Import\ImportViewModel.Source.cs" />
+    <Compile Remove="ViewModels\Import\ImportViewModel.Source.File.cs" />
+    <Compile Remove="ViewModels\Import\ImportViewModel2.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.8.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -15,10 +23,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.0.0" />
-    <PackageReference Include="MyNet.Observable" Version="1.2.0" />
-    <PackageReference Include="MyNet.Observable.Collections" Version="1.2.0" />
-    <PackageReference Include="MyNet.Observable.Translatables" Version="1.2.0" />
-    <PackageReference Include="MyNet.Utilities" Version="2.0.0" />
+    <PackageReference Include="MyNet.Observable" Version="2.1.0-alpha.3" />
+    <PackageReference Include="MyNet.Observable.Collections" Version="2.1.0.1-alpha" />
+    <PackageReference Include="MyNet.Observable.Translatables" Version="2.1.0-alpha" />
+    <PackageReference Include="MyNet.Utilities" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

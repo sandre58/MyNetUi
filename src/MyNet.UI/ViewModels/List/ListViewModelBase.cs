@@ -33,13 +33,58 @@ namespace MyNet.UI.ViewModels.List
 {
     [CanBeValidatedForDeclaredClassOnly(false)]
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public abstract class ListViewModelBase<T, TCollection> : NavigableWorkspaceViewModel, IListViewModel, IEnumerable<T>
+    public abstract class ListViewModelBase<T, TCollection> : NavigableWorkspaceViewModel, IListViewModel<T>, IEnumerable<T>
         where TCollection : ExtendedCollection<T>
         where T : notnull
     {
         private readonly BehaviorSubject<PageRequest> _pager = new(new PageRequest(1, int.MaxValue));
         private readonly ThreadSafeObservableCollection<T> _pagedItems = [];
         private IDisposable? _pagedDisposable;
+
+        protected ListViewModelBase(
+            TCollection collection,
+            IListParametersProvider? parametersProvider = null)
+        {
+            var parameters = parametersProvider ?? ListParametersProvider.Default;
+            Filters = parameters.ProvideFilters();
+            Sorting = parameters.ProvideSorting();
+            Display = parameters.ProvideDisplay();
+            Grouping = parameters.ProvideGrouping();
+            Paging = parameters.ProvidePaging();
+            Collection = collection;
+            PagedItems = new(_pagedItems);
+
+            ShowFiltersCommand = CommandsManager.Create(ToggleFilters);
+            OpenCommand = CommandsManager.Create<T>(x => Open(x), CanOpenItem);
+            ClearCommand = CommandsManager.Create(async () => await ClearAsync().ConfigureAwait(false), () => CanRemoveItems(Collection.Source));
+            AddCommand = CommandsManager.Create(async () => await AddAsync().ConfigureAwait(false), () => CanAdd);
+            EditCommand = CommandsManager.Create<T>(async x => await EditAsync(x).ConfigureAwait(false), CanEditItem);
+            EditRangeCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(async x => await EditRangeAsync(x).ConfigureAwait(false), CanEditItems);
+            RemoveCommand = CommandsManager.Create<T>(async x => await RemoveAsync(x).ConfigureAwait(false), x => CanRemoveItems(new[] { x }.NotNull()));
+            RemoveRangeCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(async x => await RemoveRangeAsync(x).ConfigureAwait(false), CanRemoveItems);
+            PreviousCommand = CommandsManager.Create(() => SelectedItem = GetPrevious(), () => GetPrevious() is not null);
+            NextCommand = CommandsManager.Create(() => SelectedItem = GetNext(), () => GetNext() is not null);
+            FirstCommand = CommandsManager.Create(() => SelectedItem = Items.FirstOrDefault(), () => Items.FirstOrDefault() is not null);
+            LastCommand = CommandsManager.Create(() => SelectedItem = Items.LastOrDefault(), () => Items.LastOrDefault() is not null);
+
+            Disposables.AddRange(
+            [
+                System.Reactive.Linq.Observable.FromEventPattern<FiltersChangedEventArgs>(x => Filters.FiltersChanged += x, x => Filters.FiltersChanged -= x).Subscribe(x => OnFiltersChanged(x.EventArgs.Filters)),
+                System.Reactive.Linq.Observable.FromEventPattern<SortingChangedEventArgs>(x => Sorting.SortingChanged += x, x => Sorting.SortingChanged -= x).Subscribe(x => OnSortChanged(x.EventArgs.SortingProperties)),
+                System.Reactive.Linq.Observable.FromEventPattern<GroupingChangedEventArgs>(x => Grouping.GroupingChanged += x, x => Grouping.GroupingChanged -= x).Subscribe(x => OnGroupChanged(x.EventArgs.GroupProperties)),
+                System.Reactive.Linq.Observable.FromEventPattern<PagingChangedEventArgs>(x => Paging.PagingChanged += x, x => Paging.PagingChanged -= x).Subscribe(x => OnPagingChanged(x.EventArgs.Page, x.EventArgs.PageSize)),
+                Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(Count))),
+                Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(SourceCount))),
+                Collection,
+            ]);
+
+            if (Filters is IDialogViewModel dialog)
+                dialog.CloseRequest += (sender, e) => ShowFilters = false;
+
+            Filters.Reset();
+            Sorting.Reset();
+            Grouping.Reset();
+        }
 
         [CanSetIsModified(true)]
         [CanBeValidated(true)]
@@ -137,51 +182,6 @@ namespace MyNet.UI.ViewModels.List
         public event EventHandler<EventArgs>? Grouped;
 
         public event EventHandler<EventArgs>? Paged;
-
-        protected ListViewModelBase(
-            TCollection collection,
-            IListParametersProvider? parametersProvider = null)
-        {
-            var parameters = parametersProvider ?? ListParametersProvider.Default;
-            Filters = parameters.ProvideFilters();
-            Sorting = parameters.ProvideSorting();
-            Display = parameters.ProvideDisplay();
-            Grouping = parameters.ProvideGrouping();
-            Paging = parameters.ProvidePaging();
-            Collection = collection;
-            PagedItems = new(_pagedItems);
-
-            ShowFiltersCommand = CommandsManager.Create(ToggleFilters);
-            OpenCommand = CommandsManager.Create<T>(x => Open(x), CanOpenItem);
-            ClearCommand = CommandsManager.Create(async () => await ClearAsync().ConfigureAwait(false), () => CanRemoveItems(Collection.Source));
-            AddCommand = CommandsManager.Create(async () => await AddAsync().ConfigureAwait(false), () => CanAdd);
-            EditCommand = CommandsManager.Create<T>(async x => await EditAsync(x).ConfigureAwait(false), CanEditItem);
-            EditRangeCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(async x => await EditRangeAsync(x).ConfigureAwait(false), CanEditItems);
-            RemoveCommand = CommandsManager.Create<T>(async x => await RemoveAsync(x).ConfigureAwait(false), x => CanRemoveItems(new[] { x }.NotNull()));
-            RemoveRangeCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(async x => await RemoveRangeAsync(x).ConfigureAwait(false), CanRemoveItems);
-            PreviousCommand = CommandsManager.Create(() => SelectedItem = GetPrevious(), () => GetPrevious() is not null);
-            NextCommand = CommandsManager.Create(() => SelectedItem = GetNext(), () => GetNext() is not null);
-            FirstCommand = CommandsManager.Create(() => SelectedItem = Items.FirstOrDefault(), () => Items.FirstOrDefault() is not null);
-            LastCommand = CommandsManager.Create(() => SelectedItem = Items.LastOrDefault(), () => Items.LastOrDefault() is not null);
-
-            Disposables.AddRange(
-            [
-                System.Reactive.Linq.Observable.FromEventPattern<FiltersChangedEventArgs>(x => Filters.FiltersChanged += x, x => Filters.FiltersChanged -= x).Subscribe(x => OnFiltersChanged(x.EventArgs.Filters)),
-                System.Reactive.Linq.Observable.FromEventPattern<SortingChangedEventArgs>(x => Sorting.SortingChanged += x, x => Sorting.SortingChanged -= x).Subscribe(x => OnSortChanged(x.EventArgs.SortingProperties)),
-                System.Reactive.Linq.Observable.FromEventPattern<GroupingChangedEventArgs>(x => Grouping.GroupingChanged += x, x => Grouping.GroupingChanged -= x).Subscribe(x => OnGroupChanged(x.EventArgs.GroupProperties)),
-                System.Reactive.Linq.Observable.FromEventPattern<PagingChangedEventArgs>(x => Paging.PagingChanged += x, x => Paging.PagingChanged -= x).Subscribe(x => OnPagingChanged(x.EventArgs.Page, x.EventArgs.PageSize)),
-                Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(Count))),
-                Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(SourceCount))),
-                Collection,
-            ]);
-
-            if (Filters is IDialogViewModel dialog)
-                dialog.CloseRequest += (sender, e) => ShowFilters = false;
-
-            Filters.Reset();
-            Sorting.Reset();
-            Grouping.Reset();
-        }
 
         [SuppressPropertyChangedWarnings]
         protected virtual void OnFiltersChanged(IEnumerable<ICompositeFilterViewModel> filters)
@@ -417,6 +417,12 @@ namespace MyNet.UI.ViewModels.List
         public IEnumerator GetEnumerator() => Collection.GetEnumerator();
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => Collection.GetEnumerator();
+
+        #endregion
+
+        #region Refresh
+
+        protected override void RefreshCore() => Collection.Reload();
 
         #endregion
 

@@ -3,10 +3,13 @@
 
 using System;
 using System.Collections;
+using MyNet.Observable.Attributes;
+using System.Collections.ObjectModel;
 using MyNet.UI.ViewModels.List;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Sorting;
+using PropertyChanged;
 
 namespace MyNet.UI.ViewModels
 {
@@ -45,5 +48,15 @@ namespace MyNet.UI.ViewModels
         bool IsPaged { get; }
 
         IDisplayViewModel Display { get; }
+    }
+
+    public interface IListViewModel<T> : IListViewModel
+    {
+
+        ReadOnlyObservableCollection<T> Items { get; }
+
+        ReadOnlyObservableCollection<T> Source { get; }
+
+        void Refresh();
     }
 }
