@@ -93,6 +93,8 @@ namespace MyNet.UI.ViewModels.Import
 
         protected override bool CanRefresh() => ShowList;
 
+        protected override void RefreshCore() => _itemsProvider.Reload();
+
         protected override bool CanReset() => ShowList;
 
         protected override void ResetCore()
