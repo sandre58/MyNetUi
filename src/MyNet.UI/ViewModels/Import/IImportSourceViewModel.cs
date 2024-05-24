@@ -9,11 +9,13 @@ namespace MyNet.UI.ViewModels.Import
 {
     public interface IImportSourceViewModel<out T> where T : ImportableViewModel
     {
+        object View { get; }
+
         event EventHandler? ItemsLoadingRequested;
 
-        Task InitializeAsync();
-
         IEnumerable<T> ProvideItems();
+
+        Task InitializeAsync();
 
         void Reload();
     }
