@@ -154,8 +154,8 @@ namespace MyNet.UI.ViewModels.List
         public SelectionListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
-        public SelectionListViewModel(IItemsProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
+        public SelectionListViewModel(IItemsProvider<T> source, bool loadItems = true, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+            : base(new SelectableCollection<T>(source, loadItems, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
         public SelectionListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }

@@ -25,8 +25,8 @@ namespace MyNet.UI.ViewModels.Import
         public ImportablesListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
-        public ImportablesListViewModel(IItemsProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
+        public ImportablesListViewModel(IItemsProvider<T> source, bool loadItems = true, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+            : this(new SelectableCollection<T>(source, loadItems, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
         public ImportablesListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }

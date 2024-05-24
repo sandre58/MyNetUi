@@ -54,8 +54,8 @@ namespace MyNet.UI.ViewModels.List
         public WrapperListViewModel(ICollection<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)
             : base(new ExtendedWrapperCollection<T, TWrapper>(source, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }
 
-        public WrapperListViewModel(IItemsProvider<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)
-            : base(new ExtendedWrapperCollection<T, TWrapper>(source, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }
+        public WrapperListViewModel(IItemsProvider<T> source, Func<T, TWrapper> createWrapper, bool loadItems = true, IListParametersProvider? parametersProvider = null)
+            : base(new ExtendedWrapperCollection<T, TWrapper>(source, loadItems, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }
 
         public WrapperListViewModel(ISourceProvider<T> source, Func<T, TWrapper> createWrapper, IListParametersProvider? parametersProvider = null)
             : base(new ExtendedWrapperCollection<T, TWrapper>(source, Scheduler.GetUIOrCurrent(), createWrapper), parametersProvider) { }

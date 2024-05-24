@@ -37,8 +37,8 @@ namespace MyNet.UI.Selection
         public SelectableCollection(ICollection<T> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(new SourceList<T>(), source.IsReadOnly, selectionMode, scheduler, createWrapper) => AddRange(source);
 
-        public SelectableCollection(IItemsProvider<T> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
-            : this(new ItemsSourceProvider<T>(source), selectionMode, scheduler, createWrapper) { }
+        public SelectableCollection(IItemsProvider<T> source, bool loadItems = true, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+            : this(new ItemsSourceProvider<T>(source, loadItems), selectionMode, scheduler, createWrapper) { }
 
         public SelectableCollection(ISourceProvider<T> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(source.Connect(), selectionMode, scheduler, createWrapper) { }

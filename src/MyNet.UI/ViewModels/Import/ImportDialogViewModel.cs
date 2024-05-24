@@ -28,10 +28,11 @@ namespace MyNet.UI.ViewModels.Import
             : this(new ImportablesListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
         public ImportDialogViewModel(IItemsProvider<T> itemsProvider,
+                                     bool loadItems = true,
                                      IListParametersProvider? parametersProvider = null,
                                      SelectionMode selectionMode = SelectionMode.Multiple,
                                      string? title = null)
-            : this(new ImportablesListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
+            : this(new ImportablesListViewModel<T>(itemsProvider, loadItems, parametersProvider, selectionMode), title) { }
 
         public ImportDialogViewModel(ISourceProvider<T> itemsProvider,
                                      IListParametersProvider? parametersProvider = null,

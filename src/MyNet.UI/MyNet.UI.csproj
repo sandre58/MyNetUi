@@ -23,8 +23,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.0.0" />
-    <PackageReference Include="MyNet.Observable" Version="2.1.0-alpha.4" />
-    <PackageReference Include="MyNet.Observable.Collections" Version="2.1.0.2-alpha" />
+    <PackageReference Include="MyNet.Observable" Version="2.1.0-alpha.6" />
+    <PackageReference Include="MyNet.Observable.Collections" Version="2.1.0.4-alpha" />
     <PackageReference Include="MyNet.Observable.Translatables" Version="2.1.0-alpha" />
     <PackageReference Include="MyNet.Utilities" Version="3.0.1" />
   </ItemGroup>
