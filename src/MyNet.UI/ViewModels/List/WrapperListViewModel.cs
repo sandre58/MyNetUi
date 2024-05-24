@@ -19,7 +19,7 @@ namespace MyNet.UI.ViewModels.List
 
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
     [CanBeValidatedForDeclaredClassOnly(false)]
-    public abstract class WrapperListViewModel<T, TWrapper, TCollection> : ListViewModelBase<T, TCollection>
+    public abstract class WrapperListViewModel<T, TWrapper, TCollection> : ListViewModelBase<T, TCollection>, IWrapperListViewModel<T, TWrapper>
         where TCollection : ExtendedWrapperCollection<T, TWrapper>
         where TWrapper : IWrapper<T>
         where T : notnull

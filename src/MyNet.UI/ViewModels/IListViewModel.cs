@@ -10,6 +10,8 @@ using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Sorting;
 using PropertyChanged;
+using Microsoft.VisualBasic;
+using MyNet.Utilities;
 
 namespace MyNet.UI.ViewModels
 {
@@ -58,5 +60,17 @@ namespace MyNet.UI.ViewModels
         ReadOnlyObservableCollection<T> Source { get; }
 
         void Refresh();
+    }
+
+    public interface IWrapperListViewModel : IListViewModel
+    {
+
+    }
+
+    public interface IWrapperListViewModel<T, TWrapper> : IWrapperListViewModel, IListViewModel<T>
+        where TWrapper : IWrapper<T>
+        where T : notnull
+    {
+        ReadOnlyObservableCollection<TWrapper> Wrappers { get; }
     }
 }
