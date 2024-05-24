@@ -17,7 +17,7 @@ namespace MyNet.UI.ViewModels.List
 {
     [CanBeValidatedForDeclaredClassOnly(false)]
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public class SelectionDialogViewModel<T> : ListDialogViewModelBase<T, SelectionListViewModel<T>>
+    public class SelectionDialogViewModel<T> : SelectionDialogViewModel<T, SelectionListViewModel<T>>
         where T : notnull
     {
         public SelectionDialogViewModel(ICollection<T> itemsProvider,
@@ -45,7 +45,16 @@ namespace MyNet.UI.ViewModels.List
             : this(new SelectionListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
         protected SelectionDialogViewModel(SelectionListViewModel<T> selectionViewModel, string? title = null)
-            : base(selectionViewModel)
+            : base(selectionViewModel, title) { }
+    }
+
+    [CanBeValidatedForDeclaredClassOnly(false)]
+    [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
+    public abstract class SelectionDialogViewModel<T, TListViewModel> : ListDialogViewModelBase<T, TListViewModel>
+    where T : notnull
+    where TListViewModel : SelectionListViewModel<T>
+    {
+        protected SelectionDialogViewModel(TListViewModel list, string? title = null) : base(list)
         {
             DoubleClickCommand = CommandsManager.Create(Validate, () => List.SelectionMode == SelectionMode.Single && CanValidate());
 

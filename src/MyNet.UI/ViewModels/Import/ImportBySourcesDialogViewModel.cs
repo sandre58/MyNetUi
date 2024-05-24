@@ -36,7 +36,7 @@ namespace MyNet.UI.ViewModels.Import
 
     [CanBeValidatedForDeclaredClassOnly(false)]
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public abstract class ImportBySourcesDialogViewModel<T, TListViewModel> : ImportDialogViewModelBase<T, TListViewModel>
+    public abstract class ImportBySourcesDialogViewModel<T, TListViewModel> : ImportDialogViewModel<T, TListViewModel>
         where T : notnull, ImportableViewModel
         where TListViewModel : ImportablesListViewModel<T>
     {
