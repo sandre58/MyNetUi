@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections.Providers;
 using MyNet.UI.Commands;
@@ -23,25 +24,25 @@ namespace MyNet.UI.ViewModels.List
                                         IListParametersProvider? parametersProvider = null,
                                         SelectionMode selectionMode = SelectionMode.Multiple,
                                         string? title = null)
-            : this(new SelectionListViewModel<T>(parametersProvider, selectionMode), title) { }
+            : this(new SelectionListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
         public SelectionDialogViewModel(IItemsProvider<T> itemsProvider,
                                         IListParametersProvider? parametersProvider = null,
                                         SelectionMode selectionMode = SelectionMode.Multiple,
                                         string? title = null)
-            : this(new SelectionListViewModel<T>(parametersProvider, selectionMode), title) { }
+            : this(new SelectionListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
         public SelectionDialogViewModel(ISourceProvider<T> itemsProvider,
                                         IListParametersProvider? parametersProvider = null,
                                         SelectionMode selectionMode = SelectionMode.Multiple,
                                         string? title = null)
-            : this(new SelectionListViewModel<T>(parametersProvider, selectionMode), title) { }
+            : this(new SelectionListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
-        public SelectionDialogViewModel(IObservable<T> itemsProvider,
+        public SelectionDialogViewModel(IObservable<IChangeSet<T>> itemsProvider,
                                         IListParametersProvider? parametersProvider = null,
                                         SelectionMode selectionMode = SelectionMode.Multiple,
                                         string? title = null)
-            : this(new SelectionListViewModel<T>(parametersProvider, selectionMode), title) { }
+            : this(new SelectionListViewModel<T>(itemsProvider, parametersProvider, selectionMode), title) { }
 
         protected SelectionDialogViewModel(SelectionListViewModel<T> selectionViewModel, string? title = null)
             : base(selectionViewModel)

@@ -16,13 +16,11 @@ using MyNet.Utilities.Logging;
 
 namespace MyNet.UI.ViewModels.Import
 {
-
     [CanBeValidatedForDeclaredClassOnly(false)]
     [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public class ImportBySourcesDialogViewModel<T> : ImportDialogViewModel<T> where T : notnull, ImportableViewModel
+    public class ImportBySourcesDialogViewModel<T> : ImportBySourcesDialogViewModel<T, ImportablesListViewModel<T>>
+        where T : notnull, ImportableViewModel
     {
-        private readonly ItemsBySourceProvider<T> _itemsProvider;
-
         public ImportBySourcesDialogViewModel(ICollection<IImportSourceViewModel<T>> sources,
                                               IListParametersProvider? listParametersProvider = null,
                                               SelectionMode selectionMode = SelectionMode.Multiple,
@@ -33,7 +31,21 @@ namespace MyNet.UI.ViewModels.Import
                                                IListParametersProvider? listParametersProvider = null,
                                                SelectionMode selectionMode = SelectionMode.Multiple,
                                                string? title = null)
-            : base(itemsProvider, listParametersProvider, selectionMode, title)
+            : base(itemsProvider, new ImportablesListViewModel<T>(itemsProvider, listParametersProvider, selectionMode), title) { }
+    }
+
+    [CanBeValidatedForDeclaredClassOnly(false)]
+    [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
+    public abstract class ImportBySourcesDialogViewModel<T, TListViewModel> : ImportDialogViewModelBase<T, TListViewModel>
+        where T : notnull, ImportableViewModel
+        where TListViewModel : ImportablesListViewModel<T>
+    {
+        private readonly ItemsBySourceProvider<T> _itemsProvider;
+
+        protected ImportBySourcesDialogViewModel(ItemsBySourceProvider<T> itemsProvider,
+                                                 TListViewModel list,
+                                                 string? title = null)
+            : base(list, title)
         {
             _itemsProvider = itemsProvider;
 

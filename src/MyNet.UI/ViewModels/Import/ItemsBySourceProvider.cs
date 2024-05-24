@@ -10,7 +10,7 @@ using MyNet.Observable.Collections.Providers;
 
 namespace MyNet.UI.ViewModels.Import
 {
-    internal class ItemsBySourceProvider<T> : ISourceProvider<T> where T : notnull, ImportableViewModel
+    public class ItemsBySourceProvider<T> : ISourceProvider<T> where T : notnull, ImportableViewModel
     {
         private IImportSourceViewModel<T>? _lastSourceLoaded;
         private readonly ICollection<IImportSourceViewModel<T>> _sources;
