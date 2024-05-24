@@ -422,8 +422,6 @@ namespace MyNet.UI.ViewModels.List
 
         #region Refresh
 
-        protected override void RefreshCore() => Collection.Reload();
-
         #endregion
 
         protected override void Cleanup()
