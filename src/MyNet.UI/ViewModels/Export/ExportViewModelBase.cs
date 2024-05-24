@@ -34,7 +34,7 @@ namespace MyNet.UI.ViewModels.Export
         public virtual void Load(IEnumerable<T> items)
         {
             _items = items;
-            Title = UiResources.ExportXItems.TranslateWithCountAndOptionalFormat(_items.Count());
+            Title = nameof(UiResources.ExportXItems).TranslateWithCountAndOptionalFormat(_items.Count());
         }
 
         protected virtual async Task ExportAndCloseAsync()

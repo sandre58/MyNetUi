@@ -664,11 +664,29 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export : # élément(s).
+        ///   Looks up a localized string similar to Export : # élément.
         /// </summary>
         public static string ExportXItems {
             get {
                 return ResourceManager.GetString("ExportXItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export : # éléments.
+        /// </summary>
+        public static string ExportXItemsPlural {
+            get {
+                return ResourceManager.GetString("ExportXItemsPlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export : Aucun élément.
+        /// </summary>
+        public static string ExportXItemsZero {
+            get {
+                return ResourceManager.GetString("ExportXItemsZero", resourceCulture);
             }
         }
         
