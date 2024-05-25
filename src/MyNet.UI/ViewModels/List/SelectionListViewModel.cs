@@ -15,6 +15,7 @@ using MyNet.UI.Commands;
 using MyNet.UI.Selection;
 using MyNet.UI.Selection.Models;
 using MyNet.Utilities;
+using MyNet.Utilities.Providers;
 using PropertyChanged;
 
 namespace MyNet.UI.ViewModels.List
@@ -25,6 +26,31 @@ namespace MyNet.UI.ViewModels.List
                 where TCollection : SelectableCollection<T>
                 where T : notnull
     {
+        protected SelectionListViewModel(TCollection collection,
+                                         IListParametersProvider? parametersProvider = null,
+                                         SelectionMode? selectionMode = null) : base(collection, parametersProvider)
+        {
+            SelectCommand = CommandsManager.CreateNotNull<T>(Collection.Select, CanSelect);
+            SelectItemsCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(Collection.Select, CanSelect);
+            UnselectCommand = CommandsManager.CreateNotNull<T>(Collection.Unselect, CanUnselect);
+            UnselectItemsCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(Collection.Unselect, CanUnselect);
+            SelectAllCommand = CommandsManager.Create(SelectAll, () => Wrappers.Any(x => CanChangeSelectedState(x, true)));
+            UnselectAllCommand = CommandsManager.Create(UnselectAll, () => Wrappers.Any(x => CanChangeSelectedState(x, false)));
+            ClearSelectionCommand = CommandsManager.Create(ClearSelection, () => WrappersSource.Any(x => CanChangeSelectedState(x, false)));
+            OpenSelectedItemCommand = CommandsManager.Create(() => Open(SelectedItem), () => CanOpenItem(SelectedItem) && SelectedItems.Count() == 1);
+            OpenTabSelectedItemCommand = CommandsManager.CreateNotNull<object>(x => Open(SelectedItem, (int)x), x => CanOpenItem(SelectedItem) && SelectedItems.Count() == 1);
+            EditSelectedItemCommand = CommandsManager.Create(async () => await EditAsync(SelectedItem).ConfigureAwait(false), () => CanEditItem(SelectedItem) && SelectedItems.Count() == 1);
+            EditSelectedItemsCommand = CommandsManager.Create(async () => await EditRangeAsync(SelectedItems), () => CanEditItems(SelectedItems) && SelectedWrappers.Count > 0);
+            RemoveSelectedItemCommand = CommandsManager.Create(async () => await RemoveAsync(SelectedItem).ConfigureAwait(false), () => SelectedItems.Count() == 1 && CanRemoveItems(SelectedItems));
+            RemoveSelectedItemsCommand = CommandsManager.Create(async () => await RemoveRangeAsync(SelectedItems), () => CanRemoveItems(SelectedItems) && SelectedWrappers.Count > 0);
+
+            Disposables.AddRange(
+            [
+                System.Reactive.Linq.Observable.FromEventPattern(x => Collection.SelectionChanged += x, x => Collection.SelectionChanged -= x).Subscribe(_ => OnSelectionChanged()),
+                Collection.Wrappers.ToObservableChangeSet().OnItemRemoved(x => x.IsSelected = false).Subscribe()
+            ]);
+        }
+
         public SelectionMode SelectionMode
         {
             get => Collection.SelectionMode;
@@ -81,32 +107,6 @@ namespace MyNet.UI.ViewModels.List
 
         public ICommand ClearSelectionCommand { get; private set; }
 
-        protected SelectionListViewModel(
-            TCollection collection,
-            IListParametersProvider? parametersProvider = null,
-            SelectionMode? selectionMode = null) : base(collection, parametersProvider)
-        {
-            SelectCommand = CommandsManager.CreateNotNull<T>(Collection.Select, CanSelect);
-            SelectItemsCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(Collection.Select, CanSelect);
-            UnselectCommand = CommandsManager.CreateNotNull<T>(Collection.Unselect, CanUnselect);
-            UnselectItemsCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(Collection.Unselect, CanUnselect);
-            SelectAllCommand = CommandsManager.Create(SelectAll, () => Wrappers.Any(x => CanChangeSelectedState(x, true)));
-            UnselectAllCommand = CommandsManager.Create(UnselectAll, () => Wrappers.Any(x => CanChangeSelectedState(x, false)));
-            ClearSelectionCommand = CommandsManager.Create(ClearSelection, () => WrappersSource.Any(x => CanChangeSelectedState(x, false)));
-            OpenSelectedItemCommand = CommandsManager.Create(() => Open(SelectedItem), () => CanOpenItem(SelectedItem) && SelectedItems.Count() == 1);
-            OpenTabSelectedItemCommand = CommandsManager.CreateNotNull<object>(x => Open(SelectedItem, (int)x), x => CanOpenItem(SelectedItem) && SelectedItems.Count() == 1);
-            EditSelectedItemCommand = CommandsManager.Create(async () => await EditAsync(SelectedItem).ConfigureAwait(false), () => CanEditItem(SelectedItem) && SelectedItems.Count() == 1);
-            EditSelectedItemsCommand = CommandsManager.Create(async () => await EditRangeAsync(SelectedItems), () => CanEditItems(SelectedItems) && SelectedWrappers.Count > 0);
-            RemoveSelectedItemCommand = CommandsManager.Create(async () => await RemoveAsync(SelectedItem).ConfigureAwait(false), () => SelectedItems.Count() == 1 && CanRemoveItems(SelectedItems));
-            RemoveSelectedItemsCommand = CommandsManager.Create(async () => await RemoveRangeAsync(SelectedItems), () => CanRemoveItems(SelectedItems) && SelectedWrappers.Count > 0);
-
-            Disposables.AddRange(
-            [
-                System.Reactive.Linq.Observable.FromEventPattern(x => Collection.SelectionChanged += x, x => Collection.SelectionChanged -= x).Subscribe(_ => OnSelectionChanged()),
-                Collection.Wrappers.ToObservableChangeSet().OnItemRemoved(x => x.IsSelected = false).Subscribe()
-            ]);
-        }
-
         protected virtual bool SelectionIsAvailable(Func<T, bool> predicate) => SelectedWrappers.Count > 0 && SelectedItems.All(predicate);
 
         protected virtual bool CanChangeSelectedState(SelectedWrapper<T>? item, bool value) => item is not null && item.IsSelectable && item.IsSelected != value;
@@ -129,6 +129,8 @@ namespace MyNet.UI.ViewModels.List
 
         protected virtual void ClearSelection() => Collection.ClearSelection();
 
+        protected virtual void ApplyOnSelection(Action<T> action) => SelectedItems.ForEach(action);
+
         [SuppressPropertyChangedWarnings]
         protected virtual void OnSelectionChanged()
         {
@@ -149,16 +151,19 @@ namespace MyNet.UI.ViewModels.List
     public class SelectionListViewModel<T> : SelectionListViewModel<T, SelectableCollection<T>>
         where T : notnull
     {
-        public SelectionListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode? selectionMode = null)
+        public SelectionListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
-        public SelectionListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode? selectionMode = null)
+        public SelectionListViewModel(IItemsProvider<T> source, bool loadItems = true, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+            : base(new SelectableCollection<T>(source, loadItems, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
+
+        public SelectionListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
-        public SelectionListViewModel(IObservable<IChangeSet<T>> source, IListParametersProvider? parametersProvider = null, SelectionMode? selectionMode = null)
+        public SelectionListViewModel(IObservable<IChangeSet<T>> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
-        public SelectionListViewModel(IListParametersProvider? parametersProvider = null, SelectionMode? selectionMode = null)
+        public SelectionListViewModel(IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
             : base(new SelectableCollection<T>(selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
 
         protected SelectionListViewModel(

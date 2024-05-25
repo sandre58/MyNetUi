@@ -11,6 +11,7 @@ tools/FAKE/
 build-log.xml
 Nuget.key
 TestResult.xml
+nuget.config
 
 # Build results
 [Bb]uild/

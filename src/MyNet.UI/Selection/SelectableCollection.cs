@@ -15,6 +15,7 @@ using MyNet.Observable.Collections.Providers;
 using MyNet.UI.Selection.Models;
 using MyNet.Utilities;
 using MyNet.Utilities.Deferring;
+using MyNet.Utilities.Providers;
 
 namespace MyNet.UI.Selection
 {
@@ -33,29 +34,32 @@ namespace MyNet.UI.Selection
 
         public event EventHandler? SelectionChanged;
 
-        public SelectableCollection(ICollection<T> source, SelectionMode? selectionMode = null, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+        public SelectableCollection(ICollection<T> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(new SourceList<T>(), source.IsReadOnly, selectionMode, scheduler, createWrapper) => AddRange(source);
 
-        public SelectableCollection(ISourceProvider<T> source, SelectionMode? selectionMode = null, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+        public SelectableCollection(IItemsProvider<T> source, bool loadItems = true, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+            : this(new ItemsSourceProvider<T>(source, loadItems), selectionMode, scheduler, createWrapper) { }
+
+        public SelectableCollection(ISourceProvider<T> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(source.Connect(), selectionMode, scheduler, createWrapper) { }
 
-        public SelectableCollection(IObservable<IChangeSet<T>> source, SelectionMode? selectionMode = null, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+        public SelectableCollection(IObservable<IChangeSet<T>> source, SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(new SourceList<T>(source), true, selectionMode, scheduler, createWrapper) { }
 
-        public SelectableCollection(SelectionMode? selectionMode = null, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
+        public SelectableCollection(SelectionMode selectionMode = SelectionMode.Multiple, IScheduler? scheduler = null, Func<T, SelectedWrapper<T>>? createWrapper = null)
             : this(new SourceList<T>(), false, selectionMode, scheduler, createWrapper) { }
 
         protected SelectableCollection(
             SourceList<T> sourceList,
             bool isReadOnly,
-            SelectionMode? selectionMode = null,
+            SelectionMode selectionMode = SelectionMode.Multiple,
             IScheduler? scheduler = null,
             Func<T, SelectedWrapper<T>>? createWrapper = null)
             : base(sourceList, isReadOnly, scheduler, createWrapper ?? new Func<T, SelectedWrapper<T>>(x => new(x)))
         {
             _selectionChangedDeferrer = new Deferrer(() => SelectionChanged?.Invoke(this, EventArgs.Empty));
 
-            SelectionMode = selectionMode ?? SelectionMode.Multiple;
+            SelectionMode = selectionMode;
 
             var obs = ConnectWrappersSource();
 
