@@ -86,9 +86,8 @@ namespace MyNet.UI.ViewModels.Import
 
         public override async void Load()
         {
+            DialogResult = null;
             await Task.WhenAll(Sources.Select(x => x.InitializeAsync()).ToArray()).ConfigureAwait(false);
-
-            base.Load();
         }
 
         protected override bool CanRefresh() => ShowList;
