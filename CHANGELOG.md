@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.1.0] - 2024-06-06
+### :sparkles: New Features
+- [`a27cd98`](https://github.com/sandre58/MyNetUi/commit/a27cd980b8a7a361aca71eb2476e0b688bde4996) - upgrade dependencies *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.0.0] - 2024-05-25
 ### :sparkles: New Features
 - [`d9d06a0`](https://github.com/sandre58/MyNetUi/commit/d9d06a0224a30d528c934f2403e0e74147360d75) - Add export viewModels *(PR [#2](https://github.com/sandre58/MyNetUi/pull/2) by [@sandre58](https://github.com/sandre58))*
@@ -66,3 +71,4 @@
 [v3.1.2]: https://github.com/sandre58/MyNetUi/compare/v3.1.1...v3.1.2
 [v3.1.3]: https://github.com/sandre58/MyNetUi/compare/v3.1.2...v3.1.3
 [v4.0.0]: https://github.com/sandre58/MyNetUi/compare/v3.1.3...v4.0.0
+[v4.1.0]: https://github.com/sandre58/MyNetUi/compare/v4.0.0...v4.1.0
