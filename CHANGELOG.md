@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.2.0] - 2024-06-07
+### :bug: Bug Fixes
+- [`de934f9`](https://github.com/sandre58/MyNetUi/commit/de934f911fd37be6f99a9a523a7a520379b37c13) - add new resource strings *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.1.0] - 2024-06-06
 ### :sparkles: New Features
 - [`a27cd98`](https://github.com/sandre58/MyNetUi/commit/a27cd980b8a7a361aca71eb2476e0b688bde4996) - upgrade dependencies *(commit by [@sandre58](https://github.com/sandre58))*
@@ -72,3 +77,4 @@
 [v3.1.3]: https://github.com/sandre58/MyNetUi/compare/v3.1.2...v3.1.3
 [v4.0.0]: https://github.com/sandre58/MyNetUi/compare/v3.1.3...v4.0.0
 [v4.1.0]: https://github.com/sandre58/MyNetUi/compare/v4.0.0...v4.1.0
+[v4.2.0]: https://github.com/sandre58/MyNetUi/compare/v4.1.0...v4.2.0
