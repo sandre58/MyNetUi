@@ -802,4 +802,10 @@ Please select only one item.</value>
   <data name="ExportXItemsZero" xml:space="preserve">
     <value>Export : No items</value>
   </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
 </root>

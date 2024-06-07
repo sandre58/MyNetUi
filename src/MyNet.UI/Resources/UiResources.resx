@@ -802,4 +802,10 @@ Veuillez sélectionner un seul élément.</value>
   <data name="ExportXItemsZero" xml:space="preserve">
     <value>Export : Aucun élément</value>
   </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Colonnes</value>
+  </data>
 </root>
