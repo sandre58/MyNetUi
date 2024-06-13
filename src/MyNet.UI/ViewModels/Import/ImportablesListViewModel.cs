@@ -8,9 +8,9 @@ using System.Reactive.Linq;
 using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections.Providers;
-using MyNet.Observable.Threading;
 using MyNet.UI.Commands;
 using MyNet.UI.Selection;
+using MyNet.UI.Threading;
 using MyNet.UI.ViewModels.List;
 using MyNet.Utilities.Providers;
 

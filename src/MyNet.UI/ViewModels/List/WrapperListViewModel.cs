@@ -10,7 +10,8 @@ using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Providers;
-using MyNet.Observable.Threading;
+using MyNet.UI.Collections;
+using MyNet.UI.Threading;
 using MyNet.Utilities;
 using MyNet.Utilities.Providers;
 
@@ -24,7 +25,7 @@ namespace MyNet.UI.ViewModels.List
         where TWrapper : IWrapper<T>
         where T : notnull
     {
-        private readonly ThreadSafeObservableCollection<TWrapper> _pagedWrappers = [];
+        private readonly UiObservableCollection<TWrapper> _pagedWrappers = [];
 
         protected WrapperListViewModel(TCollection collection,
                                        IListParametersProvider? parametersProvider = null)

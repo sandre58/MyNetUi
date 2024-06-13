@@ -3,11 +3,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MyNet.Observable.Collections;
+using MyNet.UI.Collections;
 
 namespace MyNet.UI.ViewModels.List.Filtering
 {
-    public class FiltersCollection : ThreadSafeObservableCollection<ICompositeFilterViewModel>
+    public class FiltersCollection : UiObservableCollection<ICompositeFilterViewModel>
     {
         public FiltersCollection() { }
 

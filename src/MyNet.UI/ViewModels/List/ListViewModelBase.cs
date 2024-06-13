@@ -18,6 +18,7 @@ using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Filters;
 using MyNet.Observable.Collections.Sorting;
+using MyNet.UI.Collections;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs;
 using MyNet.UI.Dialogs.Models;
@@ -38,7 +39,7 @@ namespace MyNet.UI.ViewModels.List
         where T : notnull
     {
         private readonly BehaviorSubject<PageRequest> _pager = new(new PageRequest(1, int.MaxValue));
-        private readonly ThreadSafeObservableCollection<T> _pagedItems = [];
+        private readonly UiObservableCollection<T> _pagedItems = [];
         private IDisposable? _pagedDisposable;
 
         protected ListViewModelBase(
@@ -121,7 +122,7 @@ namespace MyNet.UI.ViewModels.List
 
         public ICollection CurrentSorting => Collection.SortingProperties;
 
-        public ThreadSafeObservableCollection<IGroupingPropertyViewModel> CurrentGroups { get; private set; } = [];
+        public UiObservableCollection<IGroupingPropertyViewModel> CurrentGroups { get; private set; } = [];
 
         ICollection IListViewModel.CurrentGroups => CurrentGroups;
 

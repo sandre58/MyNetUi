@@ -7,11 +7,11 @@ using DynamicData.Binding;
 using MyNet.Observable;
 using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Extensions;
-using MyNet.Observable.Threading;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs.Messages;
 using MyNet.UI.Messages;
 using MyNet.UI.Notifications;
+using MyNet.UI.Threading;
 using MyNet.Utilities;
 using MyNet.Utilities.Messaging;
 

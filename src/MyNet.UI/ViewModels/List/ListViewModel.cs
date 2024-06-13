@@ -7,7 +7,7 @@ using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections;
 using MyNet.Observable.Collections.Providers;
-using MyNet.Observable.Threading;
+using MyNet.UI.Threading;
 using MyNet.Utilities.Providers;
 
 namespace MyNet.UI.ViewModels.List

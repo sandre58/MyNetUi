@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using MyNet.Observable.Collections;
+using MyNet.Utilities.Collections;
 
 namespace MyNet.UI.ViewModels.List.Grouping
 {

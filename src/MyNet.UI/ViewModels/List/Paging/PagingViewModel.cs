@@ -5,7 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using MyNet.Observable;
-using MyNet.Observable.Collections;
+using MyNet.UI.Collections;
 using MyNet.UI.Commands;
 using MyNet.Utilities;
 
@@ -13,7 +13,7 @@ namespace MyNet.UI.ViewModels.List.Paging
 {
     public class PagingViewModel : ObservableObject, IPagingViewModel
     {
-        private readonly ThreadSafeObservableCollection<int> _pages = [];
+        private readonly UiObservableCollection<int> _pages = [];
 
         public int TotalItems { get; private set; }
 

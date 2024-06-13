@@ -3,14 +3,11 @@
 
 using System;
 using System.Collections;
-using MyNet.Observable.Attributes;
 using System.Collections.ObjectModel;
 using MyNet.UI.ViewModels.List;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Sorting;
-using PropertyChanged;
-using Microsoft.VisualBasic;
 using MyNet.Utilities;
 
 namespace MyNet.UI.ViewModels

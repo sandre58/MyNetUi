@@ -10,7 +10,6 @@ using MyNet.UI.Dialogs;
 using MyNet.UI.Dialogs.Messages;
 using MyNet.UI.Messages;
 using MyNet.UI.Services;
-using MyNet.UI.ViewModels;
 using MyNet.Utilities;
 using MyNet.Utilities.Messaging;
 
