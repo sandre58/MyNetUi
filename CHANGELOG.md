@@ -1,5 +1,11 @@
 # Changelog
 
+## [v4.3.0] - 2024-06-13
+### :sparkles: New Features
+- [`1716c89`](https://github.com/sandre58/MyNetUi/commit/1716c89eee6097e7ada620dafb57e482b51035c6) - Add new resources *(commit by [@sandre58](https://github.com/sandre58))*
+- [`828dbba`](https://github.com/sandre58/MyNetUi/commit/828dbbac2667fb3b6f131e97e5170b134d457316) - add Scheduler and collections *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.2.0] - 2024-06-07
 ### :bug: Bug Fixes
 - [`de934f9`](https://github.com/sandre58/MyNetUi/commit/de934f911fd37be6f99a9a523a7a520379b37c13) - add new resource strings *(commit by [@sandre58](https://github.com/sandre58))*
@@ -78,3 +84,4 @@
 [v4.0.0]: https://github.com/sandre58/MyNetUi/compare/v3.1.3...v4.0.0
 [v4.1.0]: https://github.com/sandre58/MyNetUi/compare/v4.0.0...v4.1.0
 [v4.2.0]: https://github.com/sandre58/MyNetUi/compare/v4.1.0...v4.2.0
+[v4.3.0]: https://github.com/sandre58/MyNetUi/compare/v4.2.0...v4.3.0
