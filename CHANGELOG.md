@@ -1,5 +1,16 @@
 # Changelog
 
+## [v4.3.1] - 2024-06-13
+### :boom: BREAKING CHANGES
+- due to [`7358bf0`](https://github.com/sandre58/MyNetUi/commit/7358bf0313b2e8535dc218ae20981295fbd57b59) - provide function to get Scheduler in ScheduleObservableCollection *(commit by [@sandre58](https://github.com/sandre58))*:
+
+  provide function to get Scheduler in ScheduleObservableCollection
+
+
+### :bug: Bug Fixes
+- [`7358bf0`](https://github.com/sandre58/MyNetUi/commit/7358bf0313b2e8535dc218ae20981295fbd57b59) - provide function to get Scheduler in ScheduleObservableCollection *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.3.0] - 2024-06-13
 ### :sparkles: New Features
 - [`1716c89`](https://github.com/sandre58/MyNetUi/commit/1716c89eee6097e7ada620dafb57e482b51035c6) - Add new resources *(commit by [@sandre58](https://github.com/sandre58))*
@@ -85,3 +96,4 @@
 [v4.1.0]: https://github.com/sandre58/MyNetUi/compare/v4.0.0...v4.1.0
 [v4.2.0]: https://github.com/sandre58/MyNetUi/compare/v4.1.0...v4.2.0
 [v4.3.0]: https://github.com/sandre58/MyNetUi/compare/v4.2.0...v4.3.0
+[v4.3.1]: https://github.com/sandre58/MyNetUi/compare/v4.3.0...v4.3.1
