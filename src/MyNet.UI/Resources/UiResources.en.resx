@@ -808,4 +808,10 @@ Please select only one item.</value>
   <data name="Columns" xml:space="preserve">
     <value>Columns</value>
   </data>
+  <data name="ExpandAll" xml:space="preserve">
+    <value>Expand all</value>
+  </data>
+  <data name="CollapseAll" xml:space="preserve">
+    <value>Collapse all</value>
+  </data>
 </root>

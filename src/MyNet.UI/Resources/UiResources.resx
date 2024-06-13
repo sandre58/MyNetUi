@@ -808,4 +808,10 @@ Veuillez sélectionner un seul élément.</value>
   <data name="Columns" xml:space="preserve">
     <value>Colonnes</value>
   </data>
+  <data name="ExpandAll" xml:space="preserve">
+    <value>Déplier tout</value>
+  </data>
+  <data name="CollapseAll" xml:space="preserve">
+    <value>Réduire tout</value>
+  </data>
 </root>
