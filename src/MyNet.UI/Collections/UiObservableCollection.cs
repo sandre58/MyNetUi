@@ -7,10 +7,10 @@ namespace MyNet.UI.Collections
 {
     public class UiObservableCollection<T> : ScheduleObservableCollection<T>
     {
-        public UiObservableCollection() : base(Threading.Scheduler.GetUIOrCurrent()) { }
+        public UiObservableCollection() : base(Threading.Scheduler.GetUIOrCurrent) { }
 
-        public UiObservableCollection(List<T> list) : base(list, Threading.Scheduler.GetUIOrCurrent()) { }
+        public UiObservableCollection(List<T> list) : base(list, Threading.Scheduler.GetUIOrCurrent) { }
 
-        public UiObservableCollection(IEnumerable<T> collection) : base(collection, Threading.Scheduler.GetUIOrCurrent()) { }
+        public UiObservableCollection(IEnumerable<T> collection) : base(collection, Threading.Scheduler.GetUIOrCurrent) { }
     }
 }
