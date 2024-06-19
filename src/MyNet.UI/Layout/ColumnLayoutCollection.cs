@@ -3,12 +3,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
+using MyNet.UI.Collections;
 
 namespace MyNet.UI.Layout
 {
-    public class ColumnLayoutCollection(string[]? defaultColumns = null) : Collection<IColumnLayout>, IColumnLayoutCollection
+    public class ColumnLayoutCollection(string[]? defaultColumns = null) : UiObservableCollection<IColumnLayout>, IColumnLayoutCollection
     {
         private readonly string[]? _defaultColumns = defaultColumns;
 
