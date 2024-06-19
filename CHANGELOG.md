@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.3.2] - 2024-06-19
+### :bug: Bug Fixes
+- [`c3834fc`](https://github.com/sandre58/MyNetUi/commit/c3834fc4435a465ddc811989d9755fafae86e10b) - ColumnLayoutCollection inherits UiObservableCollection *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.3.1] - 2024-06-13
 ### :boom: BREAKING CHANGES
 - due to [`7358bf0`](https://github.com/sandre58/MyNetUi/commit/7358bf0313b2e8535dc218ae20981295fbd57b59) - provide function to get Scheduler in ScheduleObservableCollection *(commit by [@sandre58](https://github.com/sandre58))*:
@@ -97,3 +102,4 @@
 [v4.2.0]: https://github.com/sandre58/MyNetUi/compare/v4.1.0...v4.2.0
 [v4.3.0]: https://github.com/sandre58/MyNetUi/compare/v4.2.0...v4.3.0
 [v4.3.1]: https://github.com/sandre58/MyNetUi/compare/v4.3.0...v4.3.1
+[v4.3.2]: https://github.com/sandre58/MyNetUi/compare/v4.3.1...v4.3.2
