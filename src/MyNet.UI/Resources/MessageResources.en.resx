@@ -131,7 +131,7 @@ Use Ctrl + V, or Right click then Paste to recover the element.</value>
     <value>You are about to permanently delete an item. Do you want to continue ?</value>
   </data>
   <data name="XItemsRemovingQuestionPlural" xml:space="preserve">
-    <value>You are about to permanently delete {0} items. Do you want to continue ?</value>
+    <value>You are about to permanently delete # items. Do you want to continue ?</value>
   </data>
   <data name="FieldsInvalidError" xml:space="preserve">
     <value>Fields filled in are not correct.</value>
@@ -239,7 +239,7 @@ Use Ctrl + V, or Right click then Paste to recover the element.</value>
     <value>1 item have been added.</value>
   </data>
   <data name="XItemsAddedSuccessPlural" xml:space="preserve">
-    <value>{0} items have been added.</value>
+    <value># items have been added.</value>
   </data>
   <data name="DownloadFileSuccess" xml:space="preserve">
     <value>The file has been successful downloaded.</value>

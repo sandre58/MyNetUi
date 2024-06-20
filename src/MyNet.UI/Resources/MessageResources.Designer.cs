@@ -61,11 +61,20 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copier le chemin d&apos;accès du fichier.
+        ///   Looks up a localized string similar to Avertissement : Ce programme est protégè par la loi relative au droit d&apos;auteur et par les conventions internationales. Toute reproduction ou distribution partielle ou totale du logiciel, par quelque moyen que ce soit, est strictement interdite. Toute personne ne respectant pas ces dispostions se rendra coupable du délit de contrefaçon et sera passible des sanctions pénales prévues par la loi..
         /// </summary>
-        public static string CopyFilePath {
+        public static string AboutWarning {
             get {
-                return ResourceManager.GetString("CopyFilePath", resourceCulture);
+                return ResourceManager.GetString("AboutWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Au moins une règle doit être définie..
+        /// </summary>
+        public static string AnyRulesError {
+            get {
+                return ResourceManager.GetString("AnyRulesError", resourceCulture);
             }
         }
         
@@ -406,7 +415,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} éléments ont été ajoutées..
+        ///   Looks up a localized string similar to # éléments ont été ajoutées..
         /// </summary>
         public static string XItemsAddedSuccessPlural {
             get {
@@ -442,7 +451,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous êtes sur le point de supprimer définitivement {0} éléments. Voulez-vous continuer ?.
+        ///   Looks up a localized string similar to Vous êtes sur le point de supprimer définitivement # éléments. Voulez-vous continuer ?.
         /// </summary>
         public static string XItemsRemovingQuestionPlural {
             get {

@@ -135,7 +135,7 @@ Utiliser Ctrl+V, ou Clic droit puis Coller pour récupérer l'élément.</value>
     <value>Vous êtes sur le point de supprimer définitivement un élément. Voulez-vous continuer ?</value>
   </data>
   <data name="XItemsRemovingQuestionPlural" xml:space="preserve">
-    <value>Vous êtes sur le point de supprimer définitivement {0} éléments. Voulez-vous continuer ?</value>
+    <value>Vous êtes sur le point de supprimer définitivement # éléments. Voulez-vous continuer ?</value>
   </data>
   <data name="FieldsInvalidError" xml:space="preserve">
     <value>Les champs renseignés ne sont pas corrects.</value>
@@ -241,7 +241,7 @@ Consulter les logs pour plus d'informations.</value>
     <value>1 élément a été ajoutée.</value>
   </data>
   <data name="XItemsAddedSuccessPlural" xml:space="preserve">
-    <value>{0} éléments ont été ajoutées.</value>
+    <value># éléments ont été ajoutées.</value>
   </data>
   <data name="DownloadFileSuccess" xml:space="preserve">
     <value>Le fichier a été téléchargé avec succès.</value>
