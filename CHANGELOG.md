@@ -1,5 +1,13 @@
 # Changelog
 
+## [v4.4.0] - 2024-07-02
+### :sparkles: New Features
+- [`f1d04bd`](https://github.com/sandre58/MyNetUi/commit/f1d04bd8a86ffe5bd9b00dcfad5f9abfc1f2da09) - add editable rules *(commit by [@sandre58](https://github.com/sandre58))*
+
+### :bug: Bug Fixes
+- [`d20a1fe`](https://github.com/sandre58/MyNetUi/commit/d20a1fe6d8e7a87538863be5a22dbcd9bccecfe6) - fix number value in resources *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.3.2] - 2024-06-19
 ### :bug: Bug Fixes
 - [`c3834fc`](https://github.com/sandre58/MyNetUi/commit/c3834fc4435a465ddc811989d9755fafae86e10b) - ColumnLayoutCollection inherits UiObservableCollection *(commit by [@sandre58](https://github.com/sandre58))*
@@ -103,3 +111,4 @@
 [v4.3.0]: https://github.com/sandre58/MyNetUi/compare/v4.2.0...v4.3.0
 [v4.3.1]: https://github.com/sandre58/MyNetUi/compare/v4.3.0...v4.3.1
 [v4.3.2]: https://github.com/sandre58/MyNetUi/compare/v4.3.1...v4.3.2
+[v4.4.0]: https://github.com/sandre58/MyNetUi/compare/v4.3.2...v4.4.0
