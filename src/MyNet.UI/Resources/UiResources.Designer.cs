@@ -124,6 +124,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ajouter une règle.
+        /// </summary>
+        public static string AddRule {
+            get {
+                return ResourceManager.GetString("AddRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ajouter le tri.
         /// </summary>
         public static string AddSort {
@@ -1570,6 +1579,15 @@ namespace MyNet.UI.Resources {
         public static string RevealPassword {
             get {
                 return ResourceManager.GetString("RevealPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Règles.
+        /// </summary>
+        public static string Rules {
+            get {
+                return ResourceManager.GetString("Rules", resourceCulture);
             }
         }
         

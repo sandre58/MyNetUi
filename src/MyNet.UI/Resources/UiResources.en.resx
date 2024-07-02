@@ -814,4 +814,10 @@ Please select only one item.</value>
   <data name="CollapseAll" xml:space="preserve">
     <value>Collapse all</value>
   </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="AddRule" xml:space="preserve">
+    <value>Add rule</value>
+  </data>
 </root>

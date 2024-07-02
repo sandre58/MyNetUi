@@ -814,4 +814,10 @@ Veuillez sélectionner un seul élément.</value>
   <data name="CollapseAll" xml:space="preserve">
     <value>Réduire tout</value>
   </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Règles</value>
+  </data>
+  <data name="AddRule" xml:space="preserve">
+    <value>Ajouter une règle</value>
+  </data>
 </root>
