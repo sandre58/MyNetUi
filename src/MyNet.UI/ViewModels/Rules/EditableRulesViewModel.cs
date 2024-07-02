@@ -12,7 +12,7 @@ using MyNet.Utilities;
 
 namespace MyNet.UI.ViewModels.Rules
 {
-    internal partial class EditableRulesViewModel<T> : EditableObject
+    public partial class EditableRulesViewModel<T> : EditableObject
         where T : IEditableRule
     {
         public EditableRulesViewModel() : this([]) { }
