@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.4.2] - 2024-07-07
+### :sparkles: New Features
+- [`2e43087`](https://github.com/sandre58/MyNetUi/commit/2e43087764142454c5ea09bdf3e0ccbce232dd0b) - add new message resources *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.4.1] - 2024-07-02
 ### :bug: Bug Fixes
 - [`3bde27c`](https://github.com/sandre58/MyNetUi/commit/3bde27c7926804452d4d83f50b9fefe420d77a25) - set EditableRulesViewModel visibility *(commit by [@sandre58](https://github.com/sandre58))*
@@ -118,3 +123,4 @@
 [v4.3.2]: https://github.com/sandre58/MyNetUi/compare/v4.3.1...v4.3.2
 [v4.4.0]: https://github.com/sandre58/MyNetUi/compare/v4.3.2...v4.4.0
 [v4.4.1]: https://github.com/sandre58/MyNetUi/compare/v4.4.0...v4.4.1
+[v4.4.2]: https://github.com/sandre58/MyNetUi/compare/v4.4.1...v4.4.2
