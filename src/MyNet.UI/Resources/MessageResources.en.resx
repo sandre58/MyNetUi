@@ -250,4 +250,10 @@ Use Ctrl + V, or Right click then Paste to recover the element.</value>
   <data name="AboutWarning" xml:space="preserve">
     <value>Warning: This computer program is protected by copyright law and international treaties.Unauthorized reproduction or distribution of this program, or any portion of it, may result insevere civil and criminal penalties, and will be prosecuted to the maximum extent possible under thelaw.</value>
   </data>
+  <data name="FieldStartTimeMustBeLowerOrEqualsThanEndTimeError" xml:space="preserve">
+    <value>Start time must be less or equal than end time.</value>
+  </data>
+  <data name="FieldEndTimeMustBeUpperOrEqualsThanStartTimeError" xml:space="preserve">
+    <value>End time must be greater or equal than start time.</value>
+  </data>
 </root>

@@ -252,4 +252,10 @@ Consulter les logs pour plus d'informations.</value>
   <data name="AboutWarning" xml:space="preserve">
     <value>Avertissement : Ce programme est protégè par la loi relative au droit d'auteur et par les conventions internationales. Toute reproduction ou distribution partielle ou totale du logiciel, par quelque moyen que ce soit, est strictement interdite. Toute personne ne respectant pas ces dispostions se rendra coupable du délit de contrefaçon et sera passible des sanctions pénales prévues par la loi.</value>
   </data>
+  <data name="FieldStartTimeMustBeLowerOrEqualsThanEndTimeError" xml:space="preserve">
+    <value>L'heure de début doit être inférieur ou égal à l'heure de fin.</value>
+  </data>
+  <data name="FieldEndTimeMustBeUpperOrEqualsThanStartTimeError" xml:space="preserve">
+    <value>L'heure de fin doit être supérieur ou égal à l'heure de début.</value>
+  </data>
 </root>

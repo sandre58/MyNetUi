@@ -135,6 +135,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to L&apos;heure de fin doit être supérieur ou égal à l&apos;heure de début..
+        /// </summary>
+        public static string FieldEndTimeMustBeUpperOrEqualsThanStartTimeError {
+            get {
+                return ResourceManager.GetString("FieldEndTimeMustBeUpperOrEqualsThanStartTimeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L&apos;heure de fin doit être supérieur à l&apos;heure de début..
         /// </summary>
         public static string FieldEndTimeMustBeUpperThanStartTimeError {
@@ -158,6 +167,15 @@ namespace MyNet.UI.Resources {
         public static string FieldStartDateMustBeLowerOrEqualsThanEndDateError {
             get {
                 return ResourceManager.GetString("FieldStartDateMustBeLowerOrEqualsThanEndDateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;heure de début doit être inférieur ou égal à l&apos;heure de fin..
+        /// </summary>
+        public static string FieldStartTimeMustBeLowerOrEqualsThanEndTimeError {
+            get {
+                return ResourceManager.GetString("FieldStartTimeMustBeLowerOrEqualsThanEndTimeError", resourceCulture);
             }
         }
         
