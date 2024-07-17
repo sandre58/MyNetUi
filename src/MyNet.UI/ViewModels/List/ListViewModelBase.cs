@@ -75,7 +75,13 @@ namespace MyNet.UI.ViewModels.List
                 System.Reactive.Linq.Observable.FromEventPattern<GroupingChangedEventArgs>(x => Grouping.GroupingChanged += x, x => Grouping.GroupingChanged -= x).Subscribe(x => OnGroupChanged(x.EventArgs.GroupProperties)),
                 System.Reactive.Linq.Observable.FromEventPattern<PagingChangedEventArgs>(x => Paging.PagingChanged += x, x => Paging.PagingChanged -= x).Subscribe(x => OnPagingChanged(x.EventArgs.Page, x.EventArgs.PageSize)),
                 Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(Count))),
-                Collection.WhenPropertyChanged(x => x.Count).Subscribe(_ => RaisePropertyChanged(nameof(SourceCount))),
+                Collection.WhenPropertyChanged(x => x.SourceCount).Subscribe(_ =>
+                {
+                    RaisePropertyChanged(nameof(SourceCount));
+
+                    if(!IsModifiedSuspender.IsSuspended)
+                        SetIsModified();
+                }),
                 Collection,
             ]);
 
