@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.5.0] - 2024-07-17
+### :sparkles: New Features
+- [`48ff0a7`](https://github.com/sandre58/MyNetUi/commit/48ff0a74c5b7911f314c56d3352b4305bb669c69) - add SetIsModified when Collection change *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.4.2] - 2024-07-07
 ### :sparkles: New Features
 - [`2e43087`](https://github.com/sandre58/MyNetUi/commit/2e43087764142454c5ea09bdf3e0ccbce232dd0b) - add new message resources *(commit by [@sandre58](https://github.com/sandre58))*
@@ -124,3 +129,4 @@
 [v4.4.0]: https://github.com/sandre58/MyNetUi/compare/v4.3.2...v4.4.0
 [v4.4.1]: https://github.com/sandre58/MyNetUi/compare/v4.4.0...v4.4.1
 [v4.4.2]: https://github.com/sandre58/MyNetUi/compare/v4.4.1...v4.4.2
+[v4.5.0]: https://github.com/sandre58/MyNetUi/compare/v4.4.2...v4.5.0
