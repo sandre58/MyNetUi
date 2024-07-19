@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
+using MyNet.Observable.Resources;
 using MyNet.UI.Collections;
 using MyNet.UI.Commands;
 using MyNet.UI.Resources;
@@ -15,9 +16,9 @@ namespace MyNet.UI.ViewModels.Rules
     public partial class EditableRulesViewModel<T> : EditableObject
         where T : IEditableRule
     {
-        public EditableRulesViewModel() : this([]) { }
+        public EditableRulesViewModel(bool addValidationRuleForBlockEmptyRules = false) : this([], addValidationRuleForBlockEmptyRules) { }
 
-        public EditableRulesViewModel(IEnumerable<IAvailableRule<T>> availableRules)
+        public EditableRulesViewModel(IEnumerable<IAvailableRule<T>> availableRules, bool addValidationRuleForBlockEmptyRules = false)
         {
             AvailableRules.AddRange(availableRules);
 
@@ -25,13 +26,15 @@ namespace MyNet.UI.ViewModels.Rules
             RemoveCommand = CommandsManager.CreateNotNull<T>(RemoveDateRule, x => x.CanRemove);
             MoveUpCommand = CommandsManager.CreateNotNull<T>(MoveUp, CanMoveUp);
             MoveDownCommand = CommandsManager.CreateNotNull<T>(MoveDown, CanMoveDown);
+
+            if (addValidationRuleForBlockEmptyRules)
+                ValidationRules.Add<EditableRulesViewModel<T>, UiObservableCollection<T>>(x => x.Rules, ValidationResources.FieldXMustBeContainOneItemAtLeastError.FormatWith(UiResources.Rules), x => x is not null && x.Count > 0);
         }
 
         [CanSetIsModified(false)]
         [CanBeValidated(false)]
         public UiObservableCollection<IAvailableRule<T>> AvailableRules { get; } = [];
 
-        [HasAnyItems]
         [Display(Name = nameof(Rules), ResourceType = typeof(UiResources))]
         public UiObservableCollection<T> Rules { get; } = [];
 
