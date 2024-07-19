@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.5.1] - 2024-07-19
+### :bug: Bug Fixes
+- [`46e262f`](https://github.com/sandre58/MyNetUi/commit/46e262f8397c5906fd9826c7939e301ef0761747) - Remove validation for empty rules *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.5.0] - 2024-07-17
 ### :sparkles: New Features
 - [`48ff0a7`](https://github.com/sandre58/MyNetUi/commit/48ff0a74c5b7911f314c56d3352b4305bb669c69) - add SetIsModified when Collection change *(commit by [@sandre58](https://github.com/sandre58))*
@@ -130,3 +135,4 @@
 [v4.4.1]: https://github.com/sandre58/MyNetUi/compare/v4.4.0...v4.4.1
 [v4.4.2]: https://github.com/sandre58/MyNetUi/compare/v4.4.1...v4.4.2
 [v4.5.0]: https://github.com/sandre58/MyNetUi/compare/v4.4.2...v4.5.0
+[v4.5.1]: https://github.com/sandre58/MyNetUi/compare/v4.5.0...v4.5.1
