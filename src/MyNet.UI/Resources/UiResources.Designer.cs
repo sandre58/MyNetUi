@@ -277,6 +277,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Par.
+        /// </summary>
+        public static string By {
+            get {
+                return ResourceManager.GetString("By", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Par {0}.
         /// </summary>
         public static string ByX {

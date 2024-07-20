@@ -820,4 +820,7 @@ Veuillez sélectionner un seul élément.</value>
   <data name="AddRule" xml:space="preserve">
     <value>Ajouter une règle</value>
   </data>
+  <data name="By" xml:space="preserve">
+    <value>Par</value>
+  </data>
 </root>

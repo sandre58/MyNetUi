@@ -820,4 +820,7 @@ Please select only one item.</value>
   <data name="AddRule" xml:space="preserve">
     <value>Add rule</value>
   </data>
+  <data name="By" xml:space="preserve">
+    <value>By</value>
+  </data>
 </root>
