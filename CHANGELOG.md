@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.5.2] - 2024-07-21
+### :sparkles: New Features
+- [`4373738`](https://github.com/sandre58/MyNetUi/commit/43737389d0df224dbf2a4e33b9f8a12770f1d319) - add new string resources *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.5.1] - 2024-07-19
 ### :bug: Bug Fixes
 - [`46e262f`](https://github.com/sandre58/MyNetUi/commit/46e262f8397c5906fd9826c7939e301ef0761747) - Remove validation for empty rules *(commit by [@sandre58](https://github.com/sandre58))*
@@ -136,3 +141,4 @@
 [v4.4.2]: https://github.com/sandre58/MyNetUi/compare/v4.4.1...v4.4.2
 [v4.5.0]: https://github.com/sandre58/MyNetUi/compare/v4.4.2...v4.5.0
 [v4.5.1]: https://github.com/sandre58/MyNetUi/compare/v4.5.0...v4.5.1
+[v4.5.2]: https://github.com/sandre58/MyNetUi/compare/v4.5.1...v4.5.2
