@@ -304,6 +304,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Annulation en cours.
+        /// </summary>
+        public static string CancellationInProgress {
+            get {
+                return ResourceManager.GetString("CancellationInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sensible à la casse.
         /// </summary>
         public static string CaseSensitive {

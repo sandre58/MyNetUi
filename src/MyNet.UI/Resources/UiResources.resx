@@ -823,4 +823,7 @@ Veuillez sélectionner un seul élément.</value>
   <data name="By" xml:space="preserve">
     <value>Par</value>
   </data>
+  <data name="CancellationInProgress" xml:space="preserve">
+    <value>Annulation en cours</value>
+  </data>
 </root>
