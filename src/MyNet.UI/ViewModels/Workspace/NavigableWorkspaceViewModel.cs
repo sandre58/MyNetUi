@@ -38,6 +38,6 @@ namespace MyNet.UI.ViewModels.Workspace
 
         protected virtual bool CanRefreshOnNavigatedTo(NavigationContext navigationContext) => false;
 
-        protected virtual bool CanNavigateTo(NavigatingContext navigatingContext) => true;
+        protected virtual bool CanNavigateTo(NavigatingContext navigatingContext) => navigatingContext.OldPage is null || navigatingContext.OldPage != navigatingContext.Page || (!navigatingContext.Parameters?.Equals(NavigationService.CurrentContext) ?? false);
     }
 }
