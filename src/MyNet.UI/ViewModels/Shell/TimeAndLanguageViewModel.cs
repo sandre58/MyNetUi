@@ -43,6 +43,12 @@ namespace MyNet.UI.ViewModels.Shell
 
         protected virtual void OnSelectedCultureChanged() => GlobalizationService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
 
+        protected override void OnCultureChanged()
+        {
+            base.OnCultureChanged();
+            UpdateSelectedCulture();
+        }
+
         #endregion
 
         #region TimeZone
@@ -51,7 +57,11 @@ namespace MyNet.UI.ViewModels.Shell
 
         protected virtual void OnSelectedTimeZoneChanged() => GlobalizationService.Current.SetTimeZone(SelectedTimeZone ?? TimeZoneInfo.Local);
 
-        private void Current_TimeZoneChanged(object? sender, EventArgs e) => UpdateSelectedTimeZone();
+        protected override void OnTimeZoneChanged()
+        {
+            base.OnTimeZoneChanged();
+            UpdateSelectedTimeZone();
+        }
 
         #endregion
     }
