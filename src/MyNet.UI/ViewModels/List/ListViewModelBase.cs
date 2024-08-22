@@ -405,7 +405,7 @@ namespace MyNet.UI.ViewModels.List
         protected virtual void RemoveItemsCore(IEnumerable<T> oldItems) => Collection.RemoveMany(oldItems);
 
         protected virtual async Task OnRemovingRequestedAsync(IEnumerable<T> oldItems, CancelEventArgs cancelEventArgs)
-            => cancelEventArgs.Cancel = await DialogManager.ShowQuestionAsync(nameof(MessageResources.XItemsRemovingQuestion).TranslateWithCountAndOptionalFormat(oldItems.Count())!, UiResources.Removing).ConfigureAwait(false) != MessageBoxResult.Yes;
+            => cancelEventArgs.Cancel = await DialogManager.ShowQuestionAsync(nameof(MessageResources.XItemsRemovingQuestion).TranslateAndFormatWithCount(oldItems.Count()), UiResources.Removing).ConfigureAwait(false) != MessageBoxResult.Yes;
 
         protected virtual void OnRemoveCompleted(IEnumerable<T> oldItems) { }
 

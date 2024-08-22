@@ -1880,6 +1880,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Heure et langue.
+        /// </summary>
+        public static string TimeAndLanguage {
+            get {
+                return ResourceManager.GetString("TimeAndLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to à.
         /// </summary>
         public static string To {

@@ -826,4 +826,7 @@ Veuillez sélectionner un seul élément.</value>
   <data name="CancellationInProgress" xml:space="preserve">
     <value>Annulation en cours</value>
   </data>
+  <data name="TimeAndLanguage" xml:space="preserve">
+    <value>Heure et langue</value>
+  </data>
 </root>

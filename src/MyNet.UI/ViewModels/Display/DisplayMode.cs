@@ -10,6 +10,7 @@ using MyNet.Observable.Translatables;
 using MyNet.UI.Commands;
 using MyNet.UI.Layout;
 using MyNet.Utilities;
+using MyNet.Utilities.Localization;
 using MyNet.Utilities.Units;
 
 namespace MyNet.UI.ViewModels.Display
@@ -85,7 +86,7 @@ namespace MyNet.UI.ViewModels.Display
         }
 
         [UpdateOnCultureChanged]
-        public virtual DayOfWeek FirstDayOfWeek => CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+        public virtual DayOfWeek FirstDayOfWeek => GlobalizationService.Current.Culture.DateTimeFormat.FirstDayOfWeek;
 
         public DateTime DisplayDate { get; set; }
 

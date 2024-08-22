@@ -17,7 +17,6 @@ using MyNet.UI.Navigation;
 using MyNet.UI.Navigation.Models;
 using MyNet.UI.Threading;
 using MyNet.Utilities;
-using MyNet.Utilities.Localization;
 using PropertyChanged;
 
 namespace MyNet.UI.ViewModels.Workspace
@@ -111,7 +110,6 @@ namespace MyNet.UI.ViewModels.Workspace
             ]);
 
             NavigationService = new SubWorkspaceNavigationService(this);
-            CultureInfoService.Current.CultureChanged += LocalizationManager_CultureChanged;
             NavigationService.Navigated += OnSelectedSubWorkspaceChangedCallBack;
 
             UpdateTitle();
@@ -319,14 +317,10 @@ namespace MyNet.UI.ViewModels.Workspace
                 Title = newTitle;
         }
 
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnCultureChanged() => UpdateTitle();
-
         protected override void Cleanup()
         {
             base.Cleanup();
             NavigationService.Navigated -= OnSelectedSubWorkspaceChangedCallBack;
-            CultureInfoService.Current.CultureChanged -= LocalizationManager_CultureChanged;
             NavigationService.Dispose();
         }
 
