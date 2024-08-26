@@ -326,6 +326,12 @@ namespace MyNet.UI.ViewModels.Workspace
 
         protected virtual void OnModeChanged() => UpdateTitle();
 
+        protected override void OnCultureChanged()
+        {
+            base.OnCultureChanged();
+
+            UpdateTitle();
+        }
         #endregion
 
         public override bool Equals(object? obj) => obj is WorkspaceViewModel workspace && Id == workspace.Id;

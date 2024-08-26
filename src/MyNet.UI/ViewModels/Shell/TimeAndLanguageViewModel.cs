@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using DynamicData.Binding;
 using MyNet.UI.Resources;
 using MyNet.UI.ViewModels.Workspace;
 using MyNet.Utilities;
@@ -13,11 +14,13 @@ namespace MyNet.UI.ViewModels.Shell
 {
     public class TimeAndLanguageViewModel : NavigableWorkspaceViewModel
     {
-        public CultureInfo? SelectedCulture { get; set; }
+        public virtual CultureInfo? SelectedCulture { get; set; }
 
-        public TimeZoneInfo? SelectedTimeZone { get; set; }
+        public virtual bool AutomaticCulture { get; set; }
 
-        public bool AutomaticTimeZone { get; set; } = true;
+        public virtual TimeZoneInfo? SelectedTimeZone { get; set; }
+
+        public virtual bool AutomaticTimeZone { get; set; }
 
         public ObservableCollection<CultureInfo> Cultures { get; private set; } = [];
 
@@ -28,10 +31,16 @@ namespace MyNet.UI.ViewModels.Shell
             Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
             TimeZones.AddRange(GlobalizationService.Current.SupportedTimeZones);
 
+            Disposables.AddRange(
+                [
+                    this.WhenAnyPropertyChanged(nameof(AutomaticCulture), nameof(SelectedCulture)).Subscribe(_ => ApplyCulture()),
+                    this.WhenAnyPropertyChanged(nameof(AutomaticTimeZone), nameof(SelectedTimeZone)).Subscribe(_ => ApplyTimeZone())
+                ]);
+
             using (IsModifiedSuspender.Suspend())
             {
-                UpdateSelectedCulture();
-                UpdateSelectedTimeZone();
+                RefreshCulture();
+                RefreshTimeZone();
             }
         }
 
@@ -41,32 +50,48 @@ namespace MyNet.UI.ViewModels.Shell
 
         private CultureInfo? GetSelectedCulture(CultureInfo culture) => Cultures.Contains(culture) ? culture : culture.Parent is not null ? GetSelectedCulture(culture.Parent) : null;
 
-        private void UpdateSelectedCulture() => SelectedCulture = GetSelectedCulture(GlobalizationService.Current.Culture);
-
-        protected virtual void OnSelectedCultureChanged() => GlobalizationService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
+        private void RefreshCulture() => SelectedCulture = GetSelectedCulture(GlobalizationService.Current.Culture);
 
         protected override void OnCultureChanged()
         {
             base.OnCultureChanged();
 
-            using (PropertyChangedSuspender.Suspend())
-                UpdateSelectedCulture();
+            using (IsModifiedSuspender.Suspend())
+                RefreshCulture();
+        }
+
+        private void ApplyCulture()
+        {
+            if (IsModifiedSuspender.IsSuspended) return;
+
+            var culture = SelectedCulture is null || AutomaticCulture ? CultureInfo.InstalledUICulture.ToString() : SelectedCulture.ToString();
+
+            if (culture != GlobalizationService.Current.Culture.Name && culture != GlobalizationService.Current.Culture.Parent?.Name)
+                GlobalizationService.Current.SetCulture(culture);
         }
 
         #endregion
 
         #region TimeZone
 
-        private void UpdateSelectedTimeZone() => SelectedTimeZone = GlobalizationService.Current.TimeZone;
-
-        protected virtual void OnSelectedTimeZoneChanged() => GlobalizationService.Current.SetTimeZone(SelectedTimeZone ?? TimeZoneInfo.Local);
+        private void RefreshTimeZone() => SelectedTimeZone = GlobalizationService.Current.TimeZone;
 
         protected override void OnTimeZoneChanged()
         {
             base.OnTimeZoneChanged();
 
-            using (PropertyChangedSuspender.Suspend())
-                UpdateSelectedTimeZone();
+            using (IsModifiedSuspender.Suspend())
+                RefreshTimeZone();
+        }
+
+        private void ApplyTimeZone()
+        {
+            if (IsModifiedSuspender.IsSuspended) return;
+
+            var timeZone = SelectedTimeZone is null || AutomaticTimeZone ? TimeZoneInfo.Local : SelectedTimeZone;
+
+            if (timeZone != GlobalizationService.Current.TimeZone)
+                GlobalizationService.Current.SetTimeZone(timeZone);
         }
 
         #endregion
