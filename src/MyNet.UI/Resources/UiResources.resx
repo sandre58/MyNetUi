@@ -829,4 +829,7 @@ Veuillez sélectionner un seul élément.</value>
   <data name="TimeAndLanguage" xml:space="preserve">
     <value>Heure et langue</value>
   </data>
+  <data name="Timezone" xml:space="preserve">
+    <value>Fuseau horaire</value>
+  </data>
 </root>

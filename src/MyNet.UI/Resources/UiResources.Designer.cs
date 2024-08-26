@@ -1889,6 +1889,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fuseau horaire.
+        /// </summary>
+        public static string Timezone {
+            get {
+                return ResourceManager.GetString("Timezone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to à.
         /// </summary>
         public static string To {

@@ -17,9 +17,11 @@ namespace MyNet.UI.ViewModels.Shell
 
         public TimeZoneInfo? SelectedTimeZone { get; set; }
 
-        public ObservableCollection<CultureInfo?> Cultures { get; private set; } = [];
+        public bool AutomaticTimeZone { get; set; } = true;
 
-        public ObservableCollection<TimeZoneInfo?> TimeZones { get; private set; } = [];
+        public ObservableCollection<CultureInfo> Cultures { get; private set; } = [];
+
+        public ObservableCollection<TimeZoneInfo> TimeZones { get; private set; } = [];
 
         public TimeAndLanguageViewModel()
         {
@@ -46,7 +48,9 @@ namespace MyNet.UI.ViewModels.Shell
         protected override void OnCultureChanged()
         {
             base.OnCultureChanged();
-            UpdateSelectedCulture();
+
+            using (PropertyChangedSuspender.Suspend())
+                UpdateSelectedCulture();
         }
 
         #endregion
@@ -60,7 +64,9 @@ namespace MyNet.UI.ViewModels.Shell
         protected override void OnTimeZoneChanged()
         {
             base.OnTimeZoneChanged();
-            UpdateSelectedTimeZone();
+
+            using (PropertyChangedSuspender.Suspend())
+                UpdateSelectedTimeZone();
         }
 
         #endregion
