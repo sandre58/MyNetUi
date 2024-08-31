@@ -46,7 +46,7 @@ jobs:
     needs: [ gitversion ]
     with:
       name: Build all projects
-      build-args: '/p:Version=${{ needs.gitversion.outputs.SemVer }}'
+      build-args: '/p:DebugType=embedded /p:Version=${{ needs.gitversion.outputs.SemVer }}'
       dotnet-test-logger: GitHubActions --no-build --no-restore
       solution-path: .\src\MyNetUi.sln
       nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}

@@ -27,7 +27,11 @@ namespace MyNet.UI.ViewModels.Display
             SetModeCommand = CommandsManager.CreateNotNull<IDisplayMode>(x => Mode = x);
         }
 
-        public void SetMode<T>() where T : IDisplayMode => Mode = AllowedModes.OfType<T>().First();
+        public void SetMode<T>() where T : IDisplayMode => Mode = AllowedModes.OfType<T>().FirstOrDefault();
+
+        public void SetMode(Type type) => Mode = AllowedModes.Where(x => x.GetType() == type).FirstOrDefault();
+
+        public void SetMode(string key) => Mode = AllowedModes.Where(x => x.Key == key).FirstOrDefault();
 
         public DisplayViewModel AddMode(IDisplayMode mode, bool isDefault = false)
         {

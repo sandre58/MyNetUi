@@ -120,26 +120,11 @@
   <data name="AgeFormat" xml:space="preserve">
     <value># years</value>
   </data>
-  <data name="DateDayNumberFormat" xml:space="preserve">
-    <value>dd</value>
-  </data>
-  <data name="DateShortMonthFormat" xml:space="preserve">
-    <value>MMM</value>
-  </data>
   <data name="PhoneFormat" xml:space="preserve">
     <value>00 0000 0000</value>
   </data>
-  <data name="DateShortMonthYearFormat" xml:space="preserve">
-    <value>MMM yyyy</value>
-  </data>
-  <data name="ShortDateTimeFormat" xml:space="preserve">
-    <value>MM/dd/yyyy HH:mm</value>
-  </data>
   <data name="MidDateFormat" xml:space="preserve">
-    <value>dd MMM yyyy</value>
-  </data>
-  <data name="ShortTimeFormat" xml:space="preserve">
-    <value>HH:mm</value>
+    <value>MMM dd, yyyy</value>
   </data>
   <data name="ShortDateFormat" xml:space="preserve">
     <value>MM/dd</value>
