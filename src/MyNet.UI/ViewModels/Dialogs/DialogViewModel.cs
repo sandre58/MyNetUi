@@ -1,16 +1,12 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs.Models;
-using MyNet.Utilities;
-using MyNet.Utilities.Localization;
-using PropertyChanged;
 
 namespace MyNet.UI.ViewModels.Dialogs
 {
@@ -50,7 +46,6 @@ namespace MyNet.UI.ViewModels.Dialogs
         protected DialogViewModel()
         {
             CloseCommand = CommandsManager.Create<bool?>(Close, CanClose);
-            CultureInfoService.Current.CultureChanged += LocalizationManager_CultureChanged;
             UpdateTitle();
         }
 
@@ -111,12 +106,6 @@ namespace MyNet.UI.ViewModels.Dialogs
 
         #region Culture Management
 
-        private void LocalizationManager_CultureChanged(object? sender, EventArgs e)
-        {
-            GetType().GetPublicPropertiesWithAttribute<UpdateOnCultureChangedAttribute>().ForEach(x => RaisePropertyChanged(x.Name));
-            OnCultureChanged();
-        }
-
         protected virtual string CreateTitle() => string.Empty;
 
         protected void UpdateTitle()
@@ -125,15 +114,6 @@ namespace MyNet.UI.ViewModels.Dialogs
 
             if (!string.IsNullOrEmpty(newTitle))
                 Title = newTitle;
-        }
-
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnCultureChanged() => UpdateTitle();
-
-        protected override void Cleanup()
-        {
-            base.Cleanup();
-            CultureInfoService.Current.CultureChanged -= LocalizationManager_CultureChanged;
         }
 
         #endregion

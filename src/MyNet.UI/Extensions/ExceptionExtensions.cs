@@ -29,7 +29,7 @@ namespace MyNet.UI.Extensions
             }
 
             if (innerException is TranslatableException translatableException)
-                ToasterManager.ShowError(translatableException.Parameters is not null ? translatableException.ResourceKey.Translate()?.FormatWith(translatableException.Parameters) : translatableException.ResourceKey.Translate(), autoClose ? ToastClosingStrategy.AutoClose : ToastClosingStrategy.CloseButton, false, onClick, action);
+                ToasterManager.ShowError(translatableException.Parameters is not null ? translatableException.ResourceKey.Translate().FormatWith(translatableException.Parameters) : translatableException.ResourceKey.Translate(), autoClose ? ToastClosingStrategy.AutoClose : ToastClosingStrategy.CloseButton, false, onClick, action);
             else
                 ToasterManager.ShowError(exception.Message, autoClose ? ToastClosingStrategy.AutoClose : ToastClosingStrategy.CloseButton, false, onClick, action);
         }

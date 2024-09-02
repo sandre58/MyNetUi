@@ -655,7 +655,7 @@
     <value>Enabled</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>DISABLED</value>
+    <value>Disabled</value>
   </data>
   <data name="Of" xml:space="preserve">
     <value>Of</value>
@@ -825,5 +825,11 @@ Please select only one item.</value>
   </data>
   <data name="CancellationInProgress" xml:space="preserve">
     <value>Cancellation in progress</value>
+  </data>
+  <data name="TimeAndLanguage" xml:space="preserve">
+    <value>Time &amp; language</value>
+  </data>
+  <data name="Timezone" xml:space="preserve">
+    <value>Time zone</value>
   </data>
 </root>

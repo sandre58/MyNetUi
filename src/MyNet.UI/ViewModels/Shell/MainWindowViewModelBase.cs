@@ -22,7 +22,7 @@ using PropertyChanged;
 
 namespace MyNet.UI.ViewModels.Shell
 {
-    public class MainWindowViewModelBase : ObservableObject
+    public class MainWindowViewModelBase : LocalizableObject
     {
         public bool IsDebug { get; }
 
@@ -103,13 +103,12 @@ namespace MyNet.UI.ViewModels.Shell
 
             using (PropertyChangedSuspender.Suspend())
             {
-                Cultures.AddRange(CultureInfoService.Current.SupportedCultures);
+                Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
                 IsDark = ThemeManager.CurrentTheme?.Base == ThemeBase.Dark;
                 UpdateSelectedCulture();
             }
 
             ThemeManager.ThemeChanged += ThemeService_ThemeChanged;
-            CultureInfoService.Current.CultureChanged += Current_CultureChanged;
         }
 
         [SuppressPropertyChangedWarnings]
@@ -153,11 +152,9 @@ namespace MyNet.UI.ViewModels.Shell
 
         private CultureInfo? GetSelectedCulture(CultureInfo culture) => Cultures.Contains(culture) ? culture : culture.Parent is not null ? GetSelectedCulture(culture.Parent) : null;
 
-        private void UpdateSelectedCulture() => SelectedCulture = GetSelectedCulture(CultureInfo.CurrentCulture);
+        private void UpdateSelectedCulture() => SelectedCulture = GetSelectedCulture(GlobalizationService.Current.Culture);
 
-        protected virtual void OnSelectedCultureChanged() => CultureInfoService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
-
-        private void Current_CultureChanged(object? sender, EventArgs e) => UpdateSelectedCulture();
+        protected virtual void OnSelectedCultureChanged() => GlobalizationService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
 
         #endregion
 
@@ -175,7 +172,6 @@ namespace MyNet.UI.ViewModels.Shell
             NotificationsViewModel.Dispose();
             FileMenuViewModel.Dispose();
             ThemeManager.ThemeChanged -= ThemeService_ThemeChanged;
-            CultureInfoService.Current.CultureChanged -= Current_CultureChanged;
             base.Cleanup();
         }
     }

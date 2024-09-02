@@ -70,34 +70,7 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to dd.
-        /// </summary>
-        public static string DateDayNumberFormat {
-            get {
-                return ResourceManager.GetString("DateDayNumberFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMM.
-        /// </summary>
-        public static string DateShortMonthFormat {
-            get {
-                return ResourceManager.GetString("DateShortMonthFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MMM yyyy.
-        /// </summary>
-        public static string DateShortMonthYearFormat {
-            get {
-                return ResourceManager.GetString("DateShortMonthYearFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ddd, dd MMM.
+        ///   Looks up a localized string similar to ddd dd MMM.
         /// </summary>
         public static string LongDateFormat {
             get {
@@ -129,24 +102,6 @@ namespace MyNet.UI.Resources {
         public static string ShortDateFormat {
             get {
                 return ResourceManager.GetString("ShortDateFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to dd/MM/yyyy HH:mm.
-        /// </summary>
-        public static string ShortDateTimeFormat {
-            get {
-                return ResourceManager.GetString("ShortDateTimeFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HH:mm.
-        /// </summary>
-        public static string ShortTimeFormat {
-            get {
-                return ResourceManager.GetString("ShortTimeFormat", resourceCulture);
             }
         }
     }
