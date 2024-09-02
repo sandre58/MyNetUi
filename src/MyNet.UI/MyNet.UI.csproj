@@ -22,11 +22,11 @@
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.2.0-pre" />
-    <PackageReference Include="MyNet.Observable" Version="5.3.0-alpha.5" />
-    <PackageReference Include="MyNet.Observable.Collections" Version="6.0.0-alpha.1" />
-    <PackageReference Include="MyNet.Observable.Translatables" Version="6.0.0-alpha.1" />
-    <PackageReference Include="MyNet.Utilities" Version="5.0.0-pre" />
+    <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.2.0" />
+    <PackageReference Include="MyNet.Observable" Version="6.0.0" />
+    <PackageReference Include="MyNet.Observable.Collections" Version="6.0.0" />
+    <PackageReference Include="MyNet.Observable.Translatables" Version="6.0.0" />
+    <PackageReference Include="MyNet.Utilities" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
