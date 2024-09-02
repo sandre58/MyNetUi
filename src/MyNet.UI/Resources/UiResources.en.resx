@@ -655,7 +655,7 @@
     <value>Enabled</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>DISABLED</value>
+    <value>Disabled</value>
   </data>
   <data name="Of" xml:space="preserve">
     <value>Of</value>
