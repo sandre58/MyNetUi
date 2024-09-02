@@ -1,5 +1,13 @@
 # Changelog
 
+## [v4.6.0] - 2024-08-18
+### :sparkles: New Features
+- [`a8a0e95`](https://github.com/sandre58/MyNetUi/commit/a8a0e95b890e85f9fa32feffa2215a316911b50c) - block navigation where old page equals to new page
+
+### :bug: Bug Fixes
+- [`28f95bc`](https://github.com/sandre58/MyNetUi/commit/28f95bc3084f3c4ee2c86d67a3b42d19bc8b7d15) - add new resource
+
+
 ## [v4.5.2] - 2024-07-21
 ### :sparkles: New Features
 - [`4373738`](https://github.com/sandre58/MyNetUi/commit/43737389d0df224dbf2a4e33b9f8a12770f1d319) - add new string resources *(commit by [@sandre58](https://github.com/sandre58))*
@@ -142,3 +150,4 @@
 [v4.5.0]: https://github.com/sandre58/MyNetUi/compare/v4.4.2...v4.5.0
 [v4.5.1]: https://github.com/sandre58/MyNetUi/compare/v4.5.0...v4.5.1
 [v4.5.2]: https://github.com/sandre58/MyNetUi/compare/v4.5.1...v4.5.2
+[v4.6.0]: https://github.com/sandre58/MyNetUi/compare/v4.5.2...v4.6.0
