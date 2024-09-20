@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.0] - 2024-09-02
+### :sparkles: New Features
+- [`2cb040a`](https://github.com/sandre58/MyNetUi/commit/2cb040affdd128ef07f624fa7d4dac928730c07e) - add globalization *(PR [#3](https://github.com/sandre58/MyNetUi/pull/3) by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.6.0] - 2024-08-18
 ### :sparkles: New Features
 - [`a8a0e95`](https://github.com/sandre58/MyNetUi/commit/a8a0e95b890e85f9fa32feffa2215a316911b50c) - block navigation where old page equals to new page
@@ -151,3 +156,4 @@
 [v4.5.1]: https://github.com/sandre58/MyNetUi/compare/v4.5.0...v4.5.1
 [v4.5.2]: https://github.com/sandre58/MyNetUi/compare/v4.5.1...v4.5.2
 [v4.6.0]: https://github.com/sandre58/MyNetUi/compare/v4.5.2...v4.6.0
+[v5.0.0]: https://github.com/sandre58/MyNetUi/compare/v4.6.0...v5.0.0
