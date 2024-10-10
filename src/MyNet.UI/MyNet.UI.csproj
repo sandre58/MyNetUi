@@ -15,18 +15,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fody" Version="6.8.1">
+    <PackageReference Include="Fody" Version="6.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.2.0" />
-    <PackageReference Include="MyNet.Observable" Version="6.0.0" />
-    <PackageReference Include="MyNet.Observable.Collections" Version="6.0.0" />
-    <PackageReference Include="MyNet.Observable.Translatables" Version="6.0.0" />
-    <PackageReference Include="MyNet.Utilities" Version="5.0.0" />
+    <PackageReference Include="MyNet.DynamicData.Extensions" Version="2.2.1-pre.1" />
+    <PackageReference Include="MyNet.Observable" Version="6.0.1-pre.7" />
+    <PackageReference Include="MyNet.Observable.Collections" Version="6.0.1-pre.7" />
+    <PackageReference Include="MyNet.Observable.Translatables" Version="6.0.1-pre.7" />
+    <PackageReference Include="MyNet.Utilities" Version="5.2.1-pre.6" />
   </ItemGroup>
 
   <ItemGroup>

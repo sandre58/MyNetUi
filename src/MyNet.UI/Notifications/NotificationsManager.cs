@@ -7,12 +7,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using DynamicData;
 using DynamicData.Binding;
+using MyNet.Utilities.Collections;
 
 namespace MyNet.UI.Notifications
 {
     public sealed class NotificationsManager : INotificationsManager, IDisposable
     {
-        private readonly ObservableCollection<IClosableNotification> _notifications = [];
+        private readonly OptimizedObservableCollection<IClosableNotification> _notifications = [];
         private readonly List<INotificationHandler> _handlers = [];
 
         public ReadOnlyObservableCollection<IClosableNotification> Notifications { get; }

@@ -10,6 +10,7 @@ using MyNet.Observable.Translatables;
 using MyNet.UI.Commands;
 using MyNet.UI.Layout;
 using MyNet.Utilities;
+using MyNet.Utilities.Collections;
 using MyNet.Utilities.Localization;
 using MyNet.Utilities.Units;
 
@@ -49,7 +50,7 @@ namespace MyNet.UI.ViewModels.Display
 
         public ColumnLayoutCollection ColumnLayouts { get; }
 
-        public ObservableCollection<DisplayWrapper<string[]>> PresetColumns { get; private set; } = [];
+        public OptimizedObservableCollection<DisplayWrapper<string[]>> PresetColumns { get; private set; } = [];
 
         public ICommand SetDisplayedColumnsCommand { get; }
 

@@ -9,6 +9,7 @@ using DynamicData.Binding;
 using MyNet.UI.Messages;
 using MyNet.UI.ViewModels.FileHistory;
 using MyNet.Utilities;
+using MyNet.Utilities.Collections;
 using MyNet.Utilities.IO.FileHistory;
 using MyNet.Utilities.Messaging;
 
@@ -20,7 +21,7 @@ namespace MyNet.UI.Services.Providers
         private readonly RecentFilesManager _recentFilesManager;
         private readonly IRecentFileCommandsService _recentFileCommandsService;
 
-        private readonly ObservableCollection<RecentFileViewModel> _source = [];
+        private readonly OptimizedObservableCollection<RecentFileViewModel> _source = [];
         private readonly CompositeDisposable _cleanup = [];
         private readonly IObservable<IChangeSet<RecentFileViewModel>> _observableItems;
 
