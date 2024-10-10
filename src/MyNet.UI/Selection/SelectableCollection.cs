@@ -69,8 +69,9 @@ namespace MyNet.UI.Selection
                    .Filter(y => y.IsSelectable && y.IsSelected)
                    .ObserveOnOptional(scheduler)
                    .Bind(out _selectedWrappers)
-                   .Subscribe(_ => _selectionChangedDeferrer.DeferOrExecute()),
-                obs.WhenPropertyChanged(x => x.IsSelected).Subscribe(x => UpdateSelection(x.Sender))
+                   .Subscribe(),
+                obs.WhenPropertyChanged(x => x.IsSelected).Subscribe(x => UpdateSelection(x.Sender)),
+                _selectedWrappers.ToObservableChangeSet().Subscribe(_ => _selectionChangedDeferrer.DeferOrExecute()),
             ]);
 
             _observableSelectedWrappers = _selectedWrappers.ToObservableChangeSet();
