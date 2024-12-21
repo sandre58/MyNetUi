@@ -3,6 +3,7 @@
 
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using DynamicData.Binding;
 using MyNet.DynamicData.Extensions;
 using MyNet.Observable;

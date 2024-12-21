@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs;

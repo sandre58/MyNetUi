@@ -172,7 +172,7 @@ namespace MyNet.UI.Locators
         {
             var fullnamespace = GetParentPath(value);
             var separator = GetParentSeparator(fullnamespace) ?? string.Empty;
-            var namespaces = fullnamespace.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var namespaces = fullnamespace.Split([separator], StringSplitOptions.RemoveEmptyEntries).ToList();
 
             var result = conventionToUse;
 

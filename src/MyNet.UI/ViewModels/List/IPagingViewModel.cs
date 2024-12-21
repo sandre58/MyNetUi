@@ -3,7 +3,7 @@
 
 using System;
 using System.ComponentModel;
-using MyNet.UI.Commands;
+using System.Windows.Input;
 
 namespace MyNet.UI.ViewModels.List
 {

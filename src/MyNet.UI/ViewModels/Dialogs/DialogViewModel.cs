@@ -3,6 +3,7 @@
 
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.UI.Commands;

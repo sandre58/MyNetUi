@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Windows.Input;
 using MyNet.UI.Commands;
 using MyNet.UI.Notifications;
 using MyNet.UI.Resources;

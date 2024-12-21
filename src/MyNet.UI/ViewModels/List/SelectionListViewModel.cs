@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using DynamicData;
 using DynamicData.Binding;
 using MyNet.Observable.Attributes;
@@ -27,8 +28,7 @@ namespace MyNet.UI.ViewModels.List
                 where T : notnull
     {
         protected SelectionListViewModel(TCollection collection,
-                                         IListParametersProvider? parametersProvider = null,
-                                         SelectionMode? selectionMode = null) : base(collection, parametersProvider)
+                                         IListParametersProvider? parametersProvider = null) : base(collection, parametersProvider)
         {
             SelectCommand = CommandsManager.CreateNotNull<T>(Collection.Select, CanSelect);
             SelectItemsCommand = CommandsManager.CreateNotNull<IEnumerable<T>>(Collection.Select, CanSelect);

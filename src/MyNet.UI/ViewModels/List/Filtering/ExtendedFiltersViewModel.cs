@@ -15,7 +15,7 @@ namespace MyNet.UI.ViewModels.List.Filtering
 {
     public class ExtendedFiltersViewModel : FiltersViewModel
     {
-        private IReadOnlyCollection<IFilterViewModel> _defaultFilters;
+        private ReadOnlyCollection<IFilterViewModel> _defaultFilters;
 
         public override bool IsReadOnly => true;
 
@@ -27,7 +27,7 @@ namespace MyNet.UI.ViewModels.List.Filtering
 
         public ObservableCollection<DisplayWrapper<IEnumerable<IFilterViewModel>>> PresetFilters { get; } = [];
 
-        public DisplayWrapper<IEnumerable<IFilterViewModel>>? SelectedPresetFilter { get; private set; }
+        public DisplayWrapper<IEnumerable<IFilterViewModel>>? SelectedPresetFilter { get; set; }
 
         public ExtendedFiltersViewModel(IDictionary<string, Func<IFilterViewModel>> allowedFilters, SpeedFiltersViewModel speedFilters, IEnumerable<IFilterViewModel>? defaultFilters = null)
             : this(allowedFilters.Select(x => new FilterProviderViewModel(x.Key, x.Value)), speedFilters, defaultFilters) { }

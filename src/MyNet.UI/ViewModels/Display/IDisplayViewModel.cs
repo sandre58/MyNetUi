@@ -5,7 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels
+namespace MyNet.UI.ViewModels.Display
 {
     public interface IDisplayViewModel : INotifyPropertyChanged
     {

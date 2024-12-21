@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using System.Windows.Input;
 using DynamicData.Binding;
 using MyNet.Observable;
 using MyNet.Observable.Collections;
@@ -54,7 +55,7 @@ namespace MyNet.UI.ViewModels.Shell
             Messenger.Default.Register<OpenDialogMessage>(this, OnOpenDialog);
         }
 
-        private void ExecuteAction(ActionNotification notification) => notification.Action?.Invoke(notification);
+        private static void ExecuteAction(ActionNotification notification) => notification.Action?.Invoke(notification);
 
         private void UpdateVisibility(VisibilityAction visibilityAction)
             => IsVisible = visibilityAction == VisibilityAction.Toggle ? !IsVisible : visibilityAction != VisibilityAction.Hide;

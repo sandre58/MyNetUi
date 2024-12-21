@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.UI.Collections;
 using MyNet.UI.Commands;

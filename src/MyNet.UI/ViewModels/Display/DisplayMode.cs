@@ -3,8 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
+using System.Windows.Input;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Translatables;
 using MyNet.UI.Commands;

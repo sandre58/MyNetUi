@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Windows.Input;
 using DynamicData.Binding;
 using MyNet.Observable;
 using MyNet.UI.Busy;

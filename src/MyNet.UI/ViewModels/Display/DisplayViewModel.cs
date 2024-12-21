@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.UI.Commands;
 
@@ -29,9 +30,9 @@ namespace MyNet.UI.ViewModels.Display
 
         public void SetMode<T>() where T : IDisplayMode => Mode = AllowedModes.OfType<T>().FirstOrDefault();
 
-        public void SetMode(Type type) => Mode = AllowedModes.Where(x => x.GetType() == type).FirstOrDefault();
+        public void SetMode(Type type) => Mode = AllowedModes.FirstOrDefault(x => x.GetType() == type);
 
-        public void SetMode(string key) => Mode = AllowedModes.Where(x => x.Key == key).FirstOrDefault();
+        public void SetMode(string key) => Mode = AllowedModes.FirstOrDefault(x => x.Key == key);
 
         public DisplayViewModel AddMode(IDisplayMode mode, bool isDefault = false)
         {

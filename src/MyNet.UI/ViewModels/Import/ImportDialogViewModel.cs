@@ -11,7 +11,6 @@ using MyNet.UI.Resources;
 using MyNet.UI.Selection;
 using MyNet.UI.Toasting;
 using MyNet.UI.Toasting.Settings;
-using MyNet.UI.ViewModels.Dialogs;
 using MyNet.UI.ViewModels.List;
 using MyNet.Utilities.Providers;
 

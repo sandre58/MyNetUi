@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Resources;

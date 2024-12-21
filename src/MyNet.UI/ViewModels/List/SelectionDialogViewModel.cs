@@ -4,13 +4,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections.Providers;
 using MyNet.UI.Commands;
 using MyNet.UI.Resources;
 using MyNet.UI.Selection;
-using MyNet.UI.ViewModels.Dialogs;
 using MyNet.Utilities.Providers;
 
 namespace MyNet.UI.ViewModels.List

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
 using DynamicData;
 using DynamicData.Binding;
 using MyNet.DynamicData.Extensions;
@@ -51,7 +52,7 @@ namespace MyNet.UI.ViewModels.List.Sorting
 
         public SortingViewModel() : this([]) { }
 
-        public SortingViewModel(string defaultProperty, ListSortDirection listSortDirection = ListSortDirection.Ascending) : this(new[] { defaultProperty }) { }
+        public SortingViewModel(string defaultProperty, ListSortDirection listSortDirection = ListSortDirection.Ascending) : this(new Dictionary<string, ListSortDirection> { { defaultProperty, listSortDirection } }) { }
 
         public SortingViewModel(IList<string> defaultProperties) : this(defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
 

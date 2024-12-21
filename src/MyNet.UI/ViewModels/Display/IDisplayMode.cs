@@ -3,7 +3,7 @@
 
 using MyNet.Observable;
 
-namespace MyNet.UI.ViewModels
+namespace MyNet.UI.ViewModels.Display
 {
     public interface IDisplayMode : IProvideValue<string>
     {

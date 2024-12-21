@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using MyNet.UI.Commands;
+using System.Windows.Input;
 
 namespace MyNet.UI.ViewModels.List.Sorting
 {

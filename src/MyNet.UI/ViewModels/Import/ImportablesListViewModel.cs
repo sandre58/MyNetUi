@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using DynamicData;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Collections.Providers;

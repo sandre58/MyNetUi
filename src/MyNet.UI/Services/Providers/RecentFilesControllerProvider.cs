@@ -3,8 +3,8 @@
 
 using System;
 using System.ComponentModel;
+using System.Windows.Input;
 using MyNet.Observable;
-using MyNet.UI.Commands;
 using MyNet.UI.ViewModels.FileHistory;
 using MyNet.UI.ViewModels.List;
 using MyNet.UI.ViewModels.List.Filtering;

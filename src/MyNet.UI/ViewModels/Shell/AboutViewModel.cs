@@ -12,7 +12,7 @@ namespace MyNet.UI.ViewModels.Shell
     {
         public string? Version { get; private set; } = ApplicationHelper.GetVersion();
 
-        public string? Message { get; private set; }
+        public string? Message { get; set; }
 
         public string? Copyright { get; private set; } = ApplicationHelper.GetCopyright();
 

@@ -4,6 +4,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.UI.Busy;
 using MyNet.UI.Commands;
