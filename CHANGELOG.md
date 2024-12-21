@@ -1,5 +1,23 @@
 # Changelog
 
+## [v6.0.0] - 2024-12-21
+### :boom: BREAKING CHANGES
+- due to [`cbcf314`](https://github.com/sandre58/MyNetUi/commit/cbcf31496b78fab07328b6bbed2a2188ad28c9c2) - Add .NET 9.0 support,  update packages, and refactor:
+
+  Add .NET 9.0 support. Remove ICommand interface.
+
+
+### :sparkles: New Features
+- [`89723d5`](https://github.com/sandre58/MyNetUi/commit/89723d566ff30f21aab27281563f913c633821bc) - add ItemDialogViewModel
+- [`cbcf314`](https://github.com/sandre58/MyNetUi/commit/cbcf31496b78fab07328b6bbed2a2188ad28c9c2) - Add .NET 9.0 support,  update packages, and refactor
+
+### :bug: Bug Fixes
+- [`8d75e3f`](https://github.com/sandre58/MyNetUi/commit/8d75e3f3134b885d0a130ce9d8f178d1b4b277a3) - Refactor selection change handling in SelectableCollection.cs
+
+### :recycle: Refactors
+- [`308f8ef`](https://github.com/sandre58/MyNetUi/commit/308f8ef5903e1e83e5582fb9333f65343a38326c) - Update project references and optimize collections
+
+
 ## [v5.0.0] - 2024-09-02
 ### :sparkles: New Features
 - [`2cb040a`](https://github.com/sandre58/MyNetUi/commit/2cb040affdd128ef07f624fa7d4dac928730c07e) - add globalization *(PR [#3](https://github.com/sandre58/MyNetUi/pull/3) by [@sandre58](https://github.com/sandre58))*
@@ -157,3 +175,4 @@
 [v4.5.2]: https://github.com/sandre58/MyNetUi/compare/v4.5.1...v4.5.2
 [v4.6.0]: https://github.com/sandre58/MyNetUi/compare/v4.5.2...v4.6.0
 [v5.0.0]: https://github.com/sandre58/MyNetUi/compare/v4.6.0...v5.0.0
+[v6.0.0]: https://github.com/sandre58/MyNetUi/compare/v5.0.0...v6.0.0
