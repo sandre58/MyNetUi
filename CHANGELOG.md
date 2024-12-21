@@ -1,5 +1,16 @@
 # Changelog
 
+## [v7.0.0] - 2024-12-21
+### :boom: BREAKING CHANGES
+- due to [`91e1e9a`](https://github.com/sandre58/MyNetUi/commit/91e1e9ae6cd62491e67eb04644212c2b192dec93) - Removed FileMenuViewModel from MainWindowViewModelBase.:
+
+  Removed FileMenuViewModel from MainWindowViewModelBase.
+
+
+### :sparkles: New Features
+- [`91e1e9a`](https://github.com/sandre58/MyNetUi/commit/91e1e9ae6cd62491e67eb04644212c2b192dec93) - Removed FileMenuViewModel from MainWindowViewModelBase.
+
+
 ## [v6.0.0] - 2024-12-21
 ### :boom: BREAKING CHANGES
 - due to [`cbcf314`](https://github.com/sandre58/MyNetUi/commit/cbcf31496b78fab07328b6bbed2a2188ad28c9c2) - Add .NET 9.0 support,  update packages, and refactor:
@@ -176,3 +187,4 @@
 [v4.6.0]: https://github.com/sandre58/MyNetUi/compare/v4.5.2...v4.6.0
 [v5.0.0]: https://github.com/sandre58/MyNetUi/compare/v4.6.0...v5.0.0
 [v6.0.0]: https://github.com/sandre58/MyNetUi/compare/v5.0.0...v6.0.0
+[v7.0.0]: https://github.com/sandre58/MyNetUi/compare/v6.0.0...v7.0.0
