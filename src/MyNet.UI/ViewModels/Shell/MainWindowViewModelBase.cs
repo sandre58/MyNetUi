@@ -55,12 +55,9 @@ namespace MyNet.UI.ViewModels.Shell
 
         public NotificationsViewModel NotificationsViewModel { get; }
 
-        public FileMenuViewModelBase FileMenuViewModel { get; }
-
         public IBusyService BusyService { get; }
 
         public MainWindowViewModelBase(
-            FileMenuViewModelBase fileMenuViewModel,
             INotificationsManager notificationsManager,
             IAppCommandsService appCommandsService,
             IBusyService mainBusyService)
@@ -70,7 +67,6 @@ namespace MyNet.UI.ViewModels.Shell
 #endif
 
             NotificationsViewModel = new(notificationsManager);
-            FileMenuViewModel = fileMenuViewModel;
             BusyService = mainBusyService;
 
             ToggleNotificationsCommand = CommandsManager.Create(() => Messenger.Default.Send(new UpdateNotificationsVisibilityRequestedMessage(VisibilityAction.Toggle)), () => !DialogManager.HasOpenedDialogs && NotificationsViewModel.Notifications.Count != 0);
@@ -171,7 +167,6 @@ namespace MyNet.UI.ViewModels.Shell
         {
             Messenger.Default.Unregister(this);
             NotificationsViewModel.Dispose();
-            FileMenuViewModel.Dispose();
             ThemeManager.ThemeChanged -= ThemeService_ThemeChanged;
             base.Cleanup();
         }
