@@ -1,5 +1,10 @@
 # Changelog
 
+## [v7.0.1] - 2024-12-23
+### :bug: Bug Fixes
+- [`9baf386`](https://github.com/sandre58/MyNetUi/commit/9baf386e1d10994e4c5a97434721acfa8c4071c3) - Refactor naming conventions methods to use all naming conventions
+
+
 ## [v7.0.0] - 2024-12-21
 ### :boom: BREAKING CHANGES
 - due to [`91e1e9a`](https://github.com/sandre58/MyNetUi/commit/91e1e9ae6cd62491e67eb04644212c2b192dec93) - Removed FileMenuViewModel from MainWindowViewModelBase.:
@@ -188,3 +193,4 @@
 [v5.0.0]: https://github.com/sandre58/MyNetUi/compare/v4.6.0...v5.0.0
 [v6.0.0]: https://github.com/sandre58/MyNetUi/compare/v5.0.0...v6.0.0
 [v7.0.0]: https://github.com/sandre58/MyNetUi/compare/v6.0.0...v7.0.0
+[v7.0.1]: https://github.com/sandre58/MyNetUi/compare/v7.0.0...v7.0.1
