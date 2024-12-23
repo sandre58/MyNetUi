@@ -49,7 +49,7 @@ namespace MyNet.UI.Locators
             return values.Contains(viewModelTypeName);
         }
 
-        /// <summary>
+        /// <summary>ResolveNamingConventionResolveNamingConvention
         /// Resolves a view model type by the view and the registered <see cref="IResolver.NamingConventions"/>.
         /// </summary>
         /// <param name="viewType">Type of the view to resolve the view model for.</param>
@@ -82,15 +82,7 @@ namespace MyNet.UI.Locators
         /// </summary>
         /// <returns>An enumerable of default naming conventions.</returns>
         /// <remarks></remarks>
-        protected override IEnumerable<string> GetDefaultNamingConventions()
-        {
-            var namingConventions = new List<string>
-            {
-                string.Format("{0}.{1}ViewModel", NamingConvention.Current, NamingConvention.ViewName),
-            };
-
-            return namingConventions;
-        }
+        protected override IEnumerable<string> GetDefaultNamingConventions() => AllNamingConventions;
 
         public static IEnumerable<string> AllNamingConventions { get; } =
         [

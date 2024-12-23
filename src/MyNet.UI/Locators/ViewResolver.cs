@@ -84,16 +84,7 @@ namespace MyNet.UI.Locators
         /// Gets the default naming conventions.
         /// </summary>
         /// <returns>An enumerable of default naming conventions.</returns>
-        protected override IEnumerable<string> GetDefaultNamingConventions()
-        {
-            var namingConventions = new List<string>
-            {
-                string.Format("{0}.{1}View", NamingConvention.Current, NamingConvention.ViewModelName),
-                string.Format("{0}.{1}Window", NamingConvention.Current, NamingConvention.ViewModelName)
-            };
-
-            return namingConventions;
-        }
+        protected override IEnumerable<string> GetDefaultNamingConventions() => AllNamingConventions;
 
         public static IEnumerable<string> AllNamingConventions { get; } =
         [
