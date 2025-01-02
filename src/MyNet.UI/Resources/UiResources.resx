@@ -832,4 +832,10 @@ Veuillez sélectionner un seul élément.</value>
   <data name="Timezone" xml:space="preserve">
     <value>Fuseau horaire</value>
   </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Plein écran</value>
+  </data>
+  <data name="NoFullScreen" xml:space="preserve">
+    <value>Enlever le plein écran</value>
+  </data>
 </root>

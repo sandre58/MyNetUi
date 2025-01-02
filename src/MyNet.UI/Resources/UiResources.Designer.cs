@@ -889,6 +889,15 @@ namespace MyNet.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plein écran.
+        /// </summary>
+        public static string FullScreen {
+            get {
+                return ResourceManager.GetString("FullScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Générer.
         /// </summary>
         public static string Generate {
@@ -1227,6 +1236,15 @@ namespace MyNet.UI.Resources {
         public static string NoData {
             get {
                 return ResourceManager.GetString("NoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enlever le plein écran.
+        /// </summary>
+        public static string NoFullScreen {
+            get {
+                return ResourceManager.GetString("NoFullScreen", resourceCulture);
             }
         }
         

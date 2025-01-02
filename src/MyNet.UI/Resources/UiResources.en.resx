@@ -832,4 +832,10 @@ Please select only one item.</value>
   <data name="Timezone" xml:space="preserve">
     <value>Time zone</value>
   </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="NoFullScreen" xml:space="preserve">
+    <value>No full screen</value>
+  </data>
 </root>
