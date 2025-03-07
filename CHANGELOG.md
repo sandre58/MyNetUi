@@ -1,5 +1,19 @@
 # Changelog
 
+## [v8.0.0] - 2025-03-07
+### :boom: BREAKING CHANGES
+- due to [`41c6d86`](https://github.com/sandre58/MyNetUi/commit/41c6d865cc588b0b27980ae48be01bd61ae2d7e2) - Simplify notifications management:
+
+  Remove Category property and Styles dictionnary
+
+
+### :sparkles: New Features
+- [`8bd6d7b`](https://github.com/sandre58/MyNetUi/commit/8bd6d7b822cdc7539bb9c4d726b9cbffbc9787c2) - Add new resources
+
+### :recycle: Refactors
+- [`41c6d86`](https://github.com/sandre58/MyNetUi/commit/41c6d865cc588b0b27980ae48be01bd61ae2d7e2) - **Notifications**: Simplify notifications management
+
+
 ## [v7.0.1] - 2024-12-23
 ### :bug: Bug Fixes
 - [`9baf386`](https://github.com/sandre58/MyNetUi/commit/9baf386e1d10994e4c5a97434721acfa8c4071c3) - Refactor naming conventions methods to use all naming conventions
@@ -194,3 +208,4 @@
 [v6.0.0]: https://github.com/sandre58/MyNetUi/compare/v5.0.0...v6.0.0
 [v7.0.0]: https://github.com/sandre58/MyNetUi/compare/v6.0.0...v7.0.0
 [v7.0.1]: https://github.com/sandre58/MyNetUi/compare/v7.0.0...v7.0.1
+[v8.0.0]: https://github.com/sandre58/MyNetUi/compare/v7.0.1...v8.0.0
