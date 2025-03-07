@@ -3,7 +3,6 @@
 
 using System;
 using MyNet.Observable;
-using MyNet.Utilities;
 
 namespace MyNet.UI.Notifications
 {
@@ -17,14 +16,11 @@ namespace MyNet.UI.Notifications
 
         public NotificationSeverity Severity { get; }
 
-        public string Category { get; set; }
-
-        public MessageNotification(string message, string title = "", NotificationSeverity severity = NotificationSeverity.Information, string? category = null)
+        public MessageNotification(string message, string title = "", NotificationSeverity severity = NotificationSeverity.Information)
         {
             Message = message;
             Title = title;
             Severity = severity;
-            Category = category.OrEmpty();
         }
 
         #region Methods
@@ -34,7 +30,7 @@ namespace MyNet.UI.Notifications
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object? obj) => obj is MessageNotification other && Equals(Message, other.Message) && Equals(Title, other.Title) && Equals(Category, other.Category);
+        public override bool Equals(object? obj) => obj is MessageNotification other && Equals(Message, other.Message) && Equals(Title, other.Title);
 
         /// <summary>
         /// Serves as the default hash function.

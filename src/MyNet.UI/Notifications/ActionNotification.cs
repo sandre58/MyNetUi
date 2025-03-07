@@ -9,7 +9,7 @@ namespace MyNet.UI.Notifications
     {
         public Action<INotification>? Action { get; set; }
 
-        public ActionNotification(string message, string title, NotificationSeverity severity, string category = "", bool isClosable = true, Action<INotification>? action = null) : base(message, title, severity, category, isClosable)
+        public ActionNotification(string message, string title, NotificationSeverity severity, bool isClosable = true, Action<INotification>? action = null) : base(message, title, severity, isClosable)
             => Action = action;
 
     }

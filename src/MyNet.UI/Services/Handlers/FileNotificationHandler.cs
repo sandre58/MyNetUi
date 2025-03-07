@@ -18,7 +18,7 @@ namespace MyNet.UI.Services.Handlers
         private void OnFileExportedMessage(FileExportedMessage obj)
         {
             var notification = new FileNotification(obj.FilePath, obj.OpenAction);
-            ToasterManager.Show(notification, ToasterManager.SettingsFromSeverity(notification.Severity, ToastClosingStrategy.AutoClose), true, _ => obj.OpenAction(obj.FilePath));
+            ToasterManager.Show(notification, new ToastSettings() { ClosingStrategy = ToastClosingStrategy.AutoClose }, true, _ => obj.OpenAction(obj.FilePath));
 
             Notify(notification);
         }

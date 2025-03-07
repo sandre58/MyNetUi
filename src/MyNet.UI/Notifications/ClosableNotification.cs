@@ -10,8 +10,8 @@ namespace MyNet.UI.Notifications
     {
         public bool IsClosable { get; }
 
-        public ClosableNotification(string message, string title, NotificationSeverity severity, string category = "", bool isClosable = true) : base(message, title, severity)
-            => (IsClosable, Category) = (isClosable, category);
+        public ClosableNotification(string message, string title, NotificationSeverity severity, bool isClosable = true) : base(message, title, severity)
+            => IsClosable = isClosable;
 
         public event CancelEventHandler? CloseRequest;
 

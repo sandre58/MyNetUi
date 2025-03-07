@@ -9,6 +9,6 @@ namespace MyNet.UI.Notifications
 {
     public interface INotification : INotifyPropertyChanged, IIdentifiable<Guid>
     {
-        string Category { get; }
+        NotificationSeverity Severity { get; }
     }
 }

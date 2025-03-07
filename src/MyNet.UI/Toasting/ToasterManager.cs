@@ -60,7 +60,7 @@ namespace MyNet.UI.Toasting
             ToastClosingStrategy closingStrategy = ToastClosingStrategy.AutoClose,
             bool isUnique = false,
             Action<INotification>? onClick = null,
-            Action? onClose = null) => Show(new MessageNotification(message.OrEmpty(), title, severity), SettingsFromSeverity(severity, closingStrategy), isUnique, onClick, onClose);
+            Action? onClose = null) => Show(new MessageNotification(message.OrEmpty(), title, severity), new ToastSettings() { ClosingStrategy = closingStrategy }, isUnique, onClick, onClose);
 
         /// <summary>
         /// Show a toast notification.
@@ -81,37 +81,5 @@ namespace MyNet.UI.Toasting
         /// </summary>
         /// <param name="toast"></param>
         public static void Hide(INotification toast) => _toasterService?.Hide(toast);
-
-        public static ToastSettings SettingsFromSeverity(NotificationSeverity severity, ToastClosingStrategy toastClosingStrategy)
-        {
-            var settings = new ToastSettings() { ClosingStrategy = toastClosingStrategy };
-
-            switch (severity)
-            {
-                case NotificationSeverity.Error:
-                    settings.Style.Add("Background", "MyNet.Brushes.Negative");
-                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Negative");
-                    break;
-
-                case NotificationSeverity.Success:
-                    settings.Style.Add("Background", "MyNet.Brushes.Positive");
-                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Positive");
-                    break;
-
-                case NotificationSeverity.Warning:
-                    settings.Style.Add("Background", "MyNet.Brushes.Warning");
-                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Warning");
-                    break;
-
-                case NotificationSeverity.Information:
-                    settings.Style.Add("Background", "MyNet.Brushes.Information");
-                    settings.Style.Add("BorderBrush", "MyNet.Brushes.Information");
-                    break;
-                default:
-                    break;
-            }
-
-            return settings;
-        }
     }
 }
