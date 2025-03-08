@@ -7,7 +7,7 @@ using MyNet.Utilities;
 
 namespace MyNet.UI.Notifications
 {
-    public interface INotification : INotifyPropertyChanged, IIdentifiable<Guid>
+    public interface INotification : INotifyPropertyChanged, IIdentifiable<Guid>, ISimilar
     {
         NotificationSeverity Severity { get; }
     }

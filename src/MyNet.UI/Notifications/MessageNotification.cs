@@ -30,7 +30,7 @@ namespace MyNet.UI.Notifications
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object? obj) => obj is MessageNotification other && Equals(Message, other.Message) && Equals(Title, other.Title);
+        public override bool Equals(object? obj) => ReferenceEquals(this, obj);
 
         /// <summary>
         /// Serves as the default hash function.
@@ -39,6 +39,8 @@ namespace MyNet.UI.Notifications
         public override int GetHashCode() => Message.GetHashCode();
 
         public override string ToString() => Message;
+
+        public bool IsSimilar(object? obj) => obj is MessageNotification other && Equals(Message, other.Message) && Equals(Title, other.Title);
 
         #endregion Methods
     }
