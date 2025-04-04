@@ -1,5 +1,16 @@
 # Changelog
 
+## [v9.0.0] - 2025-04-04
+### :boom: BREAKING CHANGES
+- due to [`4f01c0e`](https://github.com/sandre58/MyNetUi/commit/4f01c0ef3a20da6876e1667632466997407f4c11) - add StyleCop and fix all warnings:
+
+  Rename methods and types
+
+
+### :recycle: Refactors
+- [`4f01c0e`](https://github.com/sandre58/MyNetUi/commit/4f01c0ef3a20da6876e1667632466997407f4c11) - add StyleCop and fix all warnings
+
+
 ## [v8.1.0] - 2025-03-08
 ### :sparkles: New Features
 - [`528f79d`](https://github.com/sandre58/MyNetUi/commit/528f79d42e4905684ce1cedbfd2150ed7ae75690) - **Notifications**: Add ISimilar interface and update MessageNotification
@@ -215,3 +226,4 @@
 [v7.0.1]: https://github.com/sandre58/MyNetUi/compare/v7.0.0...v7.0.1
 [v8.0.0]: https://github.com/sandre58/MyNetUi/compare/v7.0.1...v8.0.0
 [v8.1.0]: https://github.com/sandre58/MyNetUi/compare/v8.0.0...v8.1.0
+[v9.0.0]: https://github.com/sandre58/MyNetUi/compare/v8.1.0...v9.0.0
