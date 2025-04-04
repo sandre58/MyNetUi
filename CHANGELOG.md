@@ -1,5 +1,10 @@
 # Changelog
 
+## [v8.1.0] - 2025-03-08
+### :sparkles: New Features
+- [`528f79d`](https://github.com/sandre58/MyNetUi/commit/528f79d42e4905684ce1cedbfd2150ed7ae75690) - **Notifications**: Add ISimilar interface and update MessageNotification
+
+
 ## [v8.0.0] - 2025-03-07
 ### :boom: BREAKING CHANGES
 - due to [`41c6d86`](https://github.com/sandre58/MyNetUi/commit/41c6d865cc588b0b27980ae48be01bd61ae2d7e2) - Simplify notifications management:
@@ -209,3 +214,4 @@
 [v7.0.0]: https://github.com/sandre58/MyNetUi/compare/v6.0.0...v7.0.0
 [v7.0.1]: https://github.com/sandre58/MyNetUi/compare/v7.0.0...v7.0.1
 [v8.0.0]: https://github.com/sandre58/MyNetUi/compare/v7.0.1...v8.0.0
+[v8.1.0]: https://github.com/sandre58/MyNetUi/compare/v8.0.0...v8.1.0
