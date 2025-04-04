@@ -1,35 +1,35 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="RecentFilesManager.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.UI.Messages;
 using MyNet.Utilities.IO.FileHistory;
 using MyNet.Utilities.Logging;
 using MyNet.Utilities.Messaging;
 
-namespace MyNet.UI.Services
+namespace MyNet.UI.Services;
+
+public sealed class RecentFilesManager(RecentFilesService recentFilesService)
 {
-    public sealed class RecentFilesManager(RecentFilesService recentFilesService)
+    public void Add(string name, string path)
     {
-        private readonly RecentFilesService _recentFilesService = recentFilesService;
-
-        public void Add(string name, string path)
+        using (LogManager.MeasureTime($"Add recent File : {name} | {path}", TraceLevel.Debug))
         {
-            using (LogManager.MeasureTime($"Add recent File : {name} | {path}", TraceLevel.Debug))
-            {
-                _ = _recentFilesService.Add(name, path);
-                Messenger.Default.Send(new RecentFilesChangedMessage());
-            }
-        }
-
-        public void Remove(string file)
-        {
-            _recentFilesService.Remove(file);
-
+            _ = recentFilesService.Add(name, path);
             Messenger.Default.Send(new RecentFilesChangedMessage());
-
-            LogManager.Debug($"Recent file removed : {file}");
         }
-
-        public void Update(string file, bool isPinned) => _recentFilesService.Update(file, isPinned);
     }
+
+    public void Remove(string file)
+    {
+        recentFilesService.Remove(file);
+
+        Messenger.Default.Send(new RecentFilesChangedMessage());
+
+        LogManager.Debug($"Recent file removed : {file}");
+    }
+
+    public void Update(string file, bool isPinned) => recentFilesService.Update(file, isPinned);
 }

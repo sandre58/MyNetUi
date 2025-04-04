@@ -1,18 +1,20 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IDisplayMode.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.Observable;
 
-namespace MyNet.UI.ViewModels.Display
+namespace MyNet.UI.ViewModels.Display;
+
+public interface IDisplayMode : IProvideValue<string>
 {
-    public interface IDisplayMode : IProvideValue<string>
-    {
-        string Key { get; }
+    string Key { get; }
 
-        bool OverrideEmptySourceTemplate { get; }
+    bool OverrideEmptySourceTemplate { get; }
 
-        bool OverrideEmptyItemsTemplate { get; }
+    bool OverrideEmptyItemsTemplate { get; }
 
-        void Reset();
-    }
+    void Reset();
 }

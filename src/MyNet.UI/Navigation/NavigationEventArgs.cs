@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="NavigationEventArgs.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-using MyNet.UI.Navigation.Models;
 using System;
+using MyNet.UI.Navigation.Models;
 
-namespace MyNet.UI.Navigation
+namespace MyNet.UI.Navigation;
+
+public class NavigationEventArgs(INavigationPage? oldPage, INavigationPage newPage, NavigationMode mode, NavigationParameters? navigationParameters = null) : EventArgs
 {
-    public class NavigationEventArgs(INavigationPage? oldPage, INavigationPage newPage, NavigationMode mode, NavigationParameters? navigationParameters = null) : EventArgs
-    {
-        public INavigationPage? OldPage { get; } = oldPage;
+    public INavigationPage? OldPage { get; } = oldPage;
 
-        public INavigationPage NewPage { get; } = newPage;
+    public INavigationPage NewPage { get; } = newPage;
 
-        public NavigationParameters? Parameters { get; } = navigationParameters;
+    public NavigationParameters? Parameters { get; } = navigationParameters;
 
-        public NavigationMode Mode { get; } = mode;
-    }
+    public NavigationMode Mode { get; } = mode;
 }

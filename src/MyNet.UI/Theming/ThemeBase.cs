@@ -1,16 +1,18 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ThemeBase.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Theming
+namespace MyNet.UI.Theming;
+
+public enum ThemeBase
 {
-    public enum ThemeBase
-    {
-        Inherit,
+    Inherit,
 
-        Dark,
+    Dark,
 
-        Light,
+    Light,
 
-        HighContrast
-    }
+    HighContrast
 }

@@ -1,15 +1,17 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IGroupingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels.List.Grouping
-{
-    public interface IGroupingViewModel : INotifyPropertyChanged
-    {
-        void Reset();
+namespace MyNet.UI.ViewModels.List.Grouping;
 
-        event EventHandler<GroupingChangedEventArgs>? GroupingChanged;
-    }
+public interface IGroupingViewModel : INotifyPropertyChanged
+{
+    void Reset();
+
+    event EventHandler<GroupingChangedEventArgs>? GroupingChanged;
 }

@@ -1,48 +1,50 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IPagingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace MyNet.UI.ViewModels.List
+namespace MyNet.UI.ViewModels.List;
+
+public interface IPagingViewModel : INotifyPropertyChanged
 {
-    public interface IPagingViewModel : INotifyPropertyChanged
-    {
-        event EventHandler<PagingChangedEventArgs>? PagingChanged;
+    event EventHandler<PagingChangedEventArgs>? PagingChanged;
 
-        int PageSize { get; }
+    int PageSize { get; }
 
-        int CurrentPage { get; }
+    int CurrentPage { get; }
 
-        int TotalPages { get; }
+    int TotalPages { get; }
 
-        int TotalItems { get; }
+    int TotalItems { get; }
 
-        ICommand MoveToFirstPageCommand { get; }
+    ICommand MoveToFirstPageCommand { get; }
 
-        ICommand MoveToLastPageCommand { get; }
+    ICommand MoveToLastPageCommand { get; }
 
-        ICommand MoveToPreviousPageCommand { get; }
+    ICommand MoveToPreviousPageCommand { get; }
 
-        ICommand MoveToNextPageCommand { get; }
+    ICommand MoveToNextPageCommand { get; }
 
-        ICommand MoveToPageCommand { get; }
+    ICommand MoveToPageCommand { get; }
 
-        ICommand SetPageSizeCommand { get; }
+    ICommand SetPageSizeCommand { get; }
 
-        void SetPageSize(int value);
+    void SetPageSize(int value);
 
-        void MoveToPage(int value);
+    void MoveToPage(int value);
 
-        void MoveToNextPage();
+    void MoveToNextPage();
 
-        void MoveToPreviousPage();
+    void MoveToPreviousPage();
 
-        void MoveToFirstPage();
+    void MoveToFirstPage();
 
-        void MoveToLastPage();
+    void MoveToLastPage();
 
-        void Update(PagingResponse response);
-    }
+    void Update(PagingResponse response);
 }

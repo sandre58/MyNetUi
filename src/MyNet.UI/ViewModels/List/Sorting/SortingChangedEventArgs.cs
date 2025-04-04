@@ -1,13 +1,15 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="SortingChangedEventArgs.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 
-namespace MyNet.UI.ViewModels.List.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting;
+
+public class SortingChangedEventArgs(IEnumerable<ISortingPropertyViewModel> properties) : EventArgs
 {
-    public class SortingChangedEventArgs(IEnumerable<ISortingPropertyViewModel> properties) : EventArgs
-    {
-        public IEnumerable<ISortingPropertyViewModel> SortingProperties { get; } = properties;
-    }
+    public IEnumerable<ISortingPropertyViewModel> SortingProperties { get; } = properties;
 }

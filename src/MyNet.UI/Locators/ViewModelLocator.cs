@@ -1,14 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ViewModelLocator.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Locators
-{
-    public class ViewModelLocator(IServiceProvider serviceProvider) : IViewModelLocator
-    {
-        private readonly IServiceProvider _serviceProvider = serviceProvider;
+namespace MyNet.UI.Locators;
 
-        public object Get(Type viewModelType) => _serviceProvider.GetService(viewModelType) ?? Activator.CreateInstance(viewModelType)!;
-    }
+public class ViewModelLocator(IServiceProvider serviceProvider) : IViewModelLocator
+{
+    public object Get(Type viewModelType) => serviceProvider.GetService(viewModelType) ?? Activator.CreateInstance(viewModelType)!;
 }

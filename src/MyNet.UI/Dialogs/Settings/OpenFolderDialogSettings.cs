@@ -1,18 +1,20 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="OpenFolderDialogSettings.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Dialogs.Settings
+namespace MyNet.UI.Dialogs.Settings;
+
+public class OpenFolderDialogSettings
 {
-    public class OpenFolderDialogSettings
-    {
-        public static OpenFolderDialogSettings Default => new();
+    public static OpenFolderDialogSettings Default => new();
 
-        public bool CheckPathExists { get; set; } = true;
+    public bool CheckPathExists { get; set; } = true;
 
-        public string Folder { get; set; } = string.Empty;
+    public string Folder { get; set; } = string.Empty;
 
-        public string InitialDirectory { get; set; } = string.Empty;
+    public string InitialDirectory { get; set; } = string.Empty;
 
-        public string Title { get; set; } = string.Empty;
-    }
+    public string Title { get; set; } = string.Empty;
 }

@@ -1,49 +1,50 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="SubItemViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reactive.Disposables;
 using System.Reactive.Subjects;
 using MyNet.Observable.Attributes;
 using PropertyChanged;
 
-namespace MyNet.UI.ViewModels.Workspace
+namespace MyNet.UI.ViewModels.Workspace;
+
+[CanBeValidatedForDeclaredClassOnly(false)]
+[CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
+public class SubItemViewModel<T> : NavigableWorkspaceViewModel, IItemViewModel<T>
 {
-    [CanBeValidatedForDeclaredClassOnly(false)]
-    [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public class SubItemViewModel<T> : NavigableWorkspaceViewModel, IItemViewModel<T>
+    [SuppressMessage("ReSharper", "CollectionNeverUpdated.Global", Justification = "Use by children classes")]
+    protected CompositeDisposable? ItemSubscriptions { get; private set; }
+
+    [DoNotCheckEquality]
+    public T? Item { get; private set; }
+
+    public Subject<T?> ItemChanged { get; } = new();
+
+    protected virtual void OnItemChanged()
     {
-        protected CompositeDisposable? ItemSubscriptions { get; private set; }
+        ItemSubscriptions?.Dispose();
+        ItemSubscriptions = [];
 
-        [DoNotCheckEquality]
-        public T? Item { get; private set; }
+        ItemChanged.OnNext(Item);
+    }
 
-        public Subject<T?> ItemChanged { get; } = new();
+    public override void SetParentPage(IWorkspaceViewModel parentPage)
+    {
+        base.SetParentPage(parentPage);
 
-        protected virtual void OnItemChanged()
-        {
-            ItemSubscriptions?.Dispose();
-            ItemSubscriptions = [];
+        if (parentPage is IItemViewModel<T> itemViewModelParent)
+            Disposables.Add(itemViewModelParent.ItemChanged.Subscribe(x => Item = x));
+    }
 
-            ItemChanged.OnNext(Item);
-        }
+    protected override void Cleanup()
+    {
+        base.Cleanup();
 
-
-        public override void SetParentPage(IWorkspaceViewModel parentPage)
-        {
-            base.SetParentPage(parentPage);
-
-            var itemViewModelParent = parentPage as IItemViewModel<T>;
-
-            if (itemViewModelParent is not null)
-                Disposables.Add(itemViewModelParent.ItemChanged.Subscribe(x => Item = x));
-        }
-
-        protected override void Cleanup()
-        {
-            base.Cleanup();
-
-            ItemSubscriptions?.Dispose();
-        }
+        ItemSubscriptions?.Dispose();
     }
 }

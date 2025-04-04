@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="SortingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections;
@@ -8,7 +11,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using DynamicData;
 using DynamicData.Binding;
 using MyNet.DynamicData.Extensions;
 using MyNet.Observable;
@@ -18,160 +20,161 @@ using MyNet.Utilities;
 using MyNet.Utilities.Deferring;
 using PropertyChanged;
 
-namespace MyNet.UI.ViewModels.List.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting;
+
+[CanBeValidated(false)]
+[CanSetIsModified(false)]
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "It's a viewModel")]
+public class SortingViewModel : EditableObject, ISortingViewModel, ICollection<ISortingPropertyViewModel>, INotifyCollectionChanged
 {
+    private readonly IReadOnlyDictionary<string, ListSortDirection> _defaultSortingProperties;
+    private readonly Deferrer _sortingChangedDeferrer;
 
-    [CanBeValidated(false)]
-    [CanSetIsModified(false)]
-    public class SortingViewModel : EditableObject, ISortingViewModel, ICollection<ISortingPropertyViewModel>, INotifyCollectionChanged
+    protected SortingPropertiesCollection SortingProperties { get; } = [];
+
+    public ISortingPropertyViewModel? ActiveSortingProperty => SortingProperties.OrderBy(x => x.Order).FirstOrDefault(x => x.IsEnabled);
+
+    public int ActiveCount => SortingProperties.Count(x => x.IsEnabled);
+
+    public ICommand AddCommand { get; }
+
+    public ICommand SwitchCommand { get; }
+
+    public ICommand ToggleCommand { get; }
+
+    public ICommand RemoveCommand { get; }
+
+    public ICommand ResetCommand { get; }
+
+    public ICommand ClearCommand { get; }
+
+    public ICommand ApplyCommand { get; }
+
+    public event EventHandler<SortingChangedEventArgs>? SortingChanged;
+
+    public SortingViewModel()
+        : this([]) { }
+
+    public SortingViewModel(string defaultProperty, ListSortDirection listSortDirection = ListSortDirection.Ascending)
+        : this(new Dictionary<string, ListSortDirection> { { defaultProperty, listSortDirection } }) { }
+
+    public SortingViewModel(IList<string> defaultProperties)
+        : this(defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
+
+    public SortingViewModel(IDictionary<string, ListSortDirection> defaultProperties)
     {
-        private readonly IReadOnlyDictionary<string, ListSortDirection> _defaultSortingProperties;
-        private readonly Deferrer _sortingChangedDeferrer;
+        _sortingChangedDeferrer = new Deferrer(OnSortChanged);
+        _defaultSortingProperties = defaultProperties.AsReadOnly();
 
-        protected SortingPropertiesCollection SortingProperties { get; } = [];
+        ClearCommand = CommandsManager.Create(Clear);
+        AddCommand = CommandsManager.CreateNotNull<string>(x => Add(x));
+        ToggleCommand = CommandsManager.CreateNotNull<string>(Toggle);
+        SwitchCommand = CommandsManager.CreateNotNull<string>(Switch);
+        ApplyCommand = CommandsManager.CreateNotNull<List<(string, ListSortDirection)>>(x => Set(x.Select((y, index) => CreateSortingProperty(y.Item1, y.Item2, index + 1))));
+        RemoveCommand = CommandsManager.CreateNotNull<string>(Remove);
+        ResetCommand = CommandsManager.Create(Reset);
 
-        public ISortingPropertyViewModel? ActiveSortingProperty => SortingProperties.OrderBy(x => x.Order).FirstOrDefault(x => x.IsEnabled);
+        Reset();
 
-        public int ActiveCount => SortingProperties.Count(x => x.IsEnabled);
+        Disposables.Add(SortingProperties.ToObservableChangeSet(x => x.PropertyName).SubscribeAll(() => _sortingChangedDeferrer.DeferOrExecute()));
 
-        public ICommand AddCommand { get; }
+        SortingProperties.CollectionChanged += HandleCollectionChanged;
+    }
 
-        public ICommand SwitchCommand { get; }
+    protected IDisposable DeferChanged() => _sortingChangedDeferrer.Defer();
 
-        public ICommand ToggleCommand { get; }
+    protected virtual ISortingPropertyViewModel CreateSortingProperty(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null)
+        => new SortingPropertyViewModel(propertyName, listSortDirection, order ?? ActiveCount + 1);
 
-        public ICommand RemoveCommand { get; }
+    public virtual void Add(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null) => SortingProperties.TryAdd(CreateSortingProperty(propertyName, listSortDirection, order));
 
-        public ICommand ResetCommand { get; }
+    public virtual void Remove(string propertyName) => SortingProperties.Remove(propertyName);
 
-        public ICommand ClearCommand { get; }
-
-        public ICommand ApplyCommand { get; }
-
-        public event EventHandler<SortingChangedEventArgs>? SortingChanged;
-
-        public SortingViewModel() : this([]) { }
-
-        public SortingViewModel(string defaultProperty, ListSortDirection listSortDirection = ListSortDirection.Ascending) : this(new Dictionary<string, ListSortDirection> { { defaultProperty, listSortDirection } }) { }
-
-        public SortingViewModel(IList<string> defaultProperties) : this(defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
-
-        public SortingViewModel(IDictionary<string, ListSortDirection> defaultProperties)
+    public virtual void Switch(string propertyName)
+    {
+        if (SortingProperties[propertyName] is not { } property)
+            return;
+        using (_sortingChangedDeferrer.Defer())
         {
-            _sortingChangedDeferrer = new Deferrer(OnSortChanged);
-            _defaultSortingProperties = defaultProperties.AsReadOnly();
-
-            ClearCommand = CommandsManager.Create(Clear);
-            AddCommand = CommandsManager.CreateNotNull<string>(x => Add(x));
-            ToggleCommand = CommandsManager.CreateNotNull<string>(Toggle);
-            SwitchCommand = CommandsManager.CreateNotNull<string>(Switch);
-            ApplyCommand = CommandsManager.CreateNotNull<List<(string, ListSortDirection)>>(x => Set(x.Select((y, index) => CreateSortingProperty(y.Item1, y.Item2, index + 1))));
-            RemoveCommand = CommandsManager.CreateNotNull<string>(Remove);
-            ResetCommand = CommandsManager.Create(Reset);
-
-            Reset();
-
-            Disposables.Add(SortingProperties.ToObservableChangeSet(x => x.PropertyName).SubscribeAll(() => _sortingChangedDeferrer.DeferOrExecute()));
-
-            SortingProperties.CollectionChanged += new NotifyCollectionChangedEventHandler(HandleCollectionChanged);
+            if (!property.IsEnabled)
+                property.Order = ActiveCount + 1;
+            property.IsEnabled = true;
+            property.Direction = property.Direction == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending;
         }
+    }
 
-        protected IDisposable DeferChanged() => _sortingChangedDeferrer.Defer();
-
-        protected virtual ISortingPropertyViewModel CreateSortingProperty(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null)
-            => new SortingPropertyViewModel(propertyName, listSortDirection, order ?? ActiveCount + 1);
-
-        public virtual void Add(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null) => SortingProperties.TryAdd(CreateSortingProperty(propertyName, listSortDirection, order));
-
-        public virtual void Remove(string propertyName) => SortingProperties.Remove(propertyName);
-
-        public virtual void Switch(string propertyName)
+    public void Toggle(string propertyName)
+    {
+        using (_sortingChangedDeferrer.Defer())
         {
-            if (SortingProperties[propertyName] is ISortingPropertyViewModel property)
-            {
-                using (_sortingChangedDeferrer.Defer())
-                {
-                    if (!property.IsEnabled)
-                        property.Order = ActiveCount + 1;
-                    property.IsEnabled = true;
-                    property.Direction = property.Direction == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending;
-                }
-            }
+            var switchDirection = SortingProperties[propertyName] is { IsEnabled: true, Direction: ListSortDirection.Ascending };
+            Clear();
+            Add(propertyName);
+
+            if (switchDirection)
+                Switch(propertyName);
         }
+    }
 
-        public void Toggle(string propertyName)
-        {
-            using (_sortingChangedDeferrer.Defer())
-            {
-                var switchDirection = SortingProperties[propertyName] is ISortingPropertyViewModel property && property.IsEnabled && property.Direction == ListSortDirection.Ascending;
-                Clear();
-                Add(propertyName);
+    public virtual void Set(IEnumerable<ISortingPropertyViewModel> properties)
+    {
+        using (_sortingChangedDeferrer.Defer())
+            SortingProperties.Set(properties);
+    }
 
-                if (switchDirection)
-                    Switch(propertyName);
-            }
-        }
+    public virtual void Clear() => SortingProperties.Clear();
 
-        public virtual void Set(IEnumerable<ISortingPropertyViewModel> properties)
-        {
-            using (_sortingChangedDeferrer.Defer())
-                SortingProperties.Set(properties);
-        }
+    public void Reset() => Set(_defaultSortingProperties.Select((x, index) => CreateSortingProperty(x.Key, x.Value, index + 1)));
 
-        public virtual void Clear() => SortingProperties.Clear();
+    [SuppressPropertyChangedWarnings]
+    protected virtual void OnSortChanged()
+    {
+        OnPropertyChanged(nameof(Count));
+        OnPropertyChanged(nameof(ActiveCount));
+        OnPropertyChanged(nameof(ActiveSortingProperty));
+        SortingChanged?.Invoke(this, new SortingChangedEventArgs(SortingProperties));
+    }
 
-        public void Reset() => Set(_defaultSortingProperties.Select((x, index) => CreateSortingProperty(x.Key, x.Value, index + 1)));
+    #region ICollection
 
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnSortChanged()
-        {
-            RaisePropertyChanged(nameof(Count));
-            RaisePropertyChanged(nameof(ActiveCount));
-            RaisePropertyChanged(nameof(ActiveSortingProperty));
-            SortingChanged?.Invoke(this, new SortingChangedEventArgs(SortingProperties));
-        }
+    public int Count => SortingProperties.Count;
 
-        #region ICollection
+    public virtual bool IsReadOnly => false;
 
-        public int Count => SortingProperties.Count;
+    public virtual void Add(ISortingPropertyViewModel item) => IsReadOnly.IfFalse(() => SortingProperties.Add(item));
 
-        public virtual bool IsReadOnly => false;
+    public virtual bool Remove(ISortingPropertyViewModel item) => !IsReadOnly && SortingProperties.Remove(item);
 
-        public virtual void Add(ISortingPropertyViewModel item) => IsReadOnly.IfFalse(() => SortingProperties.Add(item));
+    public bool Contains(ISortingPropertyViewModel item) => SortingProperties.Contains(item);
 
-        public virtual bool Remove(ISortingPropertyViewModel item) => !IsReadOnly && SortingProperties.Remove(item);
+    public void CopyTo(ISortingPropertyViewModel[] array, int arrayIndex) => SortingProperties.CopyTo(array, arrayIndex);
 
-        public bool Contains(ISortingPropertyViewModel item) => SortingProperties.Contains(item);
+    public IEnumerator<ISortingPropertyViewModel> GetEnumerator() => SortingProperties.GetEnumerator();
 
-        public void CopyTo(ISortingPropertyViewModel[] array, int arrayIndex) => SortingProperties.CopyTo(array, arrayIndex);
+    IEnumerator IEnumerable.GetEnumerator() => SortingProperties.GetEnumerator();
 
-        public IEnumerator<ISortingPropertyViewModel> GetEnumerator() => SortingProperties.GetEnumerator();
+    #endregion
 
-        IEnumerator IEnumerable.GetEnumerator() => SortingProperties.GetEnumerator();
+    #region INotifyCollectionChanged
 
-        #endregion
+    event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
+    {
+        add => CollectionChanged += value;
+        remove => CollectionChanged -= value;
+    }
 
-        #region INotifyCollectionChanged
+    protected event NotifyCollectionChangedEventHandler? CollectionChanged;
 
-        event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
-        {
-            add => CollectionChanged += value;
-            remove => CollectionChanged -= value;
-        }
+    [SuppressPropertyChangedWarnings]
+    protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged?.Invoke(this, args);
 
-        protected event NotifyCollectionChangedEventHandler? CollectionChanged;
+    private void HandleCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => OnCollectionChanged(e);
 
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged?.Invoke(this, args);
+    #endregion INotifyCollectionChanged
 
-        private void HandleCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => OnCollectionChanged(e);
-
-        #endregion INotifyCollectionChanged
-
-        protected override void Cleanup()
-        {
-            SortingProperties.CollectionChanged -= new NotifyCollectionChangedEventHandler(HandleCollectionChanged);
-            base.Cleanup();
-        }
+    protected override void Cleanup()
+    {
+        SortingProperties.CollectionChanged -= HandleCollectionChanged;
+        base.Cleanup();
     }
 }

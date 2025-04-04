@@ -1,12 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IViewModelLocator.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Locators
+namespace MyNet.UI.Locators;
+
+public interface IViewModelLocator
 {
-    public interface IViewModelLocator
-    {
-        object Get(Type viewModelType);
-    }
+    object Get(Type viewModelType);
 }

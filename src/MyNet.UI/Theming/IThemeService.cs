@@ -1,22 +1,24 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IThemeService.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Theming
+namespace MyNet.UI.Theming;
+
+public interface IThemeService
 {
-    public interface IThemeService
-    {
-        Theme CurrentTheme { get; }
+    Theme CurrentTheme { get; }
 
-        void ApplyTheme(Theme theme);
+    void ApplyTheme(Theme theme);
 
-        IThemeService AddBaseExtension(IThemeExtension extension);
+    IThemeService AddBaseExtension(IThemeExtension extension);
 
-        IThemeService AddPrimaryExtension(IThemeExtension extension);
+    IThemeService AddPrimaryExtension(IThemeExtension extension);
 
-        IThemeService AddAccentExtension(IThemeExtension extension);
+    IThemeService AddAccentExtension(IThemeExtension extension);
 
-        event EventHandler<ThemeChangedEventArgs>? ThemeChanged;
-    }
+    event EventHandler<ThemeChangedEventArgs>? ThemeChanged;
 }

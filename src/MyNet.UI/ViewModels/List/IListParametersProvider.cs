@@ -1,23 +1,25 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IListParametersProvider.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.UI.ViewModels.Display;
 using MyNet.UI.ViewModels.List.Filtering;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Sorting;
 
-namespace MyNet.UI.ViewModels.List
+namespace MyNet.UI.ViewModels.List;
+
+public interface IListParametersProvider
 {
-    public interface IListParametersProvider
-    {
-        IFiltersViewModel ProvideFilters();
+    IFiltersViewModel ProvideFilters();
 
-        ISortingViewModel ProvideSorting();
+    ISortingViewModel ProvideSorting();
 
-        IGroupingViewModel ProvideGrouping();
+    IGroupingViewModel ProvideGrouping();
 
-        IPagingViewModel ProvidePaging();
+    IPagingViewModel ProvidePaging();
 
-        IDisplayViewModel ProvideDisplay();
-    }
+    IDisplayViewModel ProvideDisplay();
 }

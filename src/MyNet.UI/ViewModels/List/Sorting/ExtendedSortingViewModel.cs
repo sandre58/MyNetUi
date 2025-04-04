@@ -1,97 +1,97 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ExtendedSortingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using DynamicData;
 using MyNet.Observable.Attributes;
 
-namespace MyNet.UI.ViewModels.List.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting;
+
+[CanBeValidated(false)]
+[CanSetIsModified(false)]
+public class ExtendedSortingViewModel : SortingViewModel
 {
+    public ExtendedSortingViewModel(IEnumerable<string> properties)
+        : this(properties, []) { }
 
-    [CanBeValidated(false)]
-    [CanSetIsModified(false)]
-    public class ExtendedSortingViewModel : SortingViewModel
+    public ExtendedSortingViewModel(IEnumerable<string> properties, IEnumerable<string> defaultProperties)
+        : this(new SortingPropertiesCollection(properties), defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
+
+    public ExtendedSortingViewModel(IEnumerable<string> properties, IDictionary<string, ListSortDirection> defaultProperties)
+        : this(new SortingPropertiesCollection(properties), defaultProperties) { }
+
+    public ExtendedSortingViewModel(IDictionary<string, string> properties)
+        : this(properties, []) { }
+
+    public ExtendedSortingViewModel(IDictionary<string, string> properties, IEnumerable<string> defaultProperties)
+        : this(new SortingPropertiesCollection(properties), defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
+
+    public ExtendedSortingViewModel(IDictionary<string, string> properties, IDictionary<string, ListSortDirection> defaultProperties)
+        : this(new SortingPropertiesCollection(properties), defaultProperties) { }
+
+    public ExtendedSortingViewModel(IEnumerable<ISortingPropertyViewModel> properties, IDictionary<string, ListSortDirection> defaultProperties)
+        : base(defaultProperties)
     {
-        public ExtendedSortingViewModel(IEnumerable<string> properties) : this(properties, []) { }
+        SortingProperties.AddRange(properties);
+        Reset();
+    }
 
-        public ExtendedSortingViewModel(IEnumerable<string> properties, IEnumerable<string> defaultProperties)
-            : this(new SortingPropertiesCollection(properties), defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
+    public override bool IsReadOnly => true;
 
-        public ExtendedSortingViewModel(IEnumerable<string> properties, IDictionary<string, ListSortDirection> defaultProperties)
-            : this(new SortingPropertiesCollection(properties), defaultProperties) { }
-
-        public ExtendedSortingViewModel(IDictionary<string, string> properties) : this(properties, []) { }
-
-        public ExtendedSortingViewModel(IDictionary<string, string> properties, IEnumerable<string> defaultProperties)
-            : this(new SortingPropertiesCollection(properties), defaultProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
-
-        public ExtendedSortingViewModel(IDictionary<string, string> properties, IDictionary<string, ListSortDirection> defaultProperties)
-            : this(new SortingPropertiesCollection(properties), defaultProperties) { }
-
-        public ExtendedSortingViewModel(IEnumerable<ISortingPropertyViewModel> properties, IDictionary<string, ListSortDirection> defaultProperties)
-            : base(defaultProperties)
+    public override void Add(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null)
+    {
+        if (SortingProperties[propertyName] is not { IsEnabled: false } property)
+            return;
+        using (DeferChanged())
         {
-            SortingProperties.AddRange(properties);
-            Reset();
+            property.Order = order ?? ActiveCount + 1;
+            property.IsEnabled = true;
+            property.Direction = listSortDirection;
+        }
+    }
+
+    public override void Remove(string propertyName)
+    {
+        if (SortingProperties[propertyName] is not { IsEnabled: true } property)
+            return;
+        using (DeferChanged())
+        {
+            property.IsEnabled = false;
+            property.Order = -1;
         }
 
-        public override bool IsReadOnly => true;
+        var list = SortingProperties.Where(x => x.IsEnabled).OrderBy(x => x.Order).ToList();
+        list.ForEach(x => x.Order = list.IndexOf(x) + 1);
+    }
 
-        public override void Add(string propertyName, ListSortDirection listSortDirection = ListSortDirection.Ascending, int? order = null)
+    public override void Set(IEnumerable<ISortingPropertyViewModel> properties)
+    {
+        using (DeferChanged())
         {
-            if (SortingProperties[propertyName] is ISortingPropertyViewModel property && !property.IsEnabled)
+            var list = properties.ToList();
+            foreach (var item in SortingProperties)
             {
-                using (DeferChanged())
-                {
-                    property.Order = order ?? ActiveCount + 1;
-                    property.IsEnabled = true;
-                    property.Direction = listSortDirection;
-                }
+                var similarProperty = list.FirstOrDefault(x => x.PropertyName == item.PropertyName);
+                item.IsEnabled = similarProperty?.IsEnabled ?? false;
+                item.Order = similarProperty?.Order is not { } order ? -1 : order < 0 ? list.IndexOf(similarProperty) : order;
+                item.Direction = similarProperty?.Direction ?? ListSortDirection.Ascending;
             }
         }
+    }
 
-        public override void Remove(string propertyName)
+    public override void Clear()
+    {
+        using (DeferChanged())
         {
-            if (SortingProperties[propertyName] is ISortingPropertyViewModel property && property.IsEnabled)
+            SortingProperties.ToList().ForEach(x =>
             {
-                using (DeferChanged())
-                {
-                    property.IsEnabled = false;
-                    property.Order = -1;
-                }
-
-                var list = SortingProperties.Where(x => x.IsEnabled).OrderBy(x => x.Order).ToList();
-                list.ForEach(x => x.Order = list.IndexOf(x) + 1);
-            }
-        }
-
-        public override void Set(IEnumerable<ISortingPropertyViewModel> properties)
-        {
-            using (DeferChanged())
-            {
-                foreach (var item in SortingProperties)
-                {
-                    var similarProperty = properties.FirstOrDefault(x => x.PropertyName == item.PropertyName);
-                    item.IsEnabled = similarProperty?.IsEnabled ?? false;
-                    item.Order = similarProperty?.Order is not int order ? -1 : order < 0 ? properties.IndexOf(similarProperty) : order;
-                    item.Direction = similarProperty?.Direction ?? ListSortDirection.Ascending;
-                }
-            }
-        }
-
-        public override void Clear()
-        {
-            using (DeferChanged())
-            {
-                SortingProperties.ToList().ForEach(x =>
-                {
-                    x.IsEnabled = false;
-                    x.Order = -1;
-                });
-            }
+                x.IsEnabled = false;
+                x.Order = -1;
+            });
         }
     }
 }

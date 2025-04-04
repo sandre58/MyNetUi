@@ -1,18 +1,22 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="INavigationPage.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
-namespace MyNet.UI.Navigation.Models
+namespace MyNet.UI.Navigation.Models;
+
+public interface INavigationPage
 {
-    public interface INavigationPage
-    {
-        Type? GetParentPageType();
+    Type? GetParentPageType();
 
-        void OnNavigated(NavigationContext navigationContext);
+    void OnNavigated(NavigationContext navigationContext);
 
-        void OnNavigatingFrom(NavigatingContext navigatingContext);
+    [SuppressMessage("ReSharper", "UnusedParameter.Global", Justification = "Used by children classes")]
+    void OnNavigatingFrom(NavigatingContext navigatingContext);
 
-        void OnNavigatingTo(NavigatingContext navigatingContext);
-    }
+    void OnNavigatingTo(NavigatingContext navigatingContext);
 }

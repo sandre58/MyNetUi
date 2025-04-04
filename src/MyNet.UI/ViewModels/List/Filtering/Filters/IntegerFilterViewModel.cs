@@ -1,23 +1,24 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IntegerFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-using MyNet.Utilities.Comparaison;
+using MyNet.Utilities.Comparison;
 using MyNet.Utilities.Sequences;
 
-namespace MyNet.UI.ViewModels.List.Filtering.Filters
+namespace MyNet.UI.ViewModels.List.Filtering.Filters;
+
+public class IntegerFilterViewModel : ComparableFilterViewModel<int>
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public class IntegerFilterViewModel : ComparableFilterViewModel<int>
-    {
-        public IntegerFilterViewModel(string propertyName) : base(propertyName) { }
+    public IntegerFilterViewModel(string propertyName)
+        : base(propertyName) { }
 
-        public IntegerFilterViewModel(string propertyName, ComplexComparableOperator comparaison, int? from, int? to) : base(propertyName, comparaison, from, to) { }
+    public IntegerFilterViewModel(string propertyName, ComplexComparableOperator comparison, int? from, int? to)
+        : base(propertyName, comparison, from, to) { }
 
-        public IntegerFilterViewModel(string propertyName, ComplexComparableOperator comparaison, AcceptableValueRange<int> range) : base(propertyName, comparaison, range.Min, range.Max) => (Minimum, Maximum) = (range.Min, range.Max);
+    public IntegerFilterViewModel(string propertyName, ComplexComparableOperator comparison, AcceptableValueRange<int> range)
+        : base(propertyName, comparison, range.Min, range.Max) => (Minimum, Maximum) = (range.Min, range.Max);
 
-        protected override FilterViewModel CreateCloneInstance() => new IntegerFilterViewModel(PropertyName, Operator, From, To) { Maximum = Maximum, Minimum = Minimum };
-
-    }
+    protected override FilterViewModel CreateCloneInstance() => new IntegerFilterViewModel(PropertyName, Operator, From, To) { Maximum = Maximum, Minimum = Minimum };
 }

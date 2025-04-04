@@ -1,18 +1,20 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IFiltersViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.ViewModels.List.Filtering
+namespace MyNet.UI.ViewModels.List.Filtering;
+
+public interface IFiltersViewModel
 {
-    public interface IFiltersViewModel
-    {
-        void Reset();
+    void Reset();
 
-        void Clear();
+    void Clear();
 
-        void Refresh();
+    void Refresh();
 
-        event EventHandler<FiltersChangedEventArgs>? FiltersChanged;
-    }
+    event EventHandler<FiltersChangedEventArgs>? FiltersChanged;
 }

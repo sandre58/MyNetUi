@@ -1,14 +1,16 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="NavigationMode.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Navigation
+namespace MyNet.UI.Navigation;
+
+public enum NavigationMode
 {
-    public enum NavigationMode
-    {
-        Normal,
+    Normal,
 
-        Back,
+    Back,
 
-        Forward
-    }
+    Forward
 }

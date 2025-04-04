@@ -1,20 +1,22 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IClosable.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace MyNet.UI
+namespace MyNet.UI;
+
+public interface IClosable
 {
-    public interface IClosable
-    {
-        /// <summary>
-        /// Gets the close event.
-        /// </summary>
-        event CancelEventHandler? CloseRequest;
+    /// <summary>
+    /// Gets the close event.
+    /// </summary>
+    event CancelEventHandler? CloseRequest;
 
-        Task<bool> CanCloseAsync();
+    Task<bool> CanCloseAsync();
 
-        void Close();
-    }
+    void Close();
 }

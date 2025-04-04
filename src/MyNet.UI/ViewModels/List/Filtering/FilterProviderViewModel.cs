@@ -1,13 +1,12 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FilterProviderViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using MyNet.Observable.Translatables;
 
-namespace MyNet.UI.ViewModels.List.Filtering
-{
-    public class FilterProviderViewModel : DisplayWrapper<Func<IFilterViewModel>>
-    {
-        public FilterProviderViewModel(string resourceKey, Func<IFilterViewModel> item) : base(item, resourceKey) { }
-    }
-}
+namespace MyNet.UI.ViewModels.List.Filtering;
+
+public class FilterProviderViewModel(string resourceKey, Func<IFilterViewModel> item) : DisplayWrapper<Func<IFilterViewModel>>(item, resourceKey);

@@ -1,14 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="CountryFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.Utilities.Geography;
 
-namespace MyNet.UI.ViewModels.List.Filtering.Filters
-{
-    public class CountryFilterViewModel : EnumerationValueFilterViewModel<Country>
-    {
-        public CountryFilterViewModel(string propertyName) : base(propertyName) { }
+namespace MyNet.UI.ViewModels.List.Filtering.Filters;
 
-        protected override FilterViewModel CreateCloneInstance() => new CountryFilterViewModel(PropertyName);
-    }
+public class CountryFilterViewModel(string propertyName) : EnumClassValueFilterViewModel<Country>(propertyName)
+{
+    protected override FilterViewModel CreateCloneInstance() => new CountryFilterViewModel(PropertyName);
 }

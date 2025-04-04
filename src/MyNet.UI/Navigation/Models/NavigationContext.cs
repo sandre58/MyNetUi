@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="NavigationContext.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Navigation.Models
+namespace MyNet.UI.Navigation.Models;
+
+/// <summary>
+/// Encapsulates information about a navigation request.
+/// </summary>
+public class NavigationContext(INavigationPage? oldPage, INavigationPage newPage, NavigationMode mode, NavigationParameters? navigationParameters = null)
 {
-    /// <summary>
-    /// Encapsulates information about a navigation request.
-    /// </summary>
-    public class NavigationContext(INavigationPage? oldPage, INavigationPage newPage, NavigationMode mode, NavigationParameters? navigationParameters = null)
-    {
-        public INavigationPage? OldPage { get; } = oldPage;
+    public INavigationPage? OldPage { get; } = oldPage;
 
-        public INavigationPage Page { get; } = newPage;
+    public INavigationPage Page { get; } = newPage;
 
-        public NavigationParameters? Parameters { get; } = navigationParameters;
+    public NavigationParameters? Parameters { get; } = navigationParameters;
 
-        public NavigationMode Mode { get; } = mode;
-    }
+    public NavigationMode Mode { get; } = mode;
 }

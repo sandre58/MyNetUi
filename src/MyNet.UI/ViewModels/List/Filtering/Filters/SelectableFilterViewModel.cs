@@ -1,27 +1,23 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="SelectableFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using MyNet.Utilities.Comparaison;
+using MyNet.Utilities.Comparison;
 
-namespace MyNet.UI.ViewModels.List.Filtering.Filters
+namespace MyNet.UI.ViewModels.List.Filtering.Filters;
+
+public abstract class SelectableFilterViewModel<TAllowedValues>(string propertyName, IEnumerable<TAllowedValues>? allowedValues = null) : FilterViewModel(propertyName)
 {
-    public abstract class SelectableFilterViewModel<TAllowedValues> : FilterViewModel
+    public BinaryOperator Operator { get; set; } = BinaryOperator.Is;
+
+    public IEnumerable<TAllowedValues>? AvailableValues { get; set; } = allowedValues;
+
+    public override void SetFrom(object? from)
     {
-        protected SelectableFilterViewModel(string propertyName, IEnumerable<TAllowedValues>? allowedValues = null) : base(propertyName)
-        {
-            Operator = BinaryOperator.Is;
-            AvailableValues = allowedValues;
-        }
-
-        public BinaryOperator Operator { get; set; }
-
-        public IEnumerable<TAllowedValues>? AvailableValues { get; set; }
-
-        public override void SetFrom(object? from)
-        {
-            if (from is SelectableFilterViewModel<TAllowedValues> other)
-                Operator = other.Operator;
-        }
+        if (from is SelectableFilterViewModel<TAllowedValues> other)
+            Operator = other.Operator;
     }
 }

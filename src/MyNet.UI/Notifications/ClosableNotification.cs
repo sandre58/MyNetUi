@@ -1,22 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ClosableNotification.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace MyNet.UI.Notifications
+namespace MyNet.UI.Notifications;
+
+public class ClosableNotification(string message, string title, NotificationSeverity severity, bool isClosable = true) : MessageNotification(message, title, severity), IClosableNotification
 {
-    public class ClosableNotification : MessageNotification, IClosableNotification
-    {
-        public bool IsClosable { get; }
+    public bool IsClosable { get; } = isClosable;
 
-        public ClosableNotification(string message, string title, NotificationSeverity severity, bool isClosable = true) : base(message, title, severity)
-            => IsClosable = isClosable;
+    public event CancelEventHandler? CloseRequest;
 
-        public event CancelEventHandler? CloseRequest;
+    public Task<bool> CanCloseAsync() => Task.FromResult(true);
 
-        public Task<bool> CanCloseAsync() => Task.FromResult(true);
-
-        public void Close() => CloseRequest?.Invoke(this, new CancelEventArgs());
-    }
+    public void Close() => CloseRequest?.Invoke(this, new CancelEventArgs());
 }

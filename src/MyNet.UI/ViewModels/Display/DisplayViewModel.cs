@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="DisplayViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -9,47 +12,50 @@ using System.Windows.Input;
 using MyNet.Observable;
 using MyNet.UI.Commands;
 
-namespace MyNet.UI.ViewModels.Display
+namespace MyNet.UI.ViewModels.Display;
+
+public class DisplayViewModel : ObservableObject, IDisplayViewModel
 {
-    public class DisplayViewModel : ObservableObject, IDisplayViewModel
+    public ObservableCollection<IDisplayMode> AllowedModes { get; }
+
+    public IDisplayMode? Mode { get; set; }
+
+    public ICommand SetModeCommand { get; }
+
+    public DisplayViewModel()
+        : this([]) { }
+
+    public DisplayViewModel(IEnumerable<IDisplayMode> allowedModes, IDisplayMode? defaultMode = null)
     {
-        public ObservableCollection<IDisplayMode> AllowedModes { get; }
+        AllowedModes = [.. allowedModes];
+        Mode = defaultMode;
+        SetModeCommand = CommandsManager.CreateNotNull<IDisplayMode>(x => Mode = x);
+    }
 
-        public IDisplayMode? Mode { get; set; }
+    public void SetMode<T>()
+        where T : IDisplayMode
+        => Mode = AllowedModes.OfType<T>().FirstOrDefault();
 
-        public ICommand SetModeCommand { get; }
+    public void SetMode(Type type) => Mode = AllowedModes.FirstOrDefault(x => x.GetType() == type);
 
-        public DisplayViewModel() : this([]) { }
+    public void SetMode(string key) => Mode = AllowedModes.FirstOrDefault(x => x.Key == key);
 
-        public DisplayViewModel(IEnumerable<IDisplayMode> allowedModes, IDisplayMode? defaultMode = null)
-        {
-            AllowedModes = new ObservableCollection<IDisplayMode>(allowedModes);
-            Mode = defaultMode;
-            SetModeCommand = CommandsManager.CreateNotNull<IDisplayMode>(x => Mode = x);
-        }
+    public DisplayViewModel AddMode(IDisplayMode mode, bool isDefault = false)
+    {
+        AllowedModes.Add(mode);
 
-        public void SetMode<T>() where T : IDisplayMode => Mode = AllowedModes.OfType<T>().FirstOrDefault();
+        if (isDefault)
+            Mode = mode;
 
-        public void SetMode(Type type) => Mode = AllowedModes.FirstOrDefault(x => x.GetType() == type);
+        return this;
+    }
 
-        public void SetMode(string key) => Mode = AllowedModes.FirstOrDefault(x => x.Key == key);
+    public DisplayViewModel AddMode<T>(bool isDefault = false, Action<T>? action = null)
+        where T : IDisplayMode, new()
+    {
+        var mode = new T();
+        action?.Invoke(mode);
 
-        public DisplayViewModel AddMode(IDisplayMode mode, bool isDefault = false)
-        {
-            AllowedModes.Add(mode);
-
-            if (isDefault)
-                Mode = mode;
-
-            return this;
-        }
-
-        public DisplayViewModel AddMode<T>(bool isDefault = false, Action<T>? action = null) where T : IDisplayMode, new()
-        {
-            var mode = new T();
-            action?.Invoke(mode);
-
-            return AddMode(mode, isDefault);
-        }
+        return AddMode(mode, isDefault);
     }
 }

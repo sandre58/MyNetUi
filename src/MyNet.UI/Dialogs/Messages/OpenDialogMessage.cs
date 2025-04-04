@@ -1,25 +1,27 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="OpenDialogMessage.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Dialogs.Messages
+namespace MyNet.UI.Dialogs.Messages;
+
+public enum DialogType
 {
-    public enum DialogType
-    {
-        WorkspaceDialog,
+    WorkspaceDialog,
 
-        Dialog,
+    Dialog,
 
-        ModalDialog,
+    ModalDialog,
 
-        MessageBox,
+    MessageBox,
 
-        FileDialog
-    }
+    FileDialog
+}
 
-    public class OpenDialogMessage(DialogType type, object? dialog)
-    {
-        public DialogType Type { get; } = type;
+public class OpenDialogMessage(DialogType type, object? dialog)
+{
+    public DialogType Type { get; } = type;
 
-        public object? Dialog { get; } = dialog;
-    }
+    public object? Dialog { get; } = dialog;
 }

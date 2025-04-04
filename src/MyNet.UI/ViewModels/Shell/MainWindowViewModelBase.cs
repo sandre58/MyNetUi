@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="MainWindowViewModelBase.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.ObjectModel;
@@ -7,11 +10,11 @@ using System.Globalization;
 using System.Windows.Input;
 using DynamicData.Binding;
 using MyNet.Observable;
-using MyNet.UI.Busy;
-using MyNet.UI.Busy.Models;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs;
 using MyNet.UI.Helpers;
+using MyNet.UI.Loading;
+using MyNet.UI.Loading.Models;
 using MyNet.UI.Messages;
 using MyNet.UI.Notifications;
 using MyNet.UI.Services;
@@ -21,154 +24,154 @@ using MyNet.Utilities.Localization;
 using MyNet.Utilities.Messaging;
 using PropertyChanged;
 
-namespace MyNet.UI.ViewModels.Shell
+namespace MyNet.UI.ViewModels.Shell;
+
+public class MainWindowViewModelBase : LocalizableObject
 {
-    public class MainWindowViewModelBase : LocalizableObject
+    public bool IsDebug { get; }
+
+    public bool IsDark { get; set; }
+
+    public CultureInfo? SelectedCulture { get; set; }
+
+    public ObservableCollection<CultureInfo?> Cultures { get; } = [];
+
+    public TaskbarProgressState ProgressState { get; set; } = TaskbarProgressState.None;
+
+    public double ProgressValue { get; set; }
+
+    public ICommand ToggleNotificationsCommand { get; }
+
+    public ICommand ToggleFileMenuCommand { get; }
+
+    public ICommand CloseDrawersCommand { get; }
+
+    public ICommand ExitCommand { get; }
+
+    public ICommand IsDarkCommand { get; }
+
+    public ICommand IsLightCommand { get; }
+
+    public string ProductName { get; } = ApplicationHelper.GetProductName();
+
+    public virtual string Title => IsDebug ? $"{ProductName} [Debug]" : ProductName;
+
+    public NotificationsViewModel NotificationsViewModel { get; }
+
+    public IBusyService BusyService { get; }
+
+    public MainWindowViewModelBase(
+        INotificationsManager notificationsManager,
+        IAppCommandsService appCommandsService,
+        IBusyService mainBusyService)
     {
-        public bool IsDebug { get; }
-
-        public bool IsDark { get; set; }
-
-        public CultureInfo? SelectedCulture { get; set; }
-
-        public ObservableCollection<CultureInfo?> Cultures { get; private set; } = [];
-
-        public TaskbarProgressState ProgressState { get; set; } = TaskbarProgressState.None;
-
-        public double ProgressValue { get; set; }
-
-        public ICommand ToggleNotificationsCommand { get; }
-
-        public ICommand ToggleFileMenuCommand { get; }
-
-        public ICommand CloseDrawersCommand { get; }
-
-        public ICommand ExitCommand { get; }
-
-        public ICommand IsDarkCommand { get; }
-
-        public ICommand IsLightCommand { get; }
-
-        public string ProductName { get; } = ApplicationHelper.GetProductName();
-
-        public virtual string Title => IsDebug ? $"{ProductName} [Debug]" : ProductName;
-
-        public NotificationsViewModel NotificationsViewModel { get; }
-
-        public IBusyService BusyService { get; }
-
-        public MainWindowViewModelBase(
-            INotificationsManager notificationsManager,
-            IAppCommandsService appCommandsService,
-            IBusyService mainBusyService)
-        {
 #if DEBUG
-            IsDebug = true;
+        IsDebug = true;
 #endif
 
-            NotificationsViewModel = new(notificationsManager);
-            BusyService = mainBusyService;
+        NotificationsViewModel = new(notificationsManager);
+        BusyService = mainBusyService;
 
-            ToggleNotificationsCommand = CommandsManager.Create(() => Messenger.Default.Send(new UpdateNotificationsVisibilityRequestedMessage(VisibilityAction.Toggle)), () => !DialogManager.HasOpenedDialogs && NotificationsViewModel.Notifications.Count != 0);
-            ToggleFileMenuCommand = CommandsManager.Create(() => Messenger.Default.Send(new UpdateFileMenuVisibilityRequestedMessage(VisibilityAction.Toggle)), () => !DialogManager.HasOpenedDialogs);
-            CloseDrawersCommand = CommandsManager.Create(CloseDrawers, () => !DialogManager.HasOpenedDialogs);
-            IsDarkCommand = CommandsManager.Create(() => IsDark = true);
-            IsLightCommand = CommandsManager.Create(() => IsDark = false);
-            ExitCommand = CommandsManager.Create(appCommandsService.Exit, () => !DialogManager.HasOpenedDialogs);
+        ToggleNotificationsCommand = CommandsManager.Create(() => Messenger.Default.Send(new UpdateNotificationsVisibilityRequestedMessage(VisibilityAction.Toggle)), () => !DialogManager.HasOpenedDialogs && NotificationsViewModel.Notifications.Count != 0);
+        ToggleFileMenuCommand = CommandsManager.Create(() => Messenger.Default.Send(new UpdateFileMenuVisibilityRequestedMessage(VisibilityAction.Toggle)), () => !DialogManager.HasOpenedDialogs);
+        CloseDrawersCommand = CommandsManager.Create(CloseDrawers, () => !DialogManager.HasOpenedDialogs);
+        IsDarkCommand = CommandsManager.Create(() => IsDark = true);
+        IsLightCommand = CommandsManager.Create(() => IsDark = false);
+        ExitCommand = CommandsManager.Create(appCommandsService.Exit, () => !DialogManager.HasOpenedDialogs);
 
-            Disposables.AddRange(
-            [
-                mainBusyService.WhenPropertyChanged(x => x.IsBusy).Subscribe(x =>
+        Disposables.AddRange(
+        [
+            mainBusyService.WhenPropertyChanged(x => x.IsBusy).Subscribe(_ =>
+            {
+                var currentBusy = mainBusyService.GetCurrent<ProgressionBusy>();
+                var progressState = mainBusyService.IsBusy ? TaskbarProgressState.Indeterminate : ProgressState == TaskbarProgressState.Error ? TaskbarProgressState.Error : TaskbarProgressState.None;
+                double? progressValue = null;
+
+                if (currentBusy != null)
                 {
-                    var currentBusy = mainBusyService.GetCurrent<ProgressionBusy>();
-                    var progressState = mainBusyService.IsBusy ? TaskbarProgressState.Indeterminate : ProgressState == TaskbarProgressState.Error ? TaskbarProgressState.Error : TaskbarProgressState.None;
-                    double? progressValue = null;
+                    if (mainBusyService.IsBusy)
+                        currentBusy.PropertyChanged += OnProgressBusyPropertyChanged;
+                    else
+                        currentBusy.PropertyChanged -= OnProgressBusyPropertyChanged;
+                }
 
-                    if(currentBusy != null)
-                    {
-                        if(mainBusyService.IsBusy)
-                            currentBusy.PropertyChanged += OnProgressBusyPropertyChanged;
-                        else
-                            currentBusy.PropertyChanged -= OnProgressBusyPropertyChanged;
-                    }
+                RefreshTaskBarState(progressState, progressValue);
+            })
+        ]);
 
-                    RefreshTaskBarState(progressState, progressValue);
-                })
-            ]);
+        Messenger.Default.Register<UpdateTaskBarInfoMessage>(this, UpdateTaskBarInfo);
 
-            Messenger.Default.Register<UpdateTaskBarInfoMessage>(this, UpdateTaskBarInfo);
-
-            using (PropertyChangedSuspender.Suspend())
-            {
-                Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
-                IsDark = ThemeManager.CurrentTheme?.Base == ThemeBase.Dark;
-                UpdateSelectedCulture();
-            }
-
-            ThemeManager.ThemeChanged += ThemeService_ThemeChanged;
-        }
-
-        [SuppressPropertyChangedWarnings]
-        private void OnProgressBusyPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        using (PropertyChangedSuspender.Suspend())
         {
-            var progressionBusy = (ProgressionBusy?)sender;
-
-            if (progressionBusy is null) return;
-
-            switch (e.PropertyName)
-            {
-                case nameof(ProgressionBusy.Value):
-                    RefreshTaskBarState(TaskbarProgressState.Normal, progressionBusy.Value);
-                    break;
-
-                case nameof(ProgressionBusy.IsCancelling):
-                    RefreshTaskBarState(TaskbarProgressState.Paused, progressionBusy.Value);
-                    break;
-            }
+            Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
+            IsDark = ThemeManager.CurrentTheme?.Base == ThemeBase.Dark;
+            UpdateSelectedCulture();
         }
 
-        protected virtual void CloseDrawers()
+        ThemeManager.ThemeChanged += ThemeService_ThemeChanged;
+    }
+
+    [SuppressPropertyChangedWarnings]
+    private void OnProgressBusyPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        var progressionBusy = (ProgressionBusy?)sender;
+
+        if (progressionBusy is null) return;
+
+        switch (e.PropertyName)
         {
-            Messenger.Default.Send(new UpdateNotificationsVisibilityRequestedMessage(VisibilityAction.Hide));
-            Messenger.Default.Send(new UpdateFileMenuVisibilityRequestedMessage(VisibilityAction.Hide));
+            case nameof(ProgressionBusy.Value):
+                RefreshTaskBarState(TaskbarProgressState.Normal, progressionBusy.Value);
+                break;
+
+            case nameof(ProgressionBusy.IsCancelling):
+                RefreshTaskBarState(TaskbarProgressState.Paused, progressionBusy.Value);
+                break;
         }
+    }
 
-        #region TaskBar management
+    protected virtual void CloseDrawers()
+    {
+        Messenger.Default.Send(new UpdateNotificationsVisibilityRequestedMessage(VisibilityAction.Hide));
+        Messenger.Default.Send(new UpdateFileMenuVisibilityRequestedMessage(VisibilityAction.Hide));
+    }
 
-        private void UpdateTaskBarInfo(UpdateTaskBarInfoMessage obj) => RefreshTaskBarState(obj.ProgressState, obj.ProgressValue);
+    #region TaskBar management
 
-        private void RefreshTaskBarState(TaskbarProgressState state, double? progressValue = null)
-        {
-            ProgressState = state;
-            if (progressValue.HasValue) ProgressValue = progressValue.Value;
-        }
+    private void UpdateTaskBarInfo(UpdateTaskBarInfoMessage obj) => RefreshTaskBarState(obj.ProgressState, obj.ProgressValue);
 
-        #endregion
+    private void RefreshTaskBarState(TaskbarProgressState state, double? progressValue = null)
+    {
+        ProgressState = state;
+        if (progressValue.HasValue) ProgressValue = progressValue.Value;
+    }
 
-        #region Culture management
+    #endregion
 
-        private CultureInfo? GetSelectedCulture(CultureInfo culture) => Cultures.Contains(culture) ? culture : culture.Parent is not null ? GetSelectedCulture(culture.Parent) : null;
+    #region Culture management
 
-        private void UpdateSelectedCulture() => SelectedCulture = GetSelectedCulture(GlobalizationService.Current.Culture);
+    // ReSharper disable once TailRecursiveCall
+    private CultureInfo? GetSelectedCulture(CultureInfo culture) => Cultures.Contains(culture) ? culture : GetSelectedCulture(culture.Parent);
 
-        protected virtual void OnSelectedCultureChanged() => GlobalizationService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
+    private void UpdateSelectedCulture() => SelectedCulture = GetSelectedCulture(GlobalizationService.Current.Culture);
 
-        #endregion
+    protected virtual void OnSelectedCultureChanged() => GlobalizationService.Current.SetCulture(SelectedCulture?.ToString() ?? CultureInfo.InstalledUICulture.ToString());
 
-        #region Theme management
+    #endregion
 
-        private void ThemeService_ThemeChanged(object? sender, ThemeChangedEventArgs e) => IsDark = e.CurrentTheme?.Base == ThemeBase.Dark;
+    #region Theme management
 
-        protected void OnIsDarkChanged() => ThemeManager.ApplyBase(IsDark ? ThemeBase.Dark : ThemeBase.Light);
+    private void ThemeService_ThemeChanged(object? sender, ThemeChangedEventArgs e) => IsDark = e.CurrentTheme.Base == ThemeBase.Dark;
 
-        #endregion
+    protected void OnIsDarkChanged() => ThemeManager.ApplyBase(IsDark ? ThemeBase.Dark : ThemeBase.Light);
 
-        protected override void Cleanup()
-        {
-            Messenger.Default.Unregister(this);
-            NotificationsViewModel.Dispose();
-            ThemeManager.ThemeChanged -= ThemeService_ThemeChanged;
-            base.Cleanup();
-        }
+    #endregion
+
+    protected override void Cleanup()
+    {
+        Messenger.Default.Unregister(this);
+        NotificationsViewModel.Dispose();
+        ThemeManager.ThemeChanged -= ThemeService_ThemeChanged;
+        base.Cleanup();
     }
 }

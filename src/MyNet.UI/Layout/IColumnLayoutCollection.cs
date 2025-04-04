@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IColumnLayoutCollection.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 
-namespace MyNet.UI.Layout
+namespace MyNet.UI.Layout;
+
+public interface IColumnLayoutCollection : ICollection<IColumnLayout>
 {
-    public interface IColumnLayoutCollection : ICollection<IColumnLayout>
-    {
-        event EventHandler? RefreshRequested;
+    event EventHandler? RefreshRequested;
 
-        void Reset();
+    void Reset();
 
-        void Refresh();
+    void Refresh();
 
-        void SetDisplayedColumns(IEnumerable<string> columns);
-    }
+    void SetDisplayedColumns(IEnumerable<string> columns);
 }

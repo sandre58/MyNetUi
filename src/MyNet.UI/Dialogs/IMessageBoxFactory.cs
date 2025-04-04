@@ -1,13 +1,15 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IMessageBoxFactory.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.UI.Dialogs.Models;
 using MyNet.UI.Dialogs.Settings;
 
-namespace MyNet.UI.Dialogs
+namespace MyNet.UI.Dialogs;
+
+public interface IMessageBoxFactory
 {
-    public interface IMessageBoxFactory
-    {
-        IMessageBox Create(string message, string? title, MessageSeverity severity, MessageBoxResultOption buttons, MessageBoxResult defaultResut);
-    }
+    IMessageBox Create(string message, string? title, MessageSeverity severity, MessageBoxResultOption buttons, MessageBoxResult defaultResut);
 }

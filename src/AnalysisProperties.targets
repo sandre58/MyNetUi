@@ -1,0 +1,33 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- Enable all rules -->
+    <PropertyGroup>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)MyNet.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <!-- Ignore specific SDK warnings -->
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);SYSLIB0013;SYSLIB1054;NETSDK1206</NoWarn>
+        <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    </PropertyGroup>
+
+    <!-- Analysis configuration files -->
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)\.editorconfig" Link=".editorconfig" Visible="False" />
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)\.stylecop.json" Link=".stylecop.json" Visible="False" />
+    </ItemGroup>
+
+    <!-- Analysis Nuget -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.0-preview.25081.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

@@ -1,16 +1,18 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="UpdateFileMenuContentVisibilityRequestedMessage.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Messages
+namespace MyNet.UI.Messages;
+
+public class UpdateFileMenuContentVisibilityRequestedMessage
 {
-    public class UpdateFileMenuContentVisibilityRequestedMessage
-    {
-        public Type ContentType { get; }
+    public Type ContentType { get; }
 
-        public VisibilityAction VisibilityAction { get; }
+    public VisibilityAction VisibilityAction { get; }
 
-        public UpdateFileMenuContentVisibilityRequestedMessage(Type contentType, VisibilityAction visibilityAction) => (ContentType, VisibilityAction) = (contentType, visibilityAction);
-    }
+    public UpdateFileMenuContentVisibilityRequestedMessage(Type contentType, VisibilityAction visibilityAction) => (ContentType, VisibilityAction) = (contentType, visibilityAction);
 }

@@ -1,13 +1,15 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FiltersChangedEventArgs.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 
-namespace MyNet.UI.ViewModels.List.Filtering
+namespace MyNet.UI.ViewModels.List.Filtering;
+
+public class FiltersChangedEventArgs(IEnumerable<ICompositeFilterViewModel> filters) : EventArgs
 {
-    public class FiltersChangedEventArgs(IEnumerable<ICompositeFilterViewModel> filters) : EventArgs
-    {
-        public IEnumerable<ICompositeFilterViewModel> Filters { get; } = filters;
-    }
+    public IEnumerable<ICompositeFilterViewModel> Filters { get; } = filters;
 }

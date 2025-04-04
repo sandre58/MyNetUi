@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="GroupingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections;
@@ -7,7 +10,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
-using DynamicData;
 using DynamicData.Binding;
 using DynamicData.Kernel;
 using MyNet.DynamicData.Extensions;
@@ -18,132 +20,132 @@ using MyNet.Utilities;
 using MyNet.Utilities.Deferring;
 using PropertyChanged;
 
-namespace MyNet.UI.ViewModels.List.Grouping
+namespace MyNet.UI.ViewModels.List.Grouping;
+
+[CanBeValidated(false)]
+[CanSetIsModified(false)]
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "It's a viewModel")]
+public class GroupingViewModel : EditableObject, IGroupingViewModel, ICollection<IGroupingPropertyViewModel>, INotifyCollectionChanged
 {
+    private readonly IReadOnlyCollection<string> _defaultGroupingProperties;
+    private readonly Deferrer _groupingChangedDeferrer;
 
-    [CanBeValidated(false)]
-    [CanSetIsModified(false)]
-    public class GroupingViewModel : EditableObject, IGroupingViewModel, ICollection<IGroupingPropertyViewModel>, INotifyCollectionChanged
+    protected GroupingPropertiesCollection GroupingProperties { get; } = [];
+
+    public IGroupingPropertyViewModel? ActiveGroupingProperty => GroupingProperties.OrderBy(x => x.Order).FirstOrDefault(x => x.IsEnabled);
+
+    public int ActiveCount => GroupingProperties.Count(x => x.IsEnabled);
+
+    public ICommand AddCommand { get; }
+
+    public ICommand ApplyCommand { get; }
+
+    public ICommand RemoveCommand { get; }
+
+    public ICommand ResetCommand { get; }
+
+    public ICommand ClearCommand { get; }
+
+    public event EventHandler<GroupingChangedEventArgs>? GroupingChanged;
+
+    public GroupingViewModel()
+        : this([]) { }
+
+    public GroupingViewModel(IEnumerable<string> defaultProperties)
     {
-        private readonly IReadOnlyCollection<string> _defaultGroupingProperties;
-        private readonly Deferrer _groupingChangedDeferrer;
+        _groupingChangedDeferrer = new Deferrer(OnSortChanged);
+        _defaultGroupingProperties = defaultProperties.AsList().AsReadOnly();
 
-        protected GroupingPropertiesCollection GroupingProperties { get; } = [];
+        ClearCommand = CommandsManager.Create(Clear);
+        AddCommand = CommandsManager.CreateNotNull<string>(x => Add(x));
+        ApplyCommand = CommandsManager.CreateNotNull<string>(Set);
+        RemoveCommand = CommandsManager.CreateNotNull<string>(Remove);
+        ResetCommand = CommandsManager.Create(Reset);
 
-        public IGroupingPropertyViewModel? ActiveGroupingProperty => GroupingProperties.OrderBy(x => x.Order).FirstOrDefault(x => x.IsEnabled);
+        Reset();
 
-        public int ActiveCount => GroupingProperties.Count(x => x.IsEnabled);
+        Disposables.Add(GroupingProperties.ToObservableChangeSet(x => x.PropertyName).SubscribeAll(() => _groupingChangedDeferrer.DeferOrExecute()));
 
-        public ICommand AddCommand { get; }
+        GroupingProperties.CollectionChanged += HandleCollectionChanged;
+    }
 
-        public ICommand ApplyCommand { get; }
+    protected IDisposable DeferChanged() => _groupingChangedDeferrer.Defer();
 
-        public ICommand RemoveCommand { get; }
+    protected virtual IGroupingPropertyViewModel CreateGroupingProperty(string propertyName, string? sortingPropertyName = null, int? order = null)
+        => new GroupingPropertyViewModel(propertyName, propertyName, sortingPropertyName, order ?? ActiveCount + 1) { IsEnabled = true };
 
-        public ICommand ResetCommand { get; }
+    public virtual void Add(string propertyName, string? sortingPropertyName = null, int? order = null) => GroupingProperties.TryAdd(CreateGroupingProperty(propertyName, sortingPropertyName, order));
 
-        public ICommand ClearCommand { get; }
+    public virtual void Remove(string propertyName) => GroupingProperties.Remove(propertyName);
 
-        public event EventHandler<GroupingChangedEventArgs>? GroupingChanged;
-
-        public GroupingViewModel() : this([]) { }
-
-        public GroupingViewModel(IEnumerable<string> defaultProperties)
+    public void Set(string propertyName)
+    {
+        using (_groupingChangedDeferrer.Defer())
         {
-            _groupingChangedDeferrer = new Deferrer(OnSortChanged);
-            _defaultGroupingProperties = defaultProperties.AsList().AsReadOnly();
-
-            ClearCommand = CommandsManager.Create(Clear);
-            AddCommand = CommandsManager.CreateNotNull<string>(x => Add(x));
-            ApplyCommand = CommandsManager.CreateNotNull<string>(Set);
-            RemoveCommand = CommandsManager.CreateNotNull<string>(Remove);
-            ResetCommand = CommandsManager.Create(Reset);
-
-            Reset();
-
-            Disposables.Add(GroupingProperties.ToObservableChangeSet(x => x.PropertyName).SubscribeAll(() => _groupingChangedDeferrer.DeferOrExecute()));
-
-            GroupingProperties.CollectionChanged += new NotifyCollectionChangedEventHandler(HandleCollectionChanged);
+            Clear();
+            Add(propertyName);
         }
+    }
 
-        protected IDisposable DeferChanged() => _groupingChangedDeferrer.Defer();
+    public virtual void Set(IEnumerable<IGroupingPropertyViewModel> properties)
+    {
+        using (_groupingChangedDeferrer.Defer())
+            GroupingProperties.Set(properties);
+    }
 
-        protected virtual IGroupingPropertyViewModel CreateGroupingProperty(string propertyName, string? sortingPropertyName = null, int? order = null)
-            => new GroupingPropertyViewModel(propertyName, propertyName, sortingPropertyName, order ?? ActiveCount + 1) { IsEnabled = true };
+    public virtual void Clear() => GroupingProperties.Clear();
 
-        public virtual void Add(string propertyName, string? sortingPropertyName = null, int? order = null) => GroupingProperties.TryAdd(CreateGroupingProperty(propertyName, sortingPropertyName, order));
+    public void Reset() => Set(_defaultGroupingProperties.Select((x, index) => CreateGroupingProperty(x, order: index + 1)));
 
-        public virtual void Remove(string propertyName) => GroupingProperties.Remove(propertyName);
+    [SuppressPropertyChangedWarnings]
+    protected virtual void OnSortChanged()
+    {
+        OnPropertyChanged(nameof(Count));
+        OnPropertyChanged(nameof(ActiveCount));
+        OnPropertyChanged(nameof(ActiveGroupingProperty));
+        GroupingChanged?.Invoke(this, new GroupingChangedEventArgs(GroupingProperties));
+    }
 
-        public void Set(string propertyName)
-        {
-            using (_groupingChangedDeferrer.Defer())
-            {
-                Clear();
-                Add(propertyName);
-            }
-        }
+    #region ICollection
 
-        public virtual void Set(IEnumerable<IGroupingPropertyViewModel> properties)
-        {
-            using (_groupingChangedDeferrer.Defer())
-                GroupingProperties.Set(properties);
-        }
+    public int Count => GroupingProperties.Count;
 
-        public virtual void Clear() => GroupingProperties.Clear();
+    public virtual bool IsReadOnly => false;
 
-        public void Reset() => Set(_defaultGroupingProperties.Select((x, index) => CreateGroupingProperty(x, order: index + 1)));
+    public virtual void Add(IGroupingPropertyViewModel item) => IsReadOnly.IfFalse(() => GroupingProperties.Add(item));
 
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnSortChanged()
-        {
-            RaisePropertyChanged(nameof(Count));
-            RaisePropertyChanged(nameof(ActiveCount));
-            RaisePropertyChanged(nameof(ActiveGroupingProperty));
-            GroupingChanged?.Invoke(this, new GroupingChangedEventArgs(GroupingProperties));
-        }
+    public virtual bool Remove(IGroupingPropertyViewModel item) => !IsReadOnly && GroupingProperties.Remove(item);
 
-        #region ICollection
+    public bool Contains(IGroupingPropertyViewModel item) => GroupingProperties.Contains(item);
 
-        public int Count => GroupingProperties.Count;
+    public void CopyTo(IGroupingPropertyViewModel[] array, int arrayIndex) => GroupingProperties.CopyTo(array, arrayIndex);
 
-        public virtual bool IsReadOnly => false;
+    public IEnumerator<IGroupingPropertyViewModel> GetEnumerator() => GroupingProperties.GetEnumerator();
 
-        public virtual void Add(IGroupingPropertyViewModel item) => IsReadOnly.IfFalse(() => GroupingProperties.Add(item));
+    IEnumerator IEnumerable.GetEnumerator() => GroupingProperties.GetEnumerator();
 
-        public virtual bool Remove(IGroupingPropertyViewModel item) => !IsReadOnly && GroupingProperties.Remove(item);
+    #endregion
 
-        public bool Contains(IGroupingPropertyViewModel item) => GroupingProperties.Contains(item);
+    #region INotifyCollectionChanged
 
-        public void CopyTo(IGroupingPropertyViewModel[] array, int arrayIndex) => GroupingProperties.CopyTo(array, arrayIndex);
+    event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
+    {
+        add => CollectionChanged += value;
+        remove => CollectionChanged -= value;
+    }
 
-        public IEnumerator<IGroupingPropertyViewModel> GetEnumerator() => GroupingProperties.GetEnumerator();
+    protected event NotifyCollectionChangedEventHandler? CollectionChanged;
 
-        IEnumerator IEnumerable.GetEnumerator() => GroupingProperties.GetEnumerator();
+    [SuppressPropertyChangedWarnings]
+    protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged?.Invoke(this, args);
 
-        #endregion
+    private void HandleCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => OnCollectionChanged(e);
 
-        #region INotifyCollectionChanged
+    #endregion INotifyCollectionChanged
 
-        event NotifyCollectionChangedEventHandler? INotifyCollectionChanged.CollectionChanged
-        {
-            add => CollectionChanged += value;
-            remove => CollectionChanged -= value;
-        }
-
-        protected event NotifyCollectionChangedEventHandler? CollectionChanged;
-
-        [SuppressPropertyChangedWarnings]
-        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged?.Invoke(this, args);
-
-        private void HandleCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => OnCollectionChanged(e);
-
-        #endregion INotifyCollectionChanged
-
-        protected override void Cleanup()
-        {
-            GroupingProperties.CollectionChanged -= new NotifyCollectionChangedEventHandler(HandleCollectionChanged);
-            base.Cleanup();
-        }
+    protected override void Cleanup()
+    {
+        GroupingProperties.CollectionChanged -= HandleCollectionChanged;
+        base.Cleanup();
     }
 }

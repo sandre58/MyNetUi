@@ -1,31 +1,32 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IToasterService.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using MyNet.UI.Notifications;
 using MyNet.UI.Toasting.Settings;
 
-namespace MyNet.UI.Toasting
+namespace MyNet.UI.Toasting;
+
+/// <summary>
+/// Interface abstracting the interaction with toast notification.
+/// </summary>
+public interface IToasterService
 {
     /// <summary>
-    /// Interface abstracting the interaction with toast notification.
+    /// Displays a modal dialog of a type that is determined by the dialog type locator.
     /// </summary>
-    public interface IToasterService
-    {
-        /// <summary>
-        /// Displays a modal dialog of a type that is determined by the dialog type locator.
-        /// </summary>
-        void Show(INotification notification, ToastSettings settings, bool isUnique = false, Action<INotification>? onClick = null, Action? onClose = null);
+    void Show(INotification notification, ToastSettings settings, bool isUnique = false, Action<INotification>? onClick = null, Action? onClose = null);
 
-        /// <summary>
-        /// Hide all messages.
-        /// </summary>
-        void Clear();
+    /// <summary>
+    /// Hide all messages.
+    /// </summary>
+    void Clear();
 
-        /// <summary>
-        /// Hide a message if is displayed.
-        /// </summary>
-        /// <param name="notification"></param>
-        void Hide(INotification notification);
-    }
+    /// <summary>
+    /// Hide a message if is displayed.
+    /// </summary>
+    void Hide(INotification notification);
 }

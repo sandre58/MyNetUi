@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ISortingPropertyViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels.List.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting;
+
+public interface ISortingPropertyViewModel : INotifyPropertyChanged, ICloneable
 {
-    public interface ISortingPropertyViewModel : INotifyPropertyChanged, ICloneable
-    {
-        string PropertyName { get; }
+    string PropertyName { get; }
 
-        ListSortDirection Direction { get; set; }
+    ListSortDirection Direction { get; set; }
 
-        bool IsEnabled { get; set; }
+    bool IsEnabled { get; set; }
 
-        int Order { get; set; }
-    }
+    int Order { get; set; }
 }

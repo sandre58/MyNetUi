@@ -1,17 +1,19 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ISortingViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Windows.Input;
 
-namespace MyNet.UI.ViewModels.List.Sorting
+namespace MyNet.UI.ViewModels.List.Sorting;
+
+public interface ISortingViewModel
 {
-    public interface ISortingViewModel
-    {
-        ICommand ApplyCommand { get; }
+    ICommand ApplyCommand { get; }
 
-        void Reset();
+    void Reset();
 
-        event EventHandler<SortingChangedEventArgs>? SortingChanged;
-    }
+    event EventHandler<SortingChangedEventArgs>? SortingChanged;
 }

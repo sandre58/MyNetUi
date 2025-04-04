@@ -1,21 +1,23 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="NotificationSeverity.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Notifications
+namespace MyNet.UI.Notifications;
+
+/// <summary>
+/// Type of notification.
+/// </summary>
+public enum NotificationSeverity
 {
-    /// <summary>
-    /// Type of notification.
-    /// </summary>
-    public enum NotificationSeverity
-    {
-        None,
+    None,
 
-        Information,
+    Information,
 
-        Success,
+    Success,
 
-        Warning,
+    Warning,
 
-        Error,
-    }
+    Error
 }

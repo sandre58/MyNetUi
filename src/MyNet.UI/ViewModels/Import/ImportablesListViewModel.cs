@@ -1,10 +1,12 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ImportablesListViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reactive.Linq;
 using System.Windows.Input;
 using DynamicData;
 using MyNet.Observable.Attributes;
@@ -15,43 +17,44 @@ using MyNet.UI.Threading;
 using MyNet.UI.ViewModels.List;
 using MyNet.Utilities.Providers;
 
-namespace MyNet.UI.ViewModels.Import
+namespace MyNet.UI.ViewModels.Import;
+
+[CanBeValidatedForDeclaredClassOnly(false)]
+[CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
+public class ImportablesListViewModel<T> : SelectionListViewModel<T>
+    where T : ImportableViewModel
 {
-    [CanBeValidatedForDeclaredClassOnly(false)]
-    [CanSetIsModifiedAttributeForDeclaredClassOnly(false)]
-    public class ImportablesListViewModel<T> : SelectionListViewModel<T> where T : notnull, ImportableViewModel
+    private readonly ReadOnlyObservableCollection<T> _importItems;
+
+    public ImportablesListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+        : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.UiOrCurrent), parametersProvider) { }
+
+    public ImportablesListViewModel(IItemsProvider<T> source, bool loadItems = true, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+        : this(new SelectableCollection<T>(source, loadItems, selectionMode: selectionMode, scheduler: Scheduler.UiOrCurrent), parametersProvider) { }
+
+    public ImportablesListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+        : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.UiOrCurrent), parametersProvider) { }
+
+    public ImportablesListViewModel(IObservable<IChangeSet<T>> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+        : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.UiOrCurrent), parametersProvider) { }
+
+    public ImportablesListViewModel(IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
+        : this(new SelectableCollection<T>(selectionMode: selectionMode, scheduler: Scheduler.UiOrCurrent), parametersProvider) { }
+
+    protected ImportablesListViewModel(
+        SelectableCollection<T> collection,
+        IListParametersProvider? parametersProvider = null)
+        : base(collection, parametersProvider)
     {
-        private readonly ReadOnlyObservableCollection<T> _importItems;
+        ImportSelectionCommand = CommandsManager.Create(() => ApplyOnSelection(y => y.Import = true));
+        DoNotImportSelectionCommand = CommandsManager.Create(() => ApplyOnSelection(y => y.Import = false));
 
-        public ImportablesListViewModel(ICollection<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
-
-        public ImportablesListViewModel(IItemsProvider<T> source, bool loadItems = true, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(source, loadItems, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
-
-        public ImportablesListViewModel(ISourceProvider<T> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
-
-        public ImportablesListViewModel(IObservable<IChangeSet<T>> source, IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(source, selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
-
-        public ImportablesListViewModel(IListParametersProvider? parametersProvider = null, SelectionMode selectionMode = SelectionMode.Multiple)
-            : this(new SelectableCollection<T>(selectionMode: selectionMode, scheduler: Scheduler.GetUIOrCurrent()), parametersProvider) { }
-
-        protected ImportablesListViewModel(
-            SelectableCollection<T> collection,
-            IListParametersProvider? parametersProvider = null) : base(collection, parametersProvider)
-        {
-            ImportSelectionCommand = CommandsManager.Create(() => ApplyOnSelection(y => y.Import = true));
-            DoNotImportSelectionCommand = CommandsManager.Create(() => ApplyOnSelection(y => y.Import = false));
-
-            Disposables.Add(Collection.ConnectSource().AutoRefresh(x => x.Import).Filter(x => x.Import).Bind(out _importItems).Subscribe());
-        }
-
-        public ReadOnlyObservableCollection<T> ImportItems => _importItems;
-
-        public ICommand ImportSelectionCommand { get; }
-
-        public ICommand DoNotImportSelectionCommand { get; }
+        Disposables.Add(Collection.ConnectSource().AutoRefresh(x => x.Import).Filter(x => x.Import).Bind(out _importItems).Subscribe());
     }
+
+    public ReadOnlyObservableCollection<T> ImportItems => _importItems;
+
+    public ICommand ImportSelectionCommand { get; }
+
+    public ICommand DoNotImportSelectionCommand { get; }
 }

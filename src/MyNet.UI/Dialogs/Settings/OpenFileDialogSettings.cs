@@ -1,10 +1,12 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="OpenFileDialogSettings.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Dialogs.Settings
+namespace MyNet.UI.Dialogs.Settings;
+
+public class OpenFileDialogSettings : FileDialogSettings
 {
-    public class OpenFileDialogSettings : FileDialogSettings
-    {
-        public bool Multiselect { get; set; }
-    }
+    public bool Multiselect { get; set; }
 }

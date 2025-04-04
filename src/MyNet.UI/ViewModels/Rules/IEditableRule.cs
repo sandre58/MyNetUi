@@ -1,14 +1,16 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IEditableRule.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.ComponentModel;
 
-namespace MyNet.UI.ViewModels.Rules
-{
-    public interface IEditableRule : INotifyPropertyChanged
-    {
-        public bool CanRemove { get; }
+namespace MyNet.UI.ViewModels.Rules;
 
-        public bool CanMove { get; }
-    }
+public interface IEditableRule : INotifyPropertyChanged
+{
+    public bool CanRemove { get; }
+
+    public bool CanMove { get; }
 }

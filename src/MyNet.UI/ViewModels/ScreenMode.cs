@@ -1,31 +1,33 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ScreenMode.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.ViewModels
+namespace MyNet.UI.ViewModels;
+
+/// <summary>
+/// Enum des états possible d'un viewModel.
+/// </summary>
+public enum ScreenMode
 {
     /// <summary>
-    /// Enum des états possible d'un viewModel
+    /// Default.
     /// </summary>
-    public enum ScreenMode
-    {
-        /// <summary>
-        /// Default
-        /// </summary>
-        Unknown,
+    Unknown,
 
-        /// <summary>
-        /// Mode Creation
-        /// </summary>
-        Creation,
+    /// <summary>
+    /// Mode Creation.
+    /// </summary>
+    Creation,
 
-        /// <summary>
-        /// Mode Edition
-        /// </summary>
-        Edition,
+    /// <summary>
+    /// Mode Edition.
+    /// </summary>
+    Edition,
 
-        /// <summary>
-        /// Mode Read Only
-        /// </summary>
-        Read
-    }
+    /// <summary>
+    /// Mode Read Only.
+    /// </summary>
+    Read
 }

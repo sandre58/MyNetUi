@@ -1,16 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="UiObservableCollection.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
 
-namespace MyNet.UI.Collections
+namespace MyNet.UI.Collections;
+
+public class UiObservableCollection<T> : ScheduleObservableCollection<T>
 {
-    public class UiObservableCollection<T> : ScheduleObservableCollection<T>
-    {
-        public UiObservableCollection() : base(Threading.Scheduler.GetUIOrCurrent) { }
+    public UiObservableCollection()
+        : base(() => Threading.Scheduler.UiOrCurrent) { }
 
-        public UiObservableCollection(List<T> list) : base(list, Threading.Scheduler.GetUIOrCurrent) { }
+    public UiObservableCollection(IList<T> list)
+        : base(list, () => Threading.Scheduler.UiOrCurrent) { }
 
-        public UiObservableCollection(IEnumerable<T> collection) : base(collection, Threading.Scheduler.GetUIOrCurrent) { }
-    }
+    public UiObservableCollection(IEnumerable<T> collection)
+        : base(collection, () => Threading.Scheduler.UiOrCurrent) { }
 }

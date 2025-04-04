@@ -1,10 +1,12 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IsTransientAttribute.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Attributes
-{
-    [AttributeUsage(AttributeTargets.Class)]
-    public class IsTransientAttribute : Attribute { }
-}
+namespace MyNet.UI.Attributes;
+
+[AttributeUsage(AttributeTargets.Class)]
+public sealed class IsTransientAttribute : Attribute;

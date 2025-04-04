@@ -1,23 +1,25 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="MessageSeverity.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Dialogs
+namespace MyNet.UI.Dialogs;
+
+/// <summary>
+/// Type of notification.
+/// </summary>
+public enum MessageSeverity
 {
-    /// <summary>
-    /// Type of notification.
-    /// </summary>
-    public enum MessageSeverity
-    {
-        Custom,
+    Custom,
 
-        Error,
+    Error,
 
-        Success,
+    Success,
 
-        Warning,
+    Warning,
 
-        Information,
+    Information,
 
-        Question
-    }
+    Question
 }

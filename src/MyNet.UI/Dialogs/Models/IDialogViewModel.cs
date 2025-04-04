@@ -1,17 +1,18 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IDialogViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Dialogs.Models
+namespace MyNet.UI.Dialogs.Models;
+
+public interface IDialogViewModel : IClosable
 {
-    public interface IDialogViewModel : IClosable
-    {
+    string? Title { get; set; }
 
-        string? Title { get; set; }
+    bool? DialogResult { get; }
 
-        bool? DialogResult { get; }
+    bool LoadWhenDialogOpening { get; }
 
-        bool LoadWhenDialogOpening { get; }
-
-        void Load();
-    }
+    void Load();
 }

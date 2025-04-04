@@ -1,21 +1,19 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="EnumValueFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Linq;
 using MyNet.Observable.Translatables;
 
-namespace MyNet.UI.ViewModels.List.Filtering.Filters
+namespace MyNet.UI.ViewModels.List.Filtering.Filters;
+
+public class EnumValueFilterViewModel<T>(string propertyName) : EnumValueFilterViewModel(propertyName, typeof(T))
+    where T : Enum
 {
-    public class EnumValueFilterViewModel<T> : EnumValueFilterViewModel where T : Enum
-    {
-        public EnumValueFilterViewModel(string propertyName) : base(propertyName, typeof(T)) { }
-
-        protected override FilterViewModel CreateCloneInstance() => new EnumValueFilterViewModel<T>(PropertyName);
-    }
-
-    public class EnumValueFilterViewModel : SelectedValueFilterViewModel<Enum, TranslatableEnum<Enum>>
-    {
-        public EnumValueFilterViewModel(string propertyName, Type type) : base(propertyName, Enum.GetValues(type).Cast<object>().Select(x => new TranslatableEnum((Enum)x))) { }
-    }
+    protected override FilterViewModel CreateCloneInstance() => new EnumValueFilterViewModel<T>(PropertyName);
 }
+
+public class EnumValueFilterViewModel(string propertyName, Type type) : SelectedValueFilterViewModel<Enum, EnumTranslatable<Enum>>(propertyName, Enum.GetValues(type).Cast<object>().Select(x => new EnumTranslatable((Enum)x)));

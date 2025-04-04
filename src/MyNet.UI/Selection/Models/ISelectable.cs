@@ -1,28 +1,18 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ISelectable.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Selection.Models
+namespace MyNet.UI.Selection.Models;
+
+public interface ISelectable
 {
-    /// <summary>
-    /// Services to allow changes to an entity to be selectable.
-    /// </summary>
-    public interface ISelectable
-    {
-        /// <summary>
-        /// Gets or sets the selectable value.
-        /// </summary>
-        bool IsSelectable { get; set; }
+    bool IsSelectable { get; set; }
 
-        /// <summary>
-        /// Gets or sets the selected Value.
-        /// </summary>
-        bool IsSelected { get; set; }
+    bool IsSelected { get; set; }
 
-        /// <summary>
-        /// Calls when selection Changed.
-        /// </summary>
-        event EventHandler SelectedChanged;
-    }
+    event EventHandler SelectedChanged;
 }

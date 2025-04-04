@@ -1,31 +1,30 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="BooleanFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.ViewModels.List.Filtering.Filters
+namespace MyNet.UI.ViewModels.List.Filtering.Filters;
+
+public class BooleanFilterViewModel(string propertyName) : FilterViewModel(propertyName)
 {
-    public class BooleanFilterViewModel : FilterViewModel
+    public bool? Value { get; set; }
+
+    public bool AllowNullValue { get; set; }
+
+    protected override bool IsMatchProperty(object? toCompare) => (bool?)toCompare == Value;
+
+    public override bool IsEmpty() => Value is null;
+
+    public override void Reset() => Value = AllowNullValue ? null : false;
+
+    public override void SetFrom(object? from)
     {
-        public BooleanFilterViewModel(string propertyName) : base(propertyName) { }
-
-        public bool? Value { get; set; }
-
-        public bool AllowNullValue { get; set; }
-
-        protected override bool IsMatchProperty(object toCompare) => (bool)toCompare == Value;
-
-        public override bool IsEmpty() => Value is null;
-
-        public override void Reset() => Value = AllowNullValue ? null : false;
-
-        public override void SetFrom(object? from)
-        {
-            if (from is BooleanFilterViewModel other)
-            {
-                AllowNullValue = other.AllowNullValue;
-                Value = other.Value;
-            }
-        }
-
-        protected override FilterViewModel CreateCloneInstance() => new BooleanFilterViewModel(PropertyName) { AllowNullValue = AllowNullValue };
+        if (from is not BooleanFilterViewModel other)
+            return;
+        AllowNullValue = other.AllowNullValue;
+        Value = other.Value;
     }
+
+    protected override FilterViewModel CreateCloneInstance() => new BooleanFilterViewModel(PropertyName) { AllowNullValue = AllowNullValue };
 }

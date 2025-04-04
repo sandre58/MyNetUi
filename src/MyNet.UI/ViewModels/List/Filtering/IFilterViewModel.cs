@@ -1,17 +1,19 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.ComponentModel;
 using MyNet.Observable.Collections.Filters;
 using MyNet.Utilities;
 
-namespace MyNet.UI.ViewModels.List.Filtering
-{
-    public interface IFilterViewModel : IFilter, INotifyPropertyChanged, ICloneable, ISettable, ISimilar<IFilterViewModel>
-    {
-        void Reset();
+namespace MyNet.UI.ViewModels.List.Filtering;
 
-        bool IsEmpty();
-    }
+public interface IFilterViewModel : IFilter, INotifyPropertyChanged, ICloneable, ISettable, ISimilar<IFilterViewModel>
+{
+    void Reset();
+
+    bool IsEmpty();
 }

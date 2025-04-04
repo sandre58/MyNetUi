@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IListViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections;
@@ -11,64 +14,60 @@ using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Sorting;
 using MyNet.Utilities;
 
-namespace MyNet.UI.ViewModels
+namespace MyNet.UI.ViewModels;
+
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "It's a viewModel")]
+public interface IListViewModel : IDisposable, ICollection
 {
-    public interface IListViewModel : IDisposable, ICollection
-    {
-        int SourceCount { get; }
+    int SourceCount { get; }
 
-        IFiltersViewModel Filters { get; }
+    IFiltersViewModel Filters { get; }
 
-        ICollection CurrentFilters { get; }
+    ICollection CurrentFilters { get; }
 
-        bool CanFilter { get; }
+    bool CanFilter { get; }
 
-        bool IsFiltered { get; }
+    bool IsFiltered { get; }
 
-        ISortingViewModel Sorting { get; }
+    ISortingViewModel Sorting { get; }
 
-        bool CanSort { get; }
+    bool CanSort { get; }
 
-        bool IsSorted { get; }
+    bool IsSorted { get; }
 
-        ICollection CurrentSorting { get; }
+    ICollection CurrentSorting { get; }
 
-        IGroupingViewModel Grouping { get; }
+    IGroupingViewModel Grouping { get; }
 
-        ICollection CurrentGroups { get; }
+    ICollection CurrentGroups { get; }
 
-        bool CanGroup { get; }
+    bool CanGroup { get; }
 
-        bool IsGrouped { get; }
+    bool IsGrouped { get; }
 
-        IPagingViewModel Paging { get; }
+    IPagingViewModel Paging { get; }
 
-        bool CanPage { get; }
+    bool CanPage { get; }
 
-        bool IsPaged { get; }
+    bool IsPaged { get; }
 
-        IDisplayViewModel Display { get; }
-    }
+    IDisplayViewModel Display { get; }
+}
 
-    public interface IListViewModel<T> : IListViewModel
-    {
+public interface IListViewModel<T> : IListViewModel
+{
+    ReadOnlyObservableCollection<T> Items { get; }
 
-        ReadOnlyObservableCollection<T> Items { get; }
+    ReadOnlyObservableCollection<T> Source { get; }
 
-        ReadOnlyObservableCollection<T> Source { get; }
+    void Refresh();
+}
 
-        void Refresh();
-    }
+public interface IWrapperListViewModel : IListViewModel;
 
-    public interface IWrapperListViewModel : IListViewModel
-    {
-
-    }
-
-    public interface IWrapperListViewModel<T, TWrapper> : IWrapperListViewModel, IListViewModel<T>
-        where TWrapper : IWrapper<T>
-        where T : notnull
-    {
-        ReadOnlyObservableCollection<TWrapper> Wrappers { get; }
-    }
+public interface IWrapperListViewModel<T, TWrapper> : IWrapperListViewModel, IListViewModel<T>
+    where TWrapper : IWrapper<T>
+    where T : notnull
+{
+    ReadOnlyObservableCollection<TWrapper> Wrappers { get; }
 }

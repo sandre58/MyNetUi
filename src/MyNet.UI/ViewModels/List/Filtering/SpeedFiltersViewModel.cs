@@ -1,33 +1,33 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="SpeedFiltersViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyNet.UI.ViewModels.List.Filtering
+namespace MyNet.UI.ViewModels.List.Filtering;
+
+public class SpeedFiltersViewModel : FiltersViewModel
 {
-    public class SpeedFiltersViewModel : FiltersViewModel
+    public SpeedFiltersViewModel() { }
+
+    public SpeedFiltersViewModel(IEnumerable<IFilterViewModel> filters) => CompositeFilters.AddRange(filters.Select(x => CreateCompositeFilter(x)));
+
+    public override void Clear() => Reset();
+
+    public override void Set(IEnumerable<IFilterViewModel> filters)
     {
-        public SpeedFiltersViewModel() { }
-
-        public SpeedFiltersViewModel(IEnumerable<IFilterViewModel> filters) => CompositeFilters.AddRange(filters.Select(x => CreateCompositeFilter(x)));
-
-        public override void Clear() => Reset();
-
-        public override void Set(IEnumerable<IFilterViewModel> filters)
+        using (Defer())
         {
-            using (Defer())
+            Clear();
+
+            foreach (var filter in filters)
             {
-                Clear();
+                var similarSpeedFilter = CompositeFilters.FirstOrDefault(x => filter.IsSimilar(x.Item));
 
-                foreach (var filter in filters)
-                {
-                    if (filter is null) continue;
-
-                    var similarSpeedFilter = CompositeFilters.FirstOrDefault(x => filter.IsSimilar(x.Item));
-
-                    similarSpeedFilter?.Item.SetFrom(filter);
-                }
+                similarSpeedFilter?.Item.SetFrom(filter);
             }
         }
     }

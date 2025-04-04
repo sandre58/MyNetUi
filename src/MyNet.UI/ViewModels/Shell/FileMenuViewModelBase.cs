@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FileMenuViewModelBase.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -14,98 +17,104 @@ using MyNet.UI.Services;
 using MyNet.Utilities;
 using MyNet.Utilities.Messaging;
 
-namespace MyNet.UI.ViewModels.Shell
+namespace MyNet.UI.ViewModels.Shell;
+
+public class FileMenuViewModelBase : ObservableObject
 {
-    public class FileMenuViewModelBase : ObservableObject
+    private readonly HashSet<IWorkspaceViewModel> _contentViewModels = [];
+
+    public bool IsVisible { get; set; }
+
+    public IWorkspaceViewModel? Content { get; set; }
+
+    public ICommand ToggleFileMenuContentCommand { get; }
+
+    public ICommand ExitCommand { get; }
+
+    public FileMenuViewModelBase(IEnumerable<IWorkspaceViewModel> contentViewModels, IAppCommandsService appCommandsService)
     {
-        private readonly HashSet<IWorkspaceViewModel> _contentViewModels = [];
+        _contentViewModels.AddRange(contentViewModels);
 
-        public bool IsVisible { get; set; }
+        ToggleFileMenuContentCommand = CommandsManager.CreateNotNull<Type>(ToggleContent);
+        ExitCommand = CommandsManager.Create(appCommandsService.Exit, () => !DialogManager.HasOpenedDialogs);
 
-        public IWorkspaceViewModel? Content { get; set; }
+        Messenger.Default.Register<UpdateFileMenuVisibilityRequestedMessage>(this, x => SetVisibility(x.VisibilityAction));
+        Messenger.Default.Register<UpdateFileMenuContentVisibilityRequestedMessage>(this, x => SetContentVisibility(x.ContentType, x.VisibilityAction));
+        Messenger.Default.Register<OpenDialogMessage>(this, OnOpenDialog);
+    }
 
-        public ICommand ToggleFileMenuContentCommand { get; }
+    protected void ShowContent(Type contentType)
+    {
+        if (!ContentIsVisible(contentType))
+            Content = _contentViewModels.FirstOrDefault(contentType.IsInstanceOfType);
+    }
 
-        public ICommand ExitCommand { get; }
+    protected void HideContent()
+    {
+        if (Content != null) Content = null;
+    }
 
-        public FileMenuViewModelBase(IEnumerable<IWorkspaceViewModel> contentViewModels, IAppCommandsService appCommandsService)
+    protected void ToggleContent(Type contentType)
+    {
+        if (!ContentIsVisible(contentType))
+            ShowContent(contentType);
+        else
+            HideContent();
+    }
+
+    protected bool ContentIsVisible(Type contentType) => contentType.IsInstanceOfType(Content);
+
+    protected bool ContentIsVisible<T>() => ContentIsVisible(typeof(T));
+
+    private void SetContentVisibility(Type contentType, VisibilityAction visibilityAction)
+    {
+        switch (visibilityAction)
         {
-            _contentViewModels.AddRange(contentViewModels);
-
-            ToggleFileMenuContentCommand = CommandsManager.CreateNotNull<Type>(ToggleContent);
-            ExitCommand = CommandsManager.Create(appCommandsService.Exit, () => !DialogManager.HasOpenedDialogs);
-
-            Messenger.Default.Register<UpdateFileMenuVisibilityRequestedMessage>(this, x => SetVisibility(x.VisibilityAction));
-            Messenger.Default.Register<UpdateFileMenuContentVisibilityRequestedMessage>(this, x => SetContentVisibility(x.ContentType, x.VisibilityAction));
-            Messenger.Default.Register<OpenDialogMessage>(this, OnOpenDialog);
-        }
-
-        protected void ShowContent(Type contentType)
-        {
-            if (!ContentIsVisible(contentType))
-                Content = _contentViewModels.FirstOrDefault(contentType.IsInstanceOfType);
-        }
-
-        protected void HideContent()
-        {
-            if (Content != null) Content = null;
-        }
-
-        protected void ToggleContent(Type contentType)
-        {
-            if (!ContentIsVisible(contentType))
-                ShowContent(contentType);
-            else
-                HideContent();
-        }
-
-        protected bool ContentIsVisible(Type contentType) => contentType.IsInstanceOfType(Content);
-
-        protected bool ContentIsVisible<T>() => ContentIsVisible(typeof(T));
-
-        private void SetContentVisibility(Type contentType, VisibilityAction visibilityAction)
-        {
-            if (visibilityAction == VisibilityAction.Show)
-            {
+            case VisibilityAction.Show:
                 SetVisibility(visibilityAction);
                 ShowContent(contentType);
-            }
-            else if (visibilityAction == VisibilityAction.Hide)
-            {
+                break;
+            case VisibilityAction.Hide:
                 SetVisibility(visibilityAction);
                 HideContent();
-            }
-            else
-            {
-                if (IsVisible)
+                break;
+
+            case VisibilityAction.Toggle:
+            default:
                 {
-                    if (!ContentIsVisible(contentType))
-                        ShowContent(contentType);
+                    if (IsVisible)
+                    {
+                        if (!ContentIsVisible(contentType))
+                        {
+                            ShowContent(contentType);
+                        }
+                        else
+                        {
+                            SetVisibility(VisibilityAction.Hide);
+                            HideContent();
+                        }
+                    }
                     else
                     {
-                        SetVisibility(VisibilityAction.Hide);
-                        HideContent();
+                        SetVisibility(VisibilityAction.Show);
+                        ShowContent(contentType);
                     }
+
+                    break;
                 }
-                else
-                {
-                    SetVisibility(VisibilityAction.Show);
-                    ShowContent(contentType);
-                }
-            }
         }
-
-        private void SetVisibility(VisibilityAction visibilityAction)
-            => IsVisible = visibilityAction == VisibilityAction.Toggle ? !IsVisible : visibilityAction != VisibilityAction.Hide;
-
-        private void OnOpenDialog(OpenDialogMessage message)
-        {
-            if (message.Type != DialogType.FileDialog)
-            {
-                SetVisibility(VisibilityAction.Hide);
-            }
-        }
-
-        protected virtual void OnContentChanged() { }
     }
+
+    private void SetVisibility(VisibilityAction visibilityAction)
+        => IsVisible = visibilityAction == VisibilityAction.Toggle ? !IsVisible : visibilityAction != VisibilityAction.Hide;
+
+    private void OnOpenDialog(OpenDialogMessage message)
+    {
+        if (message.Type != DialogType.FileDialog)
+        {
+            SetVisibility(VisibilityAction.Hide);
+        }
+    }
+
+    protected virtual void OnContentChanged() { }
 }

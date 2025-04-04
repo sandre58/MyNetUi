@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ICompositeFilterViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.ComponentModel;
 using MyNet.Utilities;
-using MyNet.Utilities.Comparaison;
+using MyNet.Utilities.Comparison;
 
-namespace MyNet.UI.ViewModels.List.Filtering
+namespace MyNet.UI.ViewModels.List.Filtering;
+
+public interface ICompositeFilterViewModel : IWrapper<IFilterViewModel>, INotifyPropertyChanged, ICloneable
 {
-    public interface ICompositeFilterViewModel : IWrapper<IFilterViewModel>, INotifyPropertyChanged, ICloneable
-    {
-        bool IsEnabled { get; set; }
+    bool IsEnabled { get; set; }
 
-        LogicalOperator Operator { get; set; }
+    LogicalOperator Operator { get; set; }
 
-        void Reset();
-    }
+    void Reset();
 }

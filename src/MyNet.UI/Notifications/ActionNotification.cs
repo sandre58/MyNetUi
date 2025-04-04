@@ -1,16 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ActionNotification.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 
-namespace MyNet.UI.Notifications
+namespace MyNet.UI.Notifications;
+
+public class ActionNotification(string message, string title, NotificationSeverity severity, bool isClosable = true, Action<INotification>? action = null) : ClosableNotification(message, title, severity, isClosable)
 {
-    public class ActionNotification : ClosableNotification
-    {
-        public Action<INotification>? Action { get; set; }
-
-        public ActionNotification(string message, string title, NotificationSeverity severity, bool isClosable = true, Action<INotification>? action = null) : base(message, title, severity, isClosable)
-            => Action = action;
-
-    }
+    public Action<INotification>? Action { get; set; } = action;
 }

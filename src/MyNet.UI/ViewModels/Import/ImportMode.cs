@@ -1,12 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ImportMode.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.ViewModels.Import
+namespace MyNet.UI.ViewModels.Import;
+
+public enum ImportMode
 {
-    public enum ImportMode
-    {
-        Add,
+    Add,
 
-        Update
-    }
+    Update
 }

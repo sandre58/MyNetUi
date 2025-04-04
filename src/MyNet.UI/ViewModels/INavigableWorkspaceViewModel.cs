@@ -1,15 +1,16 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="INavigableWorkspaceViewModel.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using MyNet.UI.Navigation.Models;
 
-namespace MyNet.UI.ViewModels
+namespace MyNet.UI.ViewModels;
+
+public interface INavigableWorkspaceViewModel : IWorkspaceViewModel, INavigationPage
 {
+    public IWorkspaceViewModel? ParentPage { get; }
 
-    public interface INavigableWorkspaceViewModel : IWorkspaceViewModel, INavigationPage
-    {
-        public IWorkspaceViewModel? ParentPage { get; }
-
-        void SetParentPage(IWorkspaceViewModel parentPage);
-    }
+    void SetParentPage(IWorkspaceViewModel parentPage);
 }

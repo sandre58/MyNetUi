@@ -1,19 +1,21 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="INotificationsManager.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.ObjectModel;
 
-namespace MyNet.UI.Notifications
+namespace MyNet.UI.Notifications;
+
+public interface INotificationsManager
 {
-    public interface INotificationsManager
-    {
-        ReadOnlyObservableCollection<IClosableNotification> Notifications { get; }
+    ReadOnlyObservableCollection<IClosableNotification> Notifications { get; }
 
-        void Clear();
+    void Clear();
 
-        INotificationsManager AddHandler(INotificationHandler handler);
+    INotificationsManager AddHandler(INotificationHandler handler);
 
-        INotificationsManager AddHandler<T>() where T : INotificationHandler, new();
-
-    }
+    INotificationsManager AddHandler<T>()
+        where T : INotificationHandler, new();
 }

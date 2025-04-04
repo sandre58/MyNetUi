@@ -1,10 +1,12 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IClosableNotification.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Notifications
+namespace MyNet.UI.Notifications;
+
+public interface IClosableNotification : INotification, IClosable
 {
-    public interface IClosableNotification : INotification, IClosable
-    {
-        bool IsClosable { get; }
-    }
+    bool IsClosable { get; }
 }

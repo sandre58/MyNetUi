@@ -1,20 +1,22 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IColumnLayout.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Layout
+namespace MyNet.UI.Layout;
+
+public interface IColumnLayout
 {
-    public interface IColumnLayout
-    {
-        bool CanBeHidden { get; set; }
+    bool CanBeHidden { get; set; }
 
-        bool IsVisible { get; set; }
+    bool IsVisible { get; set; }
 
-        string Width { get; set; }
+    string Width { get; set; }
 
-        int Index { get; set; }
+    int Index { get; set; }
 
-        string Identifier { get; }
+    string Identifier { get; }
 
-        void Reset();
-    }
+    void Reset();
 }

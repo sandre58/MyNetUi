@@ -1,12 +1,14 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="IThemeExtension.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
 
-namespace MyNet.UI.Theming
+namespace MyNet.UI.Theming;
+
+public interface IThemeExtension
 {
-    public interface IThemeExtension
-    {
-        IDictionary<string, object?> GetResources(Theme theme);
-    }
+    IDictionary<string, object?> GetResources(Theme theme);
 }

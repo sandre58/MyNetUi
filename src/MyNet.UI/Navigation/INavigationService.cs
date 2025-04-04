@@ -1,43 +1,45 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="INavigationService.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using MyNet.UI.Navigation.Models;
 using MyNet.Utilities.Suspending;
 
-namespace MyNet.UI.Navigation
+namespace MyNet.UI.Navigation;
+
+public interface INavigationService
 {
-    public interface INavigationService
-    {
-        event EventHandler<NavigatingEventArgs>? Navigating;
+    event EventHandler<NavigatingEventArgs>? Navigating;
 
-        event EventHandler<NavigationEventArgs>? Navigated;
+    event EventHandler<NavigationEventArgs>? Navigated;
 
-        event EventHandler? HistoryCleared;
+    event EventHandler? HistoryCleared;
 
-        event EventHandler? Cleared;
+    event EventHandler? Cleared;
 
-        NavigationContext? CurrentContext { get; }
+    NavigationContext? CurrentContext { get; }
 
-        Suspender JournalSuspender { get; }
+    Suspender JournalSuspender { get; }
 
-        IEnumerable<NavigationContext> GetBackJournal();
+    IEnumerable<NavigationContext> GetBackJournal();
 
-        IEnumerable<NavigationContext> GetForwardJournal();
+    IEnumerable<NavigationContext> GetForwardJournal();
 
-        bool GoBack();
+    bool GoBack();
 
-        bool CanGoBack();
+    bool CanGoBack();
 
-        bool GoForward();
+    bool GoForward();
 
-        bool CanGoForward();
+    bool CanGoForward();
 
-        void ClearJournal();
+    void ClearJournal();
 
-        void Clear();
+    void Clear();
 
-        bool NavigateTo(INavigationPage page, NavigationParameters? navigationParameters = null);
-    }
+    bool NavigateTo(INavigationPage page, NavigationParameters? navigationParameters = null);
 }

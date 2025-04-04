@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ListParametersProvider.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,30 +13,28 @@ using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.UI.ViewModels.List.Paging;
 using MyNet.UI.ViewModels.List.Sorting;
 
-namespace MyNet.UI.ViewModels.List
+namespace MyNet.UI.ViewModels.List;
+
+public class ListParametersProvider(IDictionary<string, ListSortDirection> defaultSortProperties) : IListParametersProvider
 {
-    public class ListParametersProvider : IListParametersProvider
-    {
-        public static ListParametersProvider Default => new();
+    public static ListParametersProvider Default => new();
 
-        private readonly IDictionary<string, ListSortDirection> _defaultSortProperties;
+    public ListParametersProvider()
+        : this([]) { }
 
-        public ListParametersProvider() : this([]) { }
+    public ListParametersProvider(string defaultSortingProperty, ListSortDirection direction = ListSortDirection.Ascending)
+        : this(new Dictionary<string, ListSortDirection> { { defaultSortingProperty, direction } }) { }
 
-        public ListParametersProvider(string defaultSortingProperty, ListSortDirection direction = ListSortDirection.Ascending) : this(new Dictionary<string, ListSortDirection> { { defaultSortingProperty, direction } }) { }
+    public ListParametersProvider(IEnumerable<string> defaultSortingProperties)
+        : this(defaultSortingProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
 
-        public ListParametersProvider(IEnumerable<string> defaultSortingProperties) : this(defaultSortingProperties.ToDictionary(x => x, _ => ListSortDirection.Ascending)) { }
+    public virtual IFiltersViewModel ProvideFilters() => new FiltersViewModel();
 
-        public ListParametersProvider(IDictionary<string, ListSortDirection> defaultSortProperties) => _defaultSortProperties = defaultSortProperties;
+    public virtual ISortingViewModel ProvideSorting() => new SortingViewModel(defaultSortProperties);
 
-        public virtual IFiltersViewModel ProvideFilters() => new FiltersViewModel();
+    public virtual IGroupingViewModel ProvideGrouping() => new GroupingViewModel();
 
-        public virtual ISortingViewModel ProvideSorting() => new SortingViewModel(_defaultSortProperties);
+    public virtual IPagingViewModel ProvidePaging() => new PagingViewModel();
 
-        public virtual IGroupingViewModel ProvideGrouping() => new GroupingViewModel();
-
-        public virtual IPagingViewModel ProvidePaging() => new PagingViewModel();
-
-        public virtual IDisplayViewModel ProvideDisplay() => new DisplayViewModel();
-    }
+    public virtual IDisplayViewModel ProvideDisplay() => new DisplayViewModel();
 }

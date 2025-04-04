@@ -1,17 +1,19 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ToastSettings.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
-namespace MyNet.UI.Toasting.Settings
+namespace MyNet.UI.Toasting.Settings;
+
+/// <summary>
+/// Settings for WinMessageBox.
+/// </summary>
+public class ToastSettings
 {
-    /// <summary>
-    /// Settings for WinMessageBox.
-    /// </summary>
-    public class ToastSettings
-    {
-        public static ToastSettings Default => new();
+    public static ToastSettings Default => new();
 
-        public ToastClosingStrategy ClosingStrategy { get; set; } = ToastClosingStrategy.AutoClose;
+    public ToastClosingStrategy ClosingStrategy { get; set; } = ToastClosingStrategy.AutoClose;
 
-        public bool FreezeOnMouseEnter { get; set; } = true;
-    }
+    public bool FreezeOnMouseEnter { get; set; } = true;
 }
