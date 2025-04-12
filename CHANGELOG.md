@@ -1,5 +1,16 @@
 # Changelog
 
+## [v10.0.0] - 2025-04-12
+### :boom: BREAKING CHANGES
+- due to [`2a5e5b1`](https://github.com/sandre58/MyNetUi/commit/2a5e5b18a86c2fb9acd956d6185aea5d659abdd5) - Add Set method for PageSize in PagingViewModel.cs:
+
+  Remove UpdatePageSize method in PagingViewModel
+
+
+### :sparkles: New Features
+- [`2a5e5b1`](https://github.com/sandre58/MyNetUi/commit/2a5e5b18a86c2fb9acd956d6185aea5d659abdd5) - Add Set method for PageSize in PagingViewModel.cs
+
+
 ## [v9.0.0] - 2025-04-04
 ### :boom: BREAKING CHANGES
 - due to [`4f01c0e`](https://github.com/sandre58/MyNetUi/commit/4f01c0ef3a20da6876e1667632466997407f4c11) - add StyleCop and fix all warnings:
@@ -227,3 +238,4 @@
 [v8.0.0]: https://github.com/sandre58/MyNetUi/compare/v7.0.1...v8.0.0
 [v8.1.0]: https://github.com/sandre58/MyNetUi/compare/v8.0.0...v8.1.0
 [v9.0.0]: https://github.com/sandre58/MyNetUi/compare/v8.1.0...v9.0.0
+[v10.0.0]: https://github.com/sandre58/MyNetUi/compare/v9.0.0...v10.0.0
