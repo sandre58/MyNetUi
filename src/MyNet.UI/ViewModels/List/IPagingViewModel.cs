@@ -14,7 +14,7 @@ public interface IPagingViewModel : INotifyPropertyChanged
 {
     event EventHandler<PagingChangedEventArgs>? PagingChanged;
 
-    int PageSize { get; }
+    int PageSize { get; set; }
 
     int CurrentPage { get; }
 
@@ -33,8 +33,6 @@ public interface IPagingViewModel : INotifyPropertyChanged
     ICommand MoveToPageCommand { get; }
 
     ICommand SetPageSizeCommand { get; }
-
-    void SetPageSize(int value);
 
     void MoveToPage(int value);
 

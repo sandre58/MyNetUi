@@ -25,7 +25,7 @@ public class PagingViewModel : ObservableObject, IPagingViewModel
 
     public int TotalPages { get; private set; }
 
-    public int PageSize { get; private set; }
+    public int PageSize { get; set; }
 
     public ReadOnlyObservableCollection<int> Pages { get; }
 
@@ -52,16 +52,7 @@ public class PagingViewModel : ObservableObject, IPagingViewModel
         MoveToPreviousPageCommand = CommandsManager.Create(MoveToPreviousPage, () => CurrentPage > 1);
         MoveToNextPageCommand = CommandsManager.Create(MoveToNextPage, () => CurrentPage < TotalPages);
         MoveToPageCommand = CommandsManager.Create<int>(MoveToPage, x => x >= 1 && x <= TotalPages && x != CurrentPage);
-        SetPageSizeCommand = CommandsManager.Create<int>(SetPageSize, x => x > 0);
-    }
-
-    public void SetPageSize(int value)
-    {
-        if (value < 0) return;
-
-        PageSize = value;
-
-        PagingChanged?.Invoke(this, new PagingChangedEventArgs(CurrentPage, PageSize));
+        SetPageSizeCommand = CommandsManager.Create<int>(x => PageSize = x, x => x > 0);
     }
 
     public void MoveToPage(int value)
@@ -88,4 +79,6 @@ public class PagingViewModel : ObservableObject, IPagingViewModel
         if (_pages.Count != TotalPages)
             _pages.Set(Enumerable.Range(1, TotalPages));
     }
+
+    protected void OnPageSizeChanged() => PagingChanged?.Invoke(this, new PagingChangedEventArgs(CurrentPage, PageSize));
 }
